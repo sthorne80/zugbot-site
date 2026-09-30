@@ -17,6 +17,8 @@ ZugBot can store:
 - Raid Channel
 - Announcement Channel
 
+The configured **Raid Channel** is also the Guild Planner event-card destination. If no Raid Channel is configured, planner event creation fails before ZugBot creates a partial event.
+
 ### Game preferences
 
 ZugBot stores:
@@ -27,6 +29,39 @@ ZugBot stores:
 - the default game mode
 
 Modern and Forever configuration exists today, but current `/key` behavior is the Modern Mythic+ flow. A separate Forever dungeon-group system is planned rather than pretending Forever uses Retail Mythic+ keys.
+
+## Guild Planner administration
+
+Guild Planner is available in ZugBot **0.4.0**.
+
+Before using it:
+
+1. Configure a **Raid Channel** with `/setup`.
+2. Set the guild planner timezone with `/event timezone`, for example `America/New_York`.
+3. Make sure ZugBot has the planner permissions listed below.
+
+Planner time input is interpreted in the guild's configured IANA timezone. ZugBot stores canonical timestamps in UTC and Discord renders the event time for each member.
+
+### Planner permissions
+
+ZugBot needs:
+
+- **View Channel**
+- **Send Messages**
+- **Embed Links**
+- **Manage Events**
+
+Discord **Administrator is not required**.
+
+### Planner management authority
+
+An event's organizer can edit or cancel their own event. The following can manage all Guild Planner events in that guild:
+
+- Discord server owner
+- configured ZugBot **Admin**
+- configured ZugBot **Founder**
+
+Moderator, Member, New Member, and unrelated Discord roles do not automatically gain planner-management authority.
 
 ## Five-role authority model
 
