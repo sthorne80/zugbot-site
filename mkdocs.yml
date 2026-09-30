@@ -1,0 +1,55 @@
+site_name: ZugBot
+site_url: https://zugbot.net/
+site_description: User and administrator documentation for ZugBot, a World of Warcraft guild companion bot for Discord.
+site_author: ZugBot
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - scheme: slate
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+    - scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Member Guide: member-guide.md
+  - Guild Administration: admin-guide.md
+  - Command Reference: commands.md
+  - Troubleshooting: troubleshooting.md
+  - Roadmap: roadmap.md
+  - Changelog: changelog.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+copyright: ZugBot documentation
