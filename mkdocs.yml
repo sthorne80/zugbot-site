@@ -5,8 +5,8 @@ site_author: ZugBot
 
 theme:
   name: material
-  logo: assets/zugbot-logo.svg
-  favicon: assets/zugbot-logo.svg
+  logo: assets/zugbot-logo-v2.svg
+  favicon: assets/zugbot-logo-v2.svg
   palette:
     - scheme: slate
       primary: deep orange
@@ -50,6 +50,6 @@ markdown_extensions:
       permalink: true
 
 extra_css:
-  - assets/stylesheets/extra.css
+  - assets/stylesheets/extra-v2.css
 
 copyright: ZugBot documentation
