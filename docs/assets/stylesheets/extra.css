@@ -2,8 +2,23 @@
   background: linear-gradient(90deg, #7f1d1d, #c2410c);
 }
 
+.md-header__button.md-logo img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.zug-hero-art {
+  display: block;
+  width: 100%;
+  margin: 0 0 1.75rem;
+  border-radius: .75rem;
+  box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .28);
+}
+
 .zug-hero {
-  padding: 2rem 0 1rem;
+  padding: .5rem 0 1rem;
 }
 
 .zug-hero h1 {
@@ -13,7 +28,7 @@
 }
 
 .zug-tagline {
-  max-width: 46rem;
+  max-width: 52rem;
   font-size: 1.15rem;
   opacity: .9;
 }
@@ -25,14 +40,19 @@
   margin: 1.5rem 0 2rem;
 }
 
+.zug-support-actions {
+  margin-bottom: .75rem;
+}
+
 .zug-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin: 1.25rem 0;
 }
 
 .zug-card {
+  min-height: 100%;
   padding: 1rem 1.1rem;
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: .6rem;
@@ -44,4 +64,14 @@
 
 .zug-muted {
   opacity: .75;
+}
+
+@media screen and (max-width: 44.9844em) {
+  .zug-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zug-hero-art {
+    border-radius: .5rem;
+  }
 }

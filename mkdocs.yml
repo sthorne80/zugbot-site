@@ -5,7 +5,7 @@ site_author: ZugBot
 
 theme:
   name: material
-  logo: assets/logo.svg
+  logo: assets/zugbot-logo.webp
   favicon: assets/logo.svg
   palette:
     - scheme: slate
