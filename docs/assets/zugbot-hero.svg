@@ -50,14 +50,14 @@
     <path d="M211 103h78v15l-43 38h47v19h-86v-16l44-37h-40z" fill="#fff2db"/>
   </g>
 
-  <g transform="translate(650 155)">
-    <text x="0" y="110" font-family="Arial Black, Segoe UI, sans-serif" font-size="126" font-weight="900" fill="#fff6ec" letter-spacing="3">ZUGBOT</text>
-    <rect x="4" y="136" width="620" height="8" rx="4" fill="#e24e1b"/>
-    <text x="4" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="700" fill="#f6c7a9">WORLD OF WARCRAFT GUILD TOOLS FOR DISCORD</text>
-    <text x="4" y="278" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#e8e1dc">Your guild. Your Discord. Less chaos.</text>
-    <g transform="translate(4 330)">
-      <rect width="510" height="74" rx="18" fill="#11151b" stroke="#b43e18" stroke-width="3"/>
-      <text x="32" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="29" fill="#f7e7dc">Characters • Mythic+ • Planner • Guild Admin</text>
+  <g transform="translate(650 145)">
+    <text x="0" y="112" font-family="Arial Black, Segoe UI, sans-serif" font-size="126" font-weight="900" fill="#fff6ec" letter-spacing="3">ZUGBOT</text>
+    <rect x="4" y="138" width="575" height="8" rx="4" fill="#e24e1b"/>
+    <text x="4" y="205" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="800" fill="#f6c7a9" letter-spacing="1.2">GUILD TOOLS FOR DISCORD</text>
+    <text x="4" y="268" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#e8e1dc">Your guild. Your Discord. Less chaos.</text>
+    <g transform="translate(4 320)">
+      <rect width="430" height="68" rx="16" fill="#11151b" stroke="#b43e18" stroke-width="3"/>
+      <text x="28" y="44" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="600" fill="#f7e7dc">Characters • Mythic+ • Planner • Admin</text>
     </g>
   </g>
 </svg>

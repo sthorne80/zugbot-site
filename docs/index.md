@@ -1,4 +1,4 @@
-# ZugBot
+<h1 class="zug-visually-hidden">ZugBot</h1>
 
 <img class="zug-hero-art" src="assets/zugbot-hero.svg" alt="ZugBot, an orcish robot guild companion, in a fiery fantasy stronghold">
 
