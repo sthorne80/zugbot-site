@@ -1,6 +1,6 @@
 # Getting Started
 
-ZugBot works through Discord slash commands and interactive buttons. Most members can begin using character and Mythic+ features immediately once the bot is installed and the server has completed basic setup.
+ZugBot works through Discord slash commands and interactive buttons. Most members can begin using character, Guild Planner, and Mythic+ features once the bot is installed and the server has completed the relevant setup.
 
 ## For guild members
 
@@ -9,9 +9,10 @@ A good first session is:
 1. Run `/link` to connect a World of Warcraft character to your Discord account.
 2. Run `/profile` to view a linked character.
 3. Use `/alts` to confirm your linked characters.
-4. If you play Modern WoW Mythic+, run `/season` to see the active dungeon pool.
-5. Use `/key` when you want to create a Mythic+ group.
-6. Use `/lfgnotify enable` if you want ZugBot to DM you about eligible groups.
+4. Check the guild's planner cards or Discord Scheduled Events for upcoming activities.
+5. If you play Modern WoW Mythic+, run `/season` to see the active dungeon pool.
+6. Use `/key` when you want to create a Mythic+ group.
+7. Use `/lfgnotify enable` if you want ZugBot to DM you about eligible groups.
 
 No unnecessary Battle.net sign-in is required for normal linked-character use.
 
@@ -44,7 +45,23 @@ The setup interface can also configure:
 - New Member role
 
 !!! note
-    Raid, announcement, and role mappings are optional for basic setup, but guild administration and onboarding features require the relevant role configuration.
+    Raid, announcement, and role mappings are optional for basic setup, but the Guild Planner requires a configured Raid Channel and guild administration/onboarding features require the relevant role configuration.
+
+## Guild Planner setup
+
+Set an IANA timezone for event entry:
+
+```text
+/event timezone America/New_York
+```
+
+Then create an event with:
+
+```text
+/event create
+```
+
+ZugBot creates a matching Discord Scheduled Event and posts the persistent planner card in the configured Raid Channel.
 
 ## Discord permissions
 
@@ -57,10 +74,11 @@ Common requirements include:
 - Embed Links
 - Read Message History
 - Manage Roles when ZugBot is expected to assign or change configured guild roles
+- Manage Events when Guild Planner is enabled
 
 For role management, ZugBot's Discord role must be above the roles it needs to manage.
 
-Do not grant Administrator solely to make setup easier.
+Do not grant Administrator solely to make setup easier. Guild Planner does **not** require Administrator permission.
 
 ## Onboarding
 
