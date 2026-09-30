@@ -32,6 +32,17 @@ This page lists commands currently implemented in ZugBot. Planned commands are n
 
 `/lfgnotify enable` supports Tank, Healer, and DPS opt-ins plus optional minimum and maximum key levels.
 
+## Guild Planner
+
+| Command | Description |
+| --- | --- |
+| `/event create` | Create a persistent planner event and Discord Scheduled Event |
+| `/event edit` | Edit an existing planner event |
+| `/event cancel` | Cancel an existing planner event |
+| `/event timezone` | Set the guild planner IANA timezone |
+
+Planner cards support **Join**, **Maybe**, and **Can't Attend** responses. Event creation uses the configured Raid/Events channel and requires ZugBot to have View Channel, Send Messages, Embed Links, and Manage Events. Discord Administrator is not required.
+
 ## General / Utility
 
 | Command | Description |
@@ -63,4 +74,4 @@ This page lists commands currently implemented in ZugBot. Planned commands are n
 | `/endkeys` | Close active Mythic+ groups in the invoking guild |
 
 !!! warning "Not released yet"
-    The Guild Planner `/event` flow and a dedicated WoW: Forever dungeon-group command are roadmap features. They will be added to this reference only after they are released.
+    A dedicated WoW: Forever dungeon-group command remains a roadmap feature.
