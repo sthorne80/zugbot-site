@@ -19,6 +19,27 @@ Useful profile commands:
 | `/main` | Set your main character |
 | `/unlink` | Remove a linked character |
 
+## Guild Planner
+
+Guild Planner creates one event in two places:
+
+- a persistent ZugBot event card in the guild's configured Raid/Events channel;
+- Discord's native **Scheduled Events** area.
+
+Run `/event create`, choose an event type, and fill in the event details in the modal.
+
+Released event types include Raid, Mythic+ Night, PvP, Delve Night, Mount Farm, Achievement Run, Guild Event, Social Event, and Custom.
+
+The event card shows the organizer, start/end time, status, attendance counts, and a link to the native Discord event. It also includes:
+
+- **Join**
+- **Maybe**
+- **Can't Attend**
+
+You can change your response later; ZugBot keeps only one current attendance state per member.
+
+Each card displays its **Planner Event ID**. That ID is used with `/event edit` or `/event cancel`. The organizer can manage their own event, while authorized guild leadership can manage all events.
+
 ## Modern WoW Mythic+
 
 ### Current season
