@@ -1,5 +1,7 @@
 # ZugBot
 
+<img class="zug-hero-art" src="assets/zugbot-hero.webp" alt="ZugBot, an orcish robot guild companion, in a fiery fantasy stronghold">
+
 <div class="zug-hero">
   <p class="zug-tagline"><strong>A World of Warcraft guild companion and management bot built for Discord.</strong> ZugBot brings character profiles, Mythic+ group tools, Smart LFG notifications, onboarding, and guild administration into the place your guild already uses.</p>
 
@@ -43,9 +45,22 @@ ZugBot is designed around a few simple ideas:
 !!! info "Current release"
     The production bot currently reports version **0.3.0**. Features under active development are listed on the [Roadmap](roadmap.md) and are clearly separated from released functionality.
 
+## Support ZugBot
+
+ZugBot is independently developed and hosted. Support helps cover the domain, hosting, infrastructure, development tools, and continued development. Core ZugBot functionality is not locked behind payment.
+
+<div class="zug-actions zug-support-actions">
+  <a class="md-button md-button--primary" href="https://buymeacoffee.com/ZugBot" target="_blank" rel="noopener">☕ One-time support</a>
+  <a class="md-button" href="https://patreon.com/ZugBot" target="_blank" rel="noopener">🔥 Monthly support</a>
+</div>
+
+<span class="zug-muted">Enjoying ZugBot? Toss a few gold into the repair fund. 🔥</span>
+
 ## Where to go next
 
 - New to ZugBot? Start with [Getting Started](getting-started.md).
 - Already in a server with ZugBot? Read the [Member Guide](member-guide.md).
 - Running the server? See [Guild Administration](admin-guide.md).
 - Need one command quickly? Open the [Command Reference](commands.md).
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="ZugBot" data-description="Support ZugBot on Buy Me a Coffee!" data-message="Enjoying ZugBot? Toss a few gold into the repair fund. Your support helps cover hosting, infrastructure, and continued development. 🔥" data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
