@@ -1,6 +1,7 @@
 name: Deploy ZugBot docs
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -30,18 +31,21 @@ jobs:
       - name: Install documentation dependencies
         run: python -m pip install -r requirements.txt
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
       - name: Build documentation
         run: mkdocs build --strict
 
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
       - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
