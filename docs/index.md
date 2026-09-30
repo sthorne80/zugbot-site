@@ -1,6 +1,6 @@
 <h1 class="zug-visually-hidden">ZugBot</h1>
 
-<img class="zug-hero-art" src="assets/zugbot-hero.svg" alt="ZugBot, an orcish robot guild companion, in a fiery fantasy stronghold">
+<img class="zug-hero-art" src="assets/zugbot-hero-v2.svg" alt="ZugBot, an orcish robot guild companion, in a fiery fantasy stronghold">
 
 <div class="zug-hero">
   <p class="zug-tagline"><strong>A World of Warcraft guild companion and management bot built for Discord.</strong> ZugBot brings character profiles, Mythic+ group tools, Smart LFG notifications, onboarding, and guild administration into the place your guild already uses.</p>
