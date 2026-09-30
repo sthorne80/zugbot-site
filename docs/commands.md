@@ -21,6 +21,19 @@ This page lists commands currently implemented in ZugBot. Planned commands are n
 | `/season` | Show the current Mythic+ dungeon pool |
 | `/key` | Create an interactive Mythic+ group |
 
+## Guild Planner
+
+| Command | Description |
+| --- | --- |
+| `/event create` | Create a Guild Planner event and matching Discord Scheduled Event |
+| `/event edit` | Edit an existing planner event using its Planner Event ID |
+| `/event cancel` | Cancel an existing planner event using its Planner Event ID |
+| `/event timezone` | Set the guild's IANA planner timezone |
+
+Planner cards include **Join**, **Maybe**, and **Can't Attend** buttons. A member has one attendance state per event and can change it later.
+
+The organizer can edit or cancel their own event. The Discord server owner and ZugBot's configured **Admin** or **Founder** roles can manage any planner event in that guild.
+
 ## LFG notifications
 
 | Command | Description |
@@ -62,5 +75,5 @@ This page lists commands currently implemented in ZugBot. Planned commands are n
 | `/debugdb` | Show guild-scoped database/runtime counts |
 | `/endkeys` | Close active Mythic+ groups in the invoking guild |
 
-!!! warning "Not released yet"
-    The Guild Planner `/event` flow and a dedicated WoW: Forever dungeon-group command are roadmap features. They will be added to this reference only after they are released.
+!!! note "Still planned"
+    A dedicated WoW: Forever dungeon-group command remains a roadmap feature. Current `/key` behavior is the Modern Mythic+ flow.
