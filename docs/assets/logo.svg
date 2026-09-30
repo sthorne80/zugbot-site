@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="ZugBot flame logo">
+  <defs>
+    <linearGradient id="flame" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00"/>
+      <stop offset="0.55" stop-color="#ff3d00"/>
+      <stop offset="1" stop-color="#b71c1c"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#flame)" d="M68 5c7 22-8 28-3 43 4-10 14-16 19-27 22 20 31 42 25 64-6 23-25 38-47 38-25 0-45-18-45-43 0-22 14-38 31-55-2 15 3 24 10 29C55 35 68 25 68 5Z"/>
+  <path fill="#fff" d="M40 59h48v12L59 97h30v14H38V99l29-26H40V59Z"/>
+</svg>
