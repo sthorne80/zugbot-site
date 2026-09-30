@@ -2,10 +2,16 @@
 
 This page summarizes notable public-facing ZugBot changes.
 
-## Unreleased
+## 0.4.0 — 2026-09-30
 
 ### Added
 
+- Guild Planner event creation with Discord Scheduled Event integration
+- persistent Guild Planner event cards
+- Join / Maybe / Can't Attend attendance responses
+- planner event editing and cancellation
+- guild-scoped IANA planner timezone configuration
+- organizer and configured guild-leadership planner controls
 - structured file-based logging
 - guild-scoped Smart LFG notification preferences
 - owner-triggered Mythic+ notification flow
@@ -20,6 +26,7 @@ This page summarizes notable public-facing ZugBot changes.
 
 - refreshed `/help` and `/about`
 - unified application version display across `/help`, `/about`, and `/version`
+- improved Guild Planner event-card visibility for the Planner Event ID
 
 ### Fixed
 
