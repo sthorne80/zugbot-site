@@ -17,23 +17,32 @@ Already implemented foundations include:
 - five-role guild authority configuration
 - Rules & Vibes onboarding
 - Smart LFG notification preferences
+- Guild Planner MVP with Discord Scheduled Events
 
 ## Guild Operations
 
-### Guild Planner — next major feature
+### Guild Planner
 
-Planned direction:
+The **0.4.0 Guild Planner MVP is released** with:
 
-- Discord-native event creation
+- one-time event creation
 - Discord Scheduled Event integration
-- event cards in configured guild channels
-- one-time and recurring events
-- signups
-- reminders
-- event discussion
-- attendance/readiness tooling
+- persistent event cards in the configured Raid Channel
+- Join / Maybe / Can't Attend responses
+- event editing and cancellation
+- organizer and guild-leadership management controls
+- guild-scoped IANA timezone handling
+- restart-safe persistence
 
-The initial Guild Planner work is under active development and is **not yet a released command**.
+Future planner work may include:
+
+- easier event selection/autocomplete instead of manually entering IDs
+- recurring weekly events
+- role-based Tank/Healer/DPS/Bench signups
+- reminders
+- event discussion threads
+- attendance history and readiness tooling
+- event lifecycle reconciliation for events that have already ended
 
 ### Game-mode-aware grouping
 
