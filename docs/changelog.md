@@ -2,6 +2,21 @@
 
 This page summarizes notable public-facing ZugBot changes.
 
+## 0.4.0 — 2026-09-30
+
+### Added
+
+- Guild Planner with `/event create`, `/event edit`, `/event cancel`, and `/event timezone`
+- Discord Scheduled Event integration
+- persistent planner cards with Join / Maybe / Can't Attend responses
+- guild-local IANA timezone support with UTC persistence
+- organizer and configured leadership event-management controls
+
+### Changed
+
+- planner event cards integrate directly with Discord's native Events surface
+- help output documents planner commands and permissions
+
 ## Unreleased
 
 ### Added

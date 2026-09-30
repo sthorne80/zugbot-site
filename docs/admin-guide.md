@@ -76,6 +76,23 @@ When an eligible new user accepts:
 
 A server can pair this with channel permissions so unroled newcomers initially see only a welcome/rules area.
 
+## Guild Planner
+
+Guild Planner uses the configured **Raid Channel** as the destination for event cards.
+
+Available commands:
+
+- `/event create`
+- `/event edit`
+- `/event cancel`
+- `/event timezone`
+
+Event creation also creates a native Discord Scheduled Event. Planner cards persist across restarts and support Join, Maybe, and Can't Attend responses.
+
+The organizer can manage their own event. The Discord guild owner and configured ZugBot Admin/Founder roles can manage guild events.
+
+Required bot permissions for planner use are **View Channel**, **Send Messages**, **Embed Links**, and **Manage Events**. Discord Administrator is not required.
+
 ## Administrative utilities
 
 ### `/debugdb`

@@ -5,8 +5,8 @@ site_author: ZugBot
 
 theme:
   name: material
-  logo: assets/zugbot-logo.webp
-  favicon: assets/logo.svg
+  logo: assets/zugbot-logo.svg
+  favicon: assets/zugbot-logo.svg
   palette:
     - scheme: slate
       primary: deep orange

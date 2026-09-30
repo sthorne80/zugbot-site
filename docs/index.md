@@ -1,6 +1,6 @@
 # ZugBot
 
-<img class="zug-hero-art" src="assets/zugbot-hero.webp" alt="ZugBot, an orcish robot guild companion, in a fiery fantasy stronghold">
+<img class="zug-hero-art" src="assets/zugbot-hero.svg" alt="ZugBot, an orcish robot guild companion, in a fiery fantasy stronghold">
 
 <div class="zug-hero">
   <p class="zug-tagline"><strong>A World of Warcraft guild companion and management bot built for Discord.</strong> ZugBot brings character profiles, Mythic+ group tools, Smart LFG notifications, onboarding, and guild administration into the place your guild already uses.</p>
@@ -27,6 +27,10 @@
     <p>Opt in by role and key range so group leaders can notify interested players without pinging the entire server.</p>
   </div>
   <div class="zug-card">
+    <h3>📅 Guild Planner</h3>
+    <p>Create Discord Scheduled Events with persistent event cards, RSVP buttons, editing, cancellation, and guild-local timezone handling.</p>
+  </div>
+  <div class="zug-card">
     <h3>🛡️ Guild Administration</h3>
     <p>Configure channels, game preferences, guild roles, member progression, and a Rules & Vibes onboarding agreement.</p>
   </div>
@@ -43,7 +47,7 @@ ZugBot is designed around a few simple ideas:
 - make routine guild organization easier inside Discord.
 
 !!! info "Current release"
-    The production bot currently reports version **0.3.0**. Features under active development are listed on the [Roadmap](roadmap.md) and are clearly separated from released functionality.
+    The production bot currently reports version **0.4.0**. Features under active development are listed on the [Roadmap](roadmap.md) and are clearly separated from released functionality.
 
 ## Support ZugBot
 
