@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" role="img" aria-labelledby="title desc">
+  <title id="title">ZugBot fiery guild stronghold banner</title>
+  <desc id="desc">A dark fantasy guild stronghold with firelight and an original mechanical orc mascot beside the ZugBot name.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090b10"/>
+      <stop offset=".45" stop-color="#28140f"/>
+      <stop offset="1" stop-color="#6e1e10"/>
+    </linearGradient>
+    <radialGradient id="fire" cx="28%" cy="70%" r="48%">
+      <stop offset="0" stop-color="#ff8a2d" stop-opacity=".9"/>
+      <stop offset=".35" stop-color="#d74116" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#777b81"/>
+      <stop offset=".4" stop-color="#2a2d32"/>
+      <stop offset="1" stop-color="#111318"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="600" fill="url(#sky)"/>
+  <rect width="1600" height="600" fill="url(#fire)"/>
+
+  <g opacity=".72" fill="#090a0d">
+    <path d="M0 460h145v-145h55v-92h44v92h61v145h170v-182h54v-110h50v110h70v182h154v-120h68v120h177v-205h56v-95h52v95h66v205h228v140H0z"/>
+    <path d="M143 223l77-82 77 82zM474 168l80-92 80 92zM1044 255l83-96 83 96z"/>
+  </g>
+
+  <g opacity=".55">
+    <circle cx="170" cy="438" r="18" fill="#ff6b26" filter="url(#softGlow)"/>
+    <circle cx="535" cy="412" r="23" fill="#ff6b26" filter="url(#softGlow)"/>
+    <circle cx="1115" cy="423" r="21" fill="#ff6b26" filter="url(#softGlow)"/>
+    <circle cx="1370" cy="448" r="17" fill="#ff6b26" filter="url(#softGlow)"/>
+  </g>
+
+  <g transform="translate(92 67)">
+    <circle cx="250" cy="250" r="218" fill="#0d0f13" stroke="#cf4c1c" stroke-width="12"/>
+    <path d="M108 191l55-82 28 57 117 0 28-57 55 83-34 83-15 119-92 64-92-64-15-119z" fill="url(#metal)" stroke="#090a0c" stroke-width="12"/>
+    <path d="M147 245l88 18-33 44-69-24z" fill="#ff5c22" filter="url(#softGlow)"/>
+    <path d="M353 245l-88 18 33 44 69-24z" fill="#ff5c22" filter="url(#softGlow)"/>
+    <path d="M186 321h128l-13 68-51 38-51-38z" fill="#1b1e23"/>
+    <path d="M184 349c-25 10-48 31-61 65 36 7 69-2 94-28z" fill="#ead6ad" stroke="#755a38" stroke-width="7"/>
+    <path d="M316 349c25 10 48 31 61 65-36 7-69-2-94-28z" fill="#ead6ad" stroke="#755a38" stroke-width="7"/>
+    <path d="M204 92h92l20 52H184z" fill="#b53a17" stroke="#5c180f" stroke-width="8"/>
+    <path d="M211 103h78v15l-43 38h47v19h-86v-16l44-37h-40z" fill="#fff2db"/>
+  </g>
+
+  <g transform="translate(650 155)">
+    <text x="0" y="110" font-family="Arial Black, Segoe UI, sans-serif" font-size="126" font-weight="900" fill="#fff6ec" letter-spacing="3">ZUGBOT</text>
+    <rect x="4" y="136" width="620" height="8" rx="4" fill="#e24e1b"/>
+    <text x="4" y="210" font-family="Segoe UI, Arial, sans-serif" font-size="39" font-weight="700" fill="#f6c7a9">WORLD OF WARCRAFT GUILD TOOLS FOR DISCORD</text>
+    <text x="4" y="278" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#e8e1dc">Your guild. Your Discord. Less chaos.</text>
+    <g transform="translate(4 330)">
+      <rect width="510" height="74" rx="18" fill="#11151b" stroke="#b43e18" stroke-width="3"/>
+      <text x="32" y="48" font-family="Segoe UI, Arial, sans-serif" font-size="29" fill="#f7e7dc">Characters • Mythic+ • Planner • Guild Admin</text>
+    </g>
+  </g>
+</svg>
