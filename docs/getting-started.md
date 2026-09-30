@@ -12,6 +12,7 @@ A good first session is:
 4. If you play Modern WoW Mythic+, run `/season` to see the active dungeon pool.
 5. Use `/key` when you want to create a Mythic+ group.
 6. Use `/lfgnotify enable` if you want ZugBot to DM you about eligible groups.
+7. Use Guild Planner event cards to RSVP to guild activities with Join, Maybe, or Can't Attend.
 
 No unnecessary Battle.net sign-in is required for normal linked-character use.
 
@@ -56,11 +57,12 @@ Common requirements include:
 - Send Messages
 - Embed Links
 - Read Message History
+- Manage Events when the Guild Planner is used
 - Manage Roles when ZugBot is expected to assign or change configured guild roles
 
 For role management, ZugBot's Discord role must be above the roles it needs to manage.
 
-Do not grant Administrator solely to make setup easier.
+Do not grant Administrator solely to make setup easier. Guild Planner does **not** require Administrator permission.
 
 ## Onboarding
 
