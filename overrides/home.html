@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+  <main class="zug-home" role="main">
+    {{ page.content | safe }}
+  </main>
+{% endblock %}
+
+{% block container %}{% endblock %}
