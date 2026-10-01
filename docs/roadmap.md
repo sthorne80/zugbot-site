@@ -23,17 +23,19 @@ Already implemented foundations include:
 
 ### Guild Planner
 
-Released in **0.4.0**:
+Released through **0.5.0**:
 
 - one-time event creation, editing, and cancellation
 - Discord Scheduled Event integration
 - persistent event cards in the configured Raid/Events channel
-- Join / Maybe / Can't Attend RSVP state
+- Tank / Healer / DPS / Bench role-based signups
+- Maybe / Can't Attend attendance states
+- live composition counts and grouped roster display
 - guild-scoped IANA timezone configuration
 - organizer and configured leadership controls
 - restart-safe reconciliation
 
-Planned next steps include recurring events, reminders, role-based signups, attendance history, and event lifecycle reconciliation.
+Planned next steps include linked-character-aware planner signups, recurring events, reminders, attendance history, and event lifecycle reconciliation.
 
 ### Game-mode-aware grouping
 

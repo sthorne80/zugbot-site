@@ -76,6 +76,21 @@ Other commands:
 
 If a test DM fails, check whether your Discord privacy settings allow direct messages from that server.
 
+## Guild Planner
+
+Guild Planner events appear as persistent cards in the server's configured Raid/Events channel and are synchronized with Discord Scheduled Events.
+
+For active events, choose the response that matches how you plan to participate:
+
+- **Tank**
+- **Healer**
+- **DPS**
+- **Bench**
+- **Maybe**
+- **Can't Attend**
+
+Changing your response updates your existing signup. The event card shows live composition counts and a grouped roster.
+
 ## Ready checks and fun
 
 ZugBot also includes lightweight server utilities:
