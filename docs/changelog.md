@@ -2,6 +2,20 @@
 
 This page summarizes notable public-facing ZugBot changes.
 
+## 0.5.0 — 2026-09-30
+
+### Added
+
+- role-based Guild Planner signups for Tank, Healer, DPS, and Bench
+- live planner composition counts and grouped roster display
+- backward-compatible support for legacy joined RSVPs without an assigned role
+
+### Changed
+
+- Maybe and Can't Attend remain one-click planner responses
+- planner RSVP changes update the existing signup instead of creating duplicates
+- cancelled planner cards keep their roster while disabling signup controls
+
 ## 0.4.0 — 2026-09-30
 
 ### Added
