@@ -41,7 +41,7 @@ This page lists commands currently implemented in ZugBot. Planned commands are n
 | `/event cancel` | Cancel an existing planner event |
 | `/event timezone` | Set the guild planner IANA timezone |
 
-Planner cards support **Join**, **Maybe**, and **Can't Attend** responses. Event creation uses the configured Raid/Events channel and requires ZugBot to have View Channel, Send Messages, Embed Links, and Manage Events. Discord Administrator is not required.
+Planner cards support **Tank**, **Healer**, **DPS**, **Bench**, **Maybe**, and **Can't Attend** responses with live composition counts and grouped rosters. Event creation uses the configured Raid/Events channel and requires ZugBot to have View Channel, Send Messages, Embed Links, and Manage Events. Discord Administrator is not required.
 
 ## General / Utility
 
