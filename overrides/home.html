@@ -1,10 +1,31 @@
 {% extends "main.html" %}
 
-{% block tabs %}
+{% block header %}
+  <a class="zb-skip" href="#main-content">Skip to content</a>
   {{ super() }}
-  <main class="zug-home" role="main">
-    {{ page.content | safe }}
-  </main>
 {% endblock %}
 
-{% block container %}{% endblock %}
+{% block extrahead %}
+  {{ super() }}
+  <link rel="preload" as="image" href="{{ 'assets/zugbot-fortress.webp' | url }}">
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/landing-v1.css' | url }}">
+{% endblock %}
+
+{% block tabs %}
+  <nav class="zb-nav" aria-label="Website">
+    <div class="zb-shell">
+      <a href="#features">Features</a>
+      <a href="{{ 'planner/' | url }}">Guild Planner</a>
+      <a href="{{ 'getting-started/' | url }}">Documentation</a>
+      <a href="#support">Support ZugBot</a>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block container %}
+  <div class="zug-home zb-home" id="main-content" tabindex="-1">
+    {{ page.content | safe }}
+  </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

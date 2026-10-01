@@ -1,174 +1,93 @@
 ---
 template: home.html
+title: ZugBot — Guild operations for Discord
+description: Your World of Warcraft guild's extra pair of hands. Plan events, link characters, build Mythic+ groups, and manage your guild inside Discord.
 hide:
   - navigation
   - toc
 ---
 
-<section class="zug-hero-commercial">
-  <div class="zug-shell zug-hero-grid">
-    <div class="zug-hero-copy">
-      <div class="zug-eyebrow">World of Warcraft guild operations for Discord</div>
-      <h1>Your guild.<span>Less chaos.</span></h1>
-      <p>ZugBot turns the repetitive work of running a WoW guild into clean, Discord-native workflows — characters, Mythic+ groups, Smart LFG, event planning, onboarding, and administration in one place.</p>
-      <div class="zug-hero-actions">
-        <a class="zug-btn zug-btn--primary" href="getting-started/">Get started</a>
-        <a class="zug-btn" href="commands/">Explore commands</a>
+<section class="zb-hero" aria-labelledby="hero-title">
+  <img class="zb-hero-art" src="assets/zugbot-fortress.webp" width="1536" height="1024" fetchpriority="high" alt="ZugBot, a heavily armored mechanical orc with glowing eyes, cables, and red cloth, holding an operations tablet in a burning fortress.">
+  <div class="zb-shell zb-hero-inner">
+    <div class="zb-hero-copy">
+      <p class="zb-eyebrow">World of Warcraft · Discord</p>
+      <h1 id="hero-title">Less admin.<br><span>More Warcraft.</span></h1>
+      <p class="zb-lead">Your guild's extra pair of hands.</p>
+      <p class="zb-hero-description">Raid night. Key groups. A whole warband of alts. ZugBot handles the busywork so your guild can get back to playing.</p>
+      <div class="zb-actions">
+        <a class="zb-button zb-button-primary" href="getting-started/">Get started with ZugBot</a>
+        <a class="zb-button" href="#features">Explore features</a>
       </div>
-      <div class="zug-trust-row">
-        <span>Discord-native</span>
-        <span>Restart-safe persistence</span>
-        <span>No Administrator permission required</span>
-      </div>
-    </div>
-
-    <div class="zug-brand-stage" aria-label="ZugBot product brand and feature suite">
-      <div class="zug-brand-glow"></div>
-
-      <div class="zug-brand-lockup">
-        <img class="zug-brand-mascot" src="assets/zugbot-mascot-v1.svg" alt="ZugBot mechanical orc mascot">
-        <div class="zug-brand-wordmark">
-          <strong>ZUGBOT</strong>
-          <span>Guild operations for Discord</span>
-        </div>
-      </div>
-
-      <div class="zug-orbit-card zug-orbit-card--planner">
-        <span>Guild Planner</span>
-        <strong>Events & role signups</strong>
-      </div>
-      <div class="zug-orbit-card zug-orbit-card--mythic">
-        <span>Mythic+</span>
-        <strong>Persistent group tools</strong>
-      </div>
-      <div class="zug-orbit-card zug-orbit-card--warband">
-        <span>Warbands</span>
-        <strong>Linked mains & alts</strong>
-      </div>
-      <div class="zug-orbit-card zug-orbit-card--lfg">
-        <span>Smart LFG</span>
-        <strong>Opt-in notifications</strong>
-      </div>
+      <p class="zb-hero-note">Built for guilds. Runs inside Discord.</p>
     </div>
   </div>
 </section>
 
-<div class="zug-release-bar">
-  <div class="zug-shell zug-release-inner">
-    <div class="zug-release-copy">
-      <span class="zug-release-badge">0.5.0 LIVE</span>
-      <span>Role-based Guild Planner signups are now in production.</span>
-    </div>
-    <a class="zug-release-link" href="changelog/">Read the changelog →</a>
+<nav class="zb-capabilities" aria-label="Feature guides">
+  <div class="zb-shell">
+    <a href="planner/">Guild Planner</a>
+    <a href="member-guide/">Characters &amp; Warbands</a>
+    <a href="member-guide/">Mythic+ Groups</a>
+    <a href="member-guide/">Smart LFG</a>
+    <a href="admin-guide/">Guild Administration</a>
   </div>
-</div>
+</nav>
 
-<section class="zug-section">
-  <div class="zug-shell">
-    <div class="zug-section-head">
-      <div class="zug-kicker">One bot. The work your guild repeats every week.</div>
-      <h2>Built around the way guilds actually operate.</h2>
-      <p>ZugBot keeps useful guild management inside Discord instead of forcing members and officers into another dashboard they will forget to check.</p>
+<section class="zb-section zb-planner" id="features" aria-labelledby="planner-title">
+  <div class="zb-shell zb-split">
+    <div class="zb-section-copy">
+      <p class="zb-eyebrow">01 / Get the guild together</p>
+      <h2 id="planner-title">A raid night.<br>A plan.<br><em>Everyone in the loop.</em></h2>
+      <p>Create your event, let members choose their roles, and see your roster take shape. ZugBot keeps the Planner card and Discord Scheduled Event together.</p>
+      <ul class="zb-detail-list">
+        <li>Tank, Healer, DPS, and Bench signups</li>
+        <li>Event times in each member's local timezone</li>
+        <li>Persistent cards that work after a bot restart</li>
+      </ul>
+      <a class="zb-text-link" href="planner/">Explore Guild Planner</a>
     </div>
-
-    <div class="zug-feature-grid">
-      <article class="zug-feature">
-        <div class="zug-feature-number">01</div>
-        <h3>Guild Planner</h3>
-        <p>Create events, sync Discord Scheduled Events, collect role-based RSVPs, edit schedules, and cancel cleanly.</p>
-        <span class="zug-feature-tag">Planner · RSVPs · Timezones</span>
-        <a class="zug-feature-link" href="planner/">See Guild Planner →</a>
-      </article>
-      <article class="zug-feature">
-        <div class="zug-feature-number">02</div>
-        <h3>Characters & Warbands</h3>
-        <p>Link mains and alts once, manage character identity, and reuse those characters throughout ZugBot workflows.</p>
-        <span class="zug-feature-tag">Profiles · Main/Alt · Selection</span>
-      </article>
-      <article class="zug-feature">
-        <div class="zug-feature-number">03</div>
-        <h3>Mythic+ Groups</h3>
-        <p>Create interactive groups with role slots, linked characters, PUG controls, owner actions, and restart-safe persistence.</p>
-        <span class="zug-feature-tag">Modern WoW · Group tools</span>
-      </article>
-      <article class="zug-feature zug-feature--wide">
-        <div class="zug-feature-number">04</div>
-        <h3>Smart LFG</h3>
-        <p>Let members opt into the roles and key ranges they care about so leaders can find interested players without pinging everyone.</p>
-        <span class="zug-feature-tag">Opt-in notifications · Less spam</span>
-      </article>
-      <article class="zug-feature zug-feature--wide">
-        <div class="zug-feature-number">05</div>
-        <h3>Guild Administration</h3>
-        <p>Configure channels, authority roles, onboarding, member progression, and server-specific behavior for real multi-guild use.</p>
-        <span class="zug-feature-tag">Setup · Onboarding · Authority</span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="zug-section zug-section--muted">
-  <div class="zug-shell zug-product-grid">
-    <div class="zug-product-copy">
-      <div class="zug-kicker">Discord is the interface</div>
-      <h2>No separate dashboard required for everyday guild life.</h2>
-      <p>Buttons, selectors, embeds, scheduled events, and ephemeral prompts keep routine interactions fast while ZugBot handles persistence underneath.</p>
-      <div class="zug-checklist">
-        <div class="zug-checkitem">Guild-scoped configuration and data isolation</div>
-        <div class="zug-checkitem">Persistent views that recover after restarts</div>
-        <div class="zug-checkitem">Member-controlled notification preferences</div>
-        <div class="zug-checkitem">Leadership tools without Discord Administrator</div>
+    <figure class="zb-planner-preview">
+      <figcaption>Example Planner card</figcaption>
+      <div class="zb-discord-channel"># raid-and-events</div>
+      <div class="zb-message-header">
+        <img src="assets/zugbot-logo-v2.svg" alt="" width="40" height="40" loading="lazy">
+        <strong>ZugBot</strong><span class="zb-app-tag">APP</span>
       </div>
-    </div>
-
-    <div class="zug-admin-panel">
-      <div class="zug-admin-panel__bar"><strong>Guild Configuration</strong><span>Production-ready workflows</span></div>
-      <div class="zug-admin-row"><strong>Raid / Events</strong><span>Configured channel</span><span class="zug-admin-pill">Live</span></div>
-      <div class="zug-admin-row"><strong>Guild Authority</strong><span>Five-role model</span><span class="zug-admin-pill">Configured</span></div>
-      <div class="zug-admin-row"><strong>Planner Timezone</strong><span>IANA timezone</span><span class="zug-admin-pill">Active</span></div>
-      <div class="zug-admin-row"><strong>Rules & Vibes</strong><span>Onboarding panel</span><span class="zug-admin-pill">Live</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="zug-section">
-  <div class="zug-shell">
-    <div class="zug-cta">
-      <div class="zug-cta-inner">
-        <div>
-          <div class="zug-kicker">Ready to dig in?</div>
-          <h2>Start with the docs. Keep the guild in Discord.</h2>
-          <p>Setup guidance, member workflows, administration, commands, troubleshooting, release notes, and the roadmap are all documented here.</p>
-          <div class="zug-support">
-            <a class="zug-btn zug-btn--primary" href="getting-started/">Get started</a>
-            <a class="zug-btn" href="member-guide/">Member guide</a>
-            <a class="zug-btn" href="admin-guide/">Guild admin guide</a>
-          </div>
-        </div>
+      <div class="zb-event-embed">
+        <p class="zb-event-type">Guild Planner · Raid</p>
+        <h3>Friday Raid Night</h3>
+        <p>Bring your flasks. We've got bosses to pull.</p>
+        <div class="zb-event-meta"><div><span>Starts</span><strong>Friday · 8:00 PM</strong></div><div><span>Composition</span><strong>2 Tank · 4 Healer · 11 DPS</strong></div></div>
+        <div class="zb-event-roster"><p><strong>Tanks</strong><span>@GuildMember · @GuildMember</span></p><p><strong>Healers</strong><span>@GuildMember · +3 more</span></p><p><strong>DPS</strong><span>@GuildMember · +10 more</span></p></div>
       </div>
+      <div class="zb-rsvp-examples" aria-label="Example RSVP options"><span>Tank</span><span>Healer</span><span>DPS</span><span>Bench</span><span>Maybe</span><span>Can't Attend</span></div>
+      <p class="zb-preview-note">Illustrative example. Actual events run in your Discord server.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="zb-section zb-tools" aria-labelledby="tools-title">
+  <div class="zb-shell">
+    <div class="zb-section-heading"><p class="zb-eyebrow">The rest of the guild comes with it</p><h2 id="tools-title">One bot. A lot less busywork.</h2></div>
+    <div class="zb-tool-grid">
+      <article class="zb-tool"><span class="zb-tool-number">02</span><div><h3>Characters &amp; Warbands</h3><p>Your main, your alts, your identity. Link your characters once and keep them together across ZugBot's member workflows.</p><a class="zb-text-link" href="member-guide/">Meet your warband</a></div></article>
+      <article class="zb-tool"><span class="zb-tool-number">03</span><div><h3>Mythic+ Groups</h3><p>Build a group with role slots, linked characters, and PUG controls. Keep organizing the next key right where your guild already talks.</p><a class="zb-text-link" href="commands/">See group commands</a></div></article>
+      <article class="zb-tool"><span class="zb-tool-number">04</span><div><h3>Smart LFG</h3><p>Reach members interested in the roles and key ranges you're running. Members choose their notifications, so every group doesn't need an everyone ping.</p><a class="zb-text-link" href="member-guide/">Find your next group</a></div></article>
+      <article class="zb-tool"><span class="zb-tool-number">05</span><div><h3>Guild Administration</h3><p>Set up your channels, map your guild's authority roles, and welcome newcomers with a persistent rules agreement. Your server, your structure.</p><a class="zb-text-link" href="admin-guide/">Open the admin guide</a></div></article>
     </div>
   </div>
 </section>
 
-<section class="zug-section zug-section--muted">
-  <div class="zug-shell zug-product-grid">
-    <div class="zug-product-copy">
-      <div class="zug-kicker">Independent development</div>
-      <h2>Core features are not paywalled.</h2>
-      <p>Support helps cover the domain, infrastructure, development tools, and continued development without turning everyday guild features into paid gates.</p>
-      <div class="zug-support">
-        <a class="zug-btn zug-btn--primary" href="https://buymeacoffee.com/ZugBot" target="_blank" rel="noopener">One-time support</a>
-        <a class="zug-btn" href="https://patreon.com/ZugBot" target="_blank" rel="noopener">Monthly support</a>
-      </div>
-    </div>
-    <div class="zug-principles">
-      <div class="zug-principle"><h3>Opt-in where it matters</h3><p>Notifications follow member preferences instead of assuming everyone wants another ping.</p></div>
-      <div class="zug-principle"><h3>Guild-scoped by design</h3><p>Configuration and operational data stay separated by Discord server.</p></div>
-      <div class="zug-principle"><h3>Built to survive real use</h3><p>Persistence, restart recovery, synchronized state, and explicit failure handling are product features.</p></div>
-    </div>
+<section class="zb-section zb-start" aria-labelledby="start-title">
+  <div class="zb-shell zb-start-inner">
+    <div><p class="zb-eyebrow">Put ZugBot to work</p><h2 id="start-title">Your guild has enough<br>bosses to deal with.</h2><p>Start with setup. Link your characters. Plan the next run.</p><div class="zb-actions"><a class="zb-button zb-button-primary" href="getting-started/">Read the setup guide</a><a class="zb-button" href="commands/">Browse commands</a></div></div>
+    <div class="zb-operating-notes"><p><strong>Discord is the interface.</strong><span>Buttons, selectors, and event cards. No extra dashboard for members to check.</span></p><p><strong>Your guild stays your guild.</strong><span>Server-specific configuration, authority roles, and operational data.</span></p><p><strong>Built for the next login.</strong><span>Persistent groups and event cards recover after restarts.</span></p></div>
   </div>
 </section>
 
-<div class="zug-home-footer">
-  <div class="zug-shell">ZugBot · World of Warcraft guild operations for Discord · <a href="roadmap/">Roadmap</a> · <a href="changelog/">Changelog</a></div>
-</div>
+<section class="zb-support" id="support" aria-labelledby="support-title">
+  <div class="zb-shell zb-support-inner"><div><p class="zb-eyebrow">Independent development</p><h2 id="support-title">Help keep ZugBot moving.</h2><p>Support covers infrastructure, development tools, and the next round of guild features.</p></div><div class="zb-actions"><a class="zb-button" href="https://buymeacoffee.com/ZugBot" target="_blank" rel="noopener noreferrer">One-time support</a><a class="zb-text-link" href="https://patreon.com/ZugBot" target="_blank" rel="noopener noreferrer">Monthly support</a></div></div>
+</section>
+
+<footer class="zb-footer"><div class="zb-shell"><a class="zb-footer-brand" href="./"><img src="assets/zugbot-logo-v2.svg" alt="" width="32" height="32" loading="lazy"><strong>ZugBot</strong></a><p>Guild operations for Discord.</p><nav aria-label="Footer"><a href="roadmap/">Roadmap</a><a href="changelog/">Changelog</a><a href="troubleshooting/">Get help</a></nav></div></footer>
