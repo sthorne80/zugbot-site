@@ -79,7 +79,7 @@
 .zug-hero-commercial {
   position: relative;
   isolation: isolate;
-  padding: clamp(4rem, 8vw, 7rem) 0 4.5rem;
+  padding: clamp(3.2rem, 6vw, 5.2rem) 0 3.4rem;
   border-bottom: 1px solid var(--zug-line);
 }
 
@@ -105,7 +105,7 @@
 
 .zug-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(330px, .8fr);
   gap: clamp(2.5rem, 6vw, 6rem);
   align-items: center;
 }
@@ -215,6 +215,127 @@
   margin-right: .42rem;
   color: #ff8b50;
   font-weight: 900;
+}
+
+
+.zug-brand-stage {
+  position: relative;
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.zug-brand-glow {
+  position: absolute;
+  width: 92%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 106, 42, .20) 0%, rgba(255, 106, 42, .07) 34%, transparent 69%);
+  filter: blur(6px);
+  z-index: -2;
+}
+
+.zug-brand-lockup {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: .25rem;
+  transform: translateY(-.2rem);
+}
+
+.zug-brand-mascot {
+  width: clamp(13rem, 23vw, 19rem);
+  max-width: 100%;
+  filter: drop-shadow(0 28px 34px rgba(0, 0, 0, .46));
+}
+
+.zug-brand-wordmark {
+  display: grid;
+  justify-items: center;
+  margin-top: -1.15rem;
+  text-align: center;
+}
+
+.zug-brand-wordmark strong {
+  color: #fff8f3;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 950;
+  letter-spacing: .085em;
+  line-height: 1;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, .38);
+}
+
+.zug-brand-wordmark span {
+  margin-top: .5rem;
+  color: #b9b2ad;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.zug-orbit-card {
+  position: absolute;
+  z-index: 3;
+  min-width: 150px;
+  padding: .7rem .8rem;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: .7rem;
+  background: rgba(15, 19, 25, .88);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .32);
+  backdrop-filter: blur(10px);
+}
+
+.zug-orbit-card span {
+  display: block;
+  margin-bottom: .18rem;
+  color: #ff9d70;
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.zug-orbit-card strong {
+  color: #e6e2df;
+  font-size: .75rem;
+  font-weight: 750;
+}
+
+.zug-orbit-card--planner {
+  top: 2.2rem;
+  left: -.5rem;
+}
+
+.zug-orbit-card--mythic {
+  top: 4.5rem;
+  right: -.4rem;
+}
+
+.zug-orbit-card--warband {
+  bottom: 3.6rem;
+  left: .1rem;
+}
+
+.zug-orbit-card--lfg {
+  right: .2rem;
+  bottom: 1.8rem;
+}
+
+.zug-feature-link {
+  display: inline-block;
+  margin-top: .9rem;
+  color: #ff9f70 !important;
+  font-size: .8rem;
+  font-weight: 850;
+  text-decoration: none !important;
+}
+
+.zug-feature-link:hover {
+  color: #ffc0a1 !important;
 }
 
 .zug-hero-product {
@@ -700,12 +821,18 @@
     grid-template-columns: 1fr;
   }
 
-  .zug-hero-product {
-    min-height: 430px;
+  .zug-brand-stage {
+    min-height: 360px;
   }
 
-  .zug-mascot {
-    right: 4%;
+  .zug-orbit-card--planner,
+  .zug-orbit-card--warband {
+    left: 2%;
+  }
+
+  .zug-orbit-card--mythic,
+  .zug-orbit-card--lfg {
+    right: 2%;
   }
 
   .zug-feature,
@@ -735,17 +862,55 @@
     font-size: clamp(2.65rem, 14vw, 4.25rem);
   }
 
-  .zug-hero-product {
-    min-height: 390px;
+  .zug-brand-stage {
+    min-height: 330px;
+    margin-top: 1.1rem;
   }
 
-  .zug-mascot {
-    width: 7.5rem;
-    top: .5rem;
+  .zug-brand-mascot {
+    width: 12rem;
   }
 
-  .zug-discord-preview {
-    margin-top: 4rem;
+  .zug-brand-wordmark strong {
+    font-size: 2rem;
+  }
+
+  .zug-brand-wordmark span {
+    max-width: 13rem;
+    font-size: .6rem;
+  }
+
+  .zug-orbit-card {
+    min-width: 118px;
+    padding: .55rem .6rem;
+  }
+
+  .zug-orbit-card strong {
+    font-size: .65rem;
+  }
+
+  .zug-orbit-card span {
+    font-size: .58rem;
+  }
+
+  .zug-orbit-card--planner {
+    top: 1rem;
+    left: 0;
+  }
+
+  .zug-orbit-card--mythic {
+    top: 2.4rem;
+    right: 0;
+  }
+
+  .zug-orbit-card--warband {
+    bottom: 2.4rem;
+    left: 0;
+  }
+
+  .zug-orbit-card--lfg {
+    right: 0;
+    bottom: 1rem;
   }
 
   .zug-role-buttons {
