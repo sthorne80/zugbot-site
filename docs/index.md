@@ -13,7 +13,7 @@ hide:
       <p>ZugBot turns the repetitive work of running a WoW guild into clean, Discord-native workflows — characters, Mythic+ groups, Smart LFG, event planning, onboarding, and administration in one place.</p>
       <div class="zug-hero-actions">
         <a class="zug-btn zug-btn--primary" href="getting-started/">Get started</a>
-        <a class="zug-btn" href="commands/">Explore commands</a>
+        <a class="zug-btn" href="#features">Explore features</a>
       </div>
       <div class="zug-trust-row">
         <span>Discord-native</span>
@@ -22,20 +22,13 @@ hide:
       </div>
     </div>
 
-    <div class="zug-brand-stage" aria-label="ZugBot product brand and feature suite">
-      <div class="zug-brand-glow"></div>
-
-      <div class="zug-brand-lockup">
-        <img class="zug-brand-mascot" src="assets/zugbot-mascot-v1.svg" alt="ZugBot mechanical orc mascot">
-        <div class="zug-brand-wordmark">
-          <strong>ZUGBOT</strong>
-          <span>Guild operations for Discord</span>
-        </div>
-      </div>
+    <div class="zug-warbot-stage" aria-label="ZugBot armored mechanical orc surrounded by guild tools">
+      <div class="zug-warbot-glow"></div>
+      <img class="zug-warbot" src="assets/zugbot-warbot-v2.svg" alt="ZugBot armored mechanical orc administrator">
 
       <div class="zug-orbit-card zug-orbit-card--planner">
         <span>Guild Planner</span>
-        <strong>Events & role signups</strong>
+        <strong>Events, RSVPs & schedules</strong>
       </div>
       <div class="zug-orbit-card zug-orbit-card--mythic">
         <span>Mythic+</span>
@@ -43,11 +36,11 @@ hide:
       </div>
       <div class="zug-orbit-card zug-orbit-card--warband">
         <span>Warbands</span>
-        <strong>Linked mains & alts</strong>
+        <strong>Characters, mains & alts</strong>
       </div>
       <div class="zug-orbit-card zug-orbit-card--lfg">
         <span>Smart LFG</span>
-        <strong>Opt-in notifications</strong>
+        <strong>Find the right players</strong>
       </div>
     </div>
   </div>
@@ -63,7 +56,7 @@ hide:
   </div>
 </div>
 
-<section class="zug-section">
+<section class="zug-section" id="features">
   <div class="zug-shell">
     <div class="zug-section-head">
       <div class="zug-kicker">One bot. The work your guild repeats every week.</div>
