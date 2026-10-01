@@ -33,6 +33,7 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Member Guide: member-guide.md
+  - Guild Planner: planner.md
   - Guild Administration: admin-guide.md
   - Command Reference: commands.md
   - Troubleshooting: troubleshooting.md

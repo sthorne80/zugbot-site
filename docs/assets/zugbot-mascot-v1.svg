@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">ZugBot mechanical orc mascot</title>
+  <desc id="desc">A standalone mechanical orc head with tusks, glowing orange eyes, and a Z crest.</desc>
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7f838a"/>
+      <stop offset=".32" stop-color="#383b42"/>
+      <stop offset=".68" stop-color="#17191e"/>
+      <stop offset="1" stop-color="#4b2a20"/>
+    </linearGradient>
+    <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff9a3d"/>
+      <stop offset=".48" stop-color="#df501c"/>
+      <stop offset="1" stop-color="#7c1d12"/>
+    </linearGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff7a31" stop-opacity=".44"/>
+      <stop offset="1" stop-color="#ff7a31" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="9" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#000" flood-opacity=".48"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="256" cy="290" rx="220" ry="205" fill="url(#ember)"/>
+
+  <g filter="url(#shadow)">
+    <path d="M94 186l63-100 31 67h136l31-67 63 101-39 91-17 151-106 72-106-72-17-151z"
+          fill="url(#metal)" stroke="#0d0f13" stroke-width="13" stroke-linejoin="round"/>
+
+    <path d="M125 201l49-46 27 36h110l27-36 49 46-29 83-24-45-63 27-15 51-15-51-63-27-24 45z"
+          fill="#181b20" stroke="#9e3d20" stroke-width="9" stroke-linejoin="round"/>
+
+    <path d="M161 251l78 16-31 47-61-23z" fill="#ff5f24" filter="url(#glow)"/>
+    <path d="M351 251l-78 16 31 47 61-23z" fill="#ff5f24" filter="url(#glow)"/>
+
+    <circle cx="138" cy="332" r="34" fill="#272a30" stroke="#b84c23" stroke-width="8"/>
+    <circle cx="374" cy="332" r="34" fill="#272a30" stroke="#b84c23" stroke-width="8"/>
+
+    <path d="M182 329h148l-17 84-57 43-57-43z"
+          fill="#202329" stroke="#0c0e12" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M205 350h102" stroke="#df541f" stroke-width="11" stroke-linecap="round"/>
+
+    <path d="M181 366c-27 14-51 39-62 76 39 8 75-3 101-33z"
+          fill="#f1dfbb" stroke="#7b613e" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M331 366c27 14 51 39 62 76-39 8-75-3-101-33z"
+          fill="#f1dfbb" stroke="#7b613e" stroke-width="8" stroke-linejoin="round"/>
+
+    <path d="M205 84h102l23 61H182z"
+          fill="url(#bronze)" stroke="#5c1a11" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M214 99h84v15l-48 43h52v21h-94v-17l49-42h-43z" fill="#fff3df"/>
+  </g>
+</svg>

@@ -22,27 +22,32 @@ hide:
       </div>
     </div>
 
-    <div class="zug-hero-product">
-      <div class="zug-logo-halo"></div>
-      <img class="zug-mascot" src="assets/zugbot-logo-v2.svg" alt="ZugBot mechanical orc emblem">
-      <div class="zug-discord-preview">
-        <div class="zug-preview-topline"><span class="zug-preview-dot"></span>Guild Planner</div>
-        <div class="zug-preview-card">
-          <h3>Heroic Raid Night</h3>
-          <p>Progression night synchronized with Discord Scheduled Events.</p>
-          <div class="zug-preview-meta">
-            <div><small>Starts</small><strong>Friday · 8:00 PM</strong></div>
-            <div><small>Composition</small><strong>2 Tank · 4 Healer · 11 DPS</strong></div>
-          </div>
-          <div class="zug-role-buttons">
-            <span>Tank</span><span>Healer</span><span>DPS</span><span>Bench</span>
-          </div>
-          <div class="zug-preview-roster">
-            <div><b>Tanks:</b> @Member</div>
-            <div><b>Healers:</b> @Member</div>
-            <div><b>DPS:</b> @Member · +10 more</div>
-          </div>
+    <div class="zug-brand-stage" aria-label="ZugBot product brand and feature suite">
+      <div class="zug-brand-glow"></div>
+
+      <div class="zug-brand-lockup">
+        <img class="zug-brand-mascot" src="assets/zugbot-mascot-v1.svg" alt="ZugBot mechanical orc mascot">
+        <div class="zug-brand-wordmark">
+          <strong>ZUGBOT</strong>
+          <span>Guild operations for Discord</span>
         </div>
+      </div>
+
+      <div class="zug-orbit-card zug-orbit-card--planner">
+        <span>Guild Planner</span>
+        <strong>Events & role signups</strong>
+      </div>
+      <div class="zug-orbit-card zug-orbit-card--mythic">
+        <span>Mythic+</span>
+        <strong>Persistent group tools</strong>
+      </div>
+      <div class="zug-orbit-card zug-orbit-card--warband">
+        <span>Warbands</span>
+        <strong>Linked mains & alts</strong>
+      </div>
+      <div class="zug-orbit-card zug-orbit-card--lfg">
+        <span>Smart LFG</span>
+        <strong>Opt-in notifications</strong>
       </div>
     </div>
   </div>
@@ -72,6 +77,7 @@ hide:
         <h3>Guild Planner</h3>
         <p>Create events, sync Discord Scheduled Events, collect role-based RSVPs, edit schedules, and cancel cleanly.</p>
         <span class="zug-feature-tag">Planner · RSVPs · Timezones</span>
+        <a class="zug-feature-link" href="planner/">See Guild Planner →</a>
       </article>
       <article class="zug-feature">
         <div class="zug-feature-number">02</div>
