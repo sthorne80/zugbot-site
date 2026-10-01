@@ -89,9 +89,10 @@
   inset: 0;
   z-index: -2;
   background:
-    linear-gradient(90deg, rgba(9, 11, 15, .98) 0%, rgba(9, 11, 15, .88) 46%, rgba(9, 11, 15, .46) 100%),
-    url("../zugbot-hero-v2.svg") center/cover no-repeat;
-  opacity: .34;
+    radial-gradient(circle at 82% 42%, rgba(255, 106, 42, .12), transparent 25rem),
+    radial-gradient(circle at 18% 28%, rgba(132, 38, 24, .14), transparent 30rem),
+    linear-gradient(135deg, #0a0c10 0%, #0d1015 58%, #17100e 100%);
+  opacity: 1;
 }
 
 .zug-hero-commercial::after {
