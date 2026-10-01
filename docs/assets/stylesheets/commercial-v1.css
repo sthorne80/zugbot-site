@@ -944,3 +944,46 @@
 .zug-product-grid .zug-principles {
   grid-template-columns: 1fr;
 }
+
+
+/* Rich feature-documentation surfaces */
+.zug-doc-hero {
+  margin: 1rem 0 2rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(255, 122, 62, .16);
+  border-radius: .9rem;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 106, 42, .09), transparent 18rem),
+    linear-gradient(135deg, rgba(255, 106, 42, .045), rgba(255, 255, 255, .015));
+}
+
+.zug-doc-hero h2 {
+  margin: .45rem 0 .65rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: -.03em;
+}
+
+.zug-doc-hero p {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.zug-planner-demo-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 2.2rem;
+}
+
+.zug-discord-preview--docs {
+  width: min(100%, 560px);
+  margin-top: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .zug-doc-hero {
+    padding: 1rem;
+  }
+}
