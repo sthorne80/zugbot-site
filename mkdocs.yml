@@ -52,6 +52,6 @@ markdown_extensions:
       permalink: true
 
 extra_css:
-  - assets/stylesheets/commercial-v3.css
+  - assets/stylesheets/commercial-v2.css
 
 copyright: ZugBot documentation
