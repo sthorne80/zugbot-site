@@ -38,9 +38,9 @@ hide:
             <span>Tank</span><span>Healer</span><span>DPS</span><span>Bench</span>
           </div>
           <div class="zug-preview-roster">
-            <div><b>Tanks:</b> @Member (Character)</div>
-            <div><b>Healers:</b> @Member (Character)</div>
-            <div><b>DPS:</b> @Member (Character) · +10 more</div>
+            <div><b>Tanks:</b> @Member</div>
+            <div><b>Healers:</b> @Member</div>
+            <div><b>DPS:</b> @Member · +10 more</div>
           </div>
         </div>
       </div>
