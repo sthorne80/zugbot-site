@@ -774,3 +774,8 @@
     justify-self: start;
   }
 }
+
+
+.zug-product-grid .zug-principles {
+  grid-template-columns: 1fr;
+}
