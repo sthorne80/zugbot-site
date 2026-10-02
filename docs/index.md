@@ -17,6 +17,7 @@ hide:
       <p class="zb-hero-description">Plan events, organize members, and keep guild operations moving inside Discord. ZugBot handles the operational busywork so your community can get back to playing.</p>
       <div class="zb-actions">
         <a class="zb-button zb-button-primary" href="getting-started/">Get started with ZugBot</a>
+        <a class="zb-button" href="https://discord.gg/QjZHFW9gwP" target="_blank" rel="noopener noreferrer">Try ZugBot Live</a>
         <a class="zb-button" href="#features">Explore features</a>
       </div>
       <p class="zb-hero-note">Built for guilds. Runs inside Discord.</p>
@@ -82,7 +83,7 @@ hide:
 
 <section class="zb-section zb-start" aria-labelledby="start-title">
   <div class="zb-shell zb-start-inner">
-    <div><p class="zb-eyebrow">Put ZugBot to work</p><h2 id="start-title">Your guild has enough<br>bosses to deal with.</h2><p>Start with setup. Link your characters. Plan the next run.</p><div class="zb-actions"><a class="zb-button zb-button-primary" href="getting-started/">Read the setup guide</a><a class="zb-button" href="commands/">Browse commands</a></div></div>
+    <div><p class="zb-eyebrow">Put ZugBot to work</p><h2 id="start-title">Your guild has enough<br>bosses to deal with.</h2><p>Start with setup. Link your characters. Or join the ZugBot Lab—a public sandbox for trying commands, testing features, and finding edge cases.</p><div class="zb-actions"><a class="zb-button zb-button-primary" href="getting-started/">Read the setup guide</a><a class="zb-button" href="https://discord.gg/QjZHFW9gwP" target="_blank" rel="noopener noreferrer">Try ZugBot Live</a><a class="zb-button" href="commands/">Browse commands</a></div></div>
     <div class="zb-operating-notes"><p><strong>Discord is the interface.</strong><span>Buttons, selectors, and event cards. No extra dashboard for members to check.</span></p><p><strong>Your guild stays your guild.</strong><span>Server-specific configuration, authority roles, and operational data.</span></p><p><strong>Built for the next login.</strong><span>Persistent groups and event cards recover after restarts.</span></p></div>
   </div>
 </section>
