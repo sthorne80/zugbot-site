@@ -1,113 +1,68 @@
 # Guild Administration
 
-ZugBot's administration features are guild-scoped. Configuration and progression in one Discord server do not automatically apply to another.
+ZugBot's setup, authority, and operational data are scoped to each Discord guild.
 
 ## Server setup
 
-Run `/setup` inside the Discord server.
+Run `/setup`. The Discord server owner or a member with Administrator or Manage Server permission can change setup.
 
-The server owner or a member with Discord **Administrator** or **Manage Server** permission can change setup.
+ZugBot can store Bot Commands, Mythic/LFG, Raid, and Announcement channels; Modern WoW and WoW: Forever preferences; a default game mode and region; and five authority/membership roles.
 
-### Channels
-
-ZugBot can store:
-
-- Bot Commands Channel
-- Mythic/LFG Channel
-- Raid Channel
-- Announcement Channel
-
-### Game preferences
-
-ZugBot stores:
-
-- default region
-- whether Modern WoW is enabled
-- whether WoW: Forever is enabled
-- the default game mode
-
-Modern and Forever configuration exists today, but current `/key` behavior is the Modern Mythic+ flow. A separate Forever dungeon-group system is planned rather than pretending Forever uses Retail Mythic+ keys.
+!!! note "Blizzard region behavior"
+    The bot deployment's configured Blizzard region controls `/character`, `/link`, and realm autocomplete requests. The guild `default_region` stored by `/setup` does not currently switch those Blizzard requests per guild.
 
 ## Five-role authority model
 
-ZugBot's configured hierarchy is:
+The configured hierarchy is:
 
 ```text
 Admin > Founder > Moderator > Member > New Member
 ```
 
-The Discord server chooses which actual Discord roles map to those five tiers.
+The Discord server chooses the actual roles mapped to those tiers. The guild owner is ZugBot's root authority even without the configured Admin role.
 
-The guild owner is treated as root authority by ZugBot even without the configured Admin role.
-
-### Normal progression
-
-Normal member progression is:
+Normal progression is:
 
 ```text
 New Member ⇄ Member ⇄ Moderator
 ```
 
-Founder and Admin are protected authority tiers and are not ordinary promotion steps.
-
-Use:
-
-- `/admin promote`
-- `/admin demote`
-
-ZugBot changes only the configured progression role involved in the transition. Discord's own role hierarchy and permission rules still apply.
+Founder and Admin are protected tiers, not ordinary promotion steps. Use `/admin promote` and `/admin demote`; ZugBot changes only the relevant configured progression role. Discord's native role hierarchy still applies.
 
 ## Rules & Vibes onboarding
 
-Once the five authority roles are configured, authorized leadership can post the active onboarding agreement with:
-
-```text
-/admin onboarding-post
-```
-
-The panel contains a persistent **I Agree** button.
-
-When an eligible new user accepts:
-
-- the agreement acceptance is recorded;
-- the configured New Member role can be assigned;
-- users already at New Member or a higher configured tier are not given an extra progression role;
-- the panel remains restart-safe.
-
-A server can pair this with channel permissions so unroled newcomers initially see only a welcome/rules area.
+Authorized leadership can post the current agreement with `/admin onboarding-post`. Its persistent **I Agree** button records acceptance and can assign the configured New Member role. People already at New Member or above are not given an extra progression role, and the panel remains usable after restarts.
 
 ## Guild Planner
 
-Guild Planner uses the configured **Raid Channel** as the destination for event cards.
+Planner uses the configured Raid channel and provides:
 
-Available commands:
+- `/event create`, `/event edit`, `/event cancel`, `/event stoprecurrence`, and `/event timezone`;
+- One-time, Weekly recurring, and Monthly recurring schedules;
+- native Discord Scheduled Events and restart-safe Planner cards;
+- Tank, Healer, DPS, and Bench signups with linked-character selection;
+- Maybe and Can't Attend states without character selection;
+- automatic 24-hour and 1-hour reminders;
+- independent occurrences, RSVPs, character snapshots, and reminder history;
+- recurrence stopping without cancelling the current occurrence.
 
-- `/event create`
-- `/event edit`
-- `/event cancel`
-- `/event timezone`
+The organizer manages their event. The Discord guild owner and configured ZugBot Admin and Founder roles can also manage guild events. Editing or cancelling one recurring occurrence does not alter the future cadence.
 
-Event creation also creates a native Discord Scheduled Event. Planner cards persist across restarts and support Join, Maybe, and Can't Attend responses.
+### Planner permissions
 
-The organizer can manage their own event. The Discord guild owner and configured ZugBot Admin/Founder roles can manage guild events.
+ZugBot needs:
 
-Required bot permissions for planner use are **View Channel**, **Send Messages**, **Embed Links**, and **Manage Events**. Discord Administrator is not required.
+- View Channel
+- Send Messages
+- Embed Links
+- Manage Events
+
+Administrator is not required for normal Planner operation.
 
 ## Administrative utilities
 
-### `/debugdb`
-
-Shows guild-scoped database/runtime counts useful for troubleshooting.
-
-### `/endkeys`
-
-Closes active Mythic+ groups for the invoking guild and disables their interaction buttons.
+`/debugdb` shows guild-scoped database and runtime counts. `/endkeys` closes active Mythic+ groups for the invoking guild and disables their buttons.
 
 ## Role-management safety
 
-For promotion, demotion, or onboarding role assignment:
-
-- ZugBot needs Discord **Manage Roles**;
-- the ZugBot Discord role must be above roles it needs to change;
-- configured authority checks do not bypass Discord's own hierarchy;
-- invalid or unsafe configuration should fail closed rather than guessing.
+Promotion, demotion, and onboarding assignment require **Manage Roles**, and ZugBot's Discord role must sit above each role it manages. Configured authority never bypasses Discord's hierarchy.

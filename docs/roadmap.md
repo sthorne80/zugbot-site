@@ -1,79 +1,60 @@
 # Roadmap
 
-ZugBot's roadmap is intentionally flexible. This page describes planned direction, not a promise that every item will ship exactly as written.
+Current production is **ZugBot 0.9.1**. This page separates released behavior from future direction; planned work is not a delivery promise.
 
-## Foundation
+## Current
 
-Already implemented foundations include:
+### Member and group operations
 
-- Blizzard API integration
-- Raider.IO integration
-- character profiles
-- linked warband/main-alt management
-- Mythic+ group system
-- interactive Discord UI
-- SQLite persistence
-- multi-guild setup
-- five-role guild authority configuration
-- Rules & Vibes onboarding
-- Smart LFG notification preferences
-- Guild Planner with Discord Scheduled Events, persistent RSVP cards, edit/cancel flows, and guild-local timezone support
+- Blizzard-backed character lookup and realm autocomplete
+- linked main and alt profiles, including `/linkmany`
+- Mythic+ group creation with linked characters and persistent cards
+- Smart LFG role and key-range preferences
+- multi-guild server setup and restart-safe persistence
 
-## Guild Operations
+### Guild administration
+
+- Admin, Founder, Moderator, Member, and New Member authority model
+- controlled promotion and demotion
+- persistent Rules & Vibes onboarding
 
 ### Guild Planner
 
-Released through **0.5.0**:
+- One-time, Weekly recurring, and Monthly recurring events
+- linked-character Tank, Healer, DPS, and Bench signups
+- Maybe and Can't Attend states
+- native Discord Scheduled Events
+- guild-local IANA timezones with DST-aware wall-clock recurrence
+- automatic 24-hour and 1-hour reminders
+- `/event stoprecurrence`
+- independent occurrences and restart recovery
 
-- one-time event creation, editing, and cancellation
-- Discord Scheduled Event integration
-- persistent event cards in the configured Raid/Events channel
-- Tank / Healer / DPS / Bench role-based signups
-- Maybe / Can't Attend attendance states
-- live composition counts and grouped roster display
-- guild-scoped IANA timezone configuration
-- organizer and configured leadership controls
-- restart-safe reconciliation
+## Planned
 
-Planned next steps include linked-character-aware planner signups, recurring events, reminders, attendance history, and event lifecycle reconciliation.
+### Event operations
 
-### Game-mode-aware grouping
-
-ZugBot already stores Modern WoW and WoW: Forever preferences.
-
-A future update will keep `/key` specific to Modern Mythic+ and add a separate Forever-oriented dungeon-group flow rather than assuming both games use the same mechanics.
-
-## Raid tools
-
-Planned areas include:
-
-- raid composition assistance
-- missing utility detection
-- raid supply coordination
+- event discussion threads
+- automatic voice channels
+- readiness dashboard
 - attendance tracking
+- event lifecycle reconciliation
 
-## Guild Dashboard
+### Raid operations
 
-A future web dashboard may add:
+- raid composition tools
+- utility and readiness assistance
+- raid supplies coordination
 
-- guild roster
-- calendar
-- Mythic+ groups
-- attendance
-- player profiles
-- analytics
-- officer tooling
+### Dashboard and analytics
 
-## Analytics
+- guild dashboard and calendar views
+- roster and participation tools
+- advanced operational analytics
 
-Potential analytics include:
+### Additional grouping
 
-- average key level
-- timed completion rate
-- favorite dungeons
-- group fill time
-- participation and attendance trends
+ZugBot stores Modern WoW and WoW: Forever preferences today. A future Forever-oriented dungeon flow may complement the current Modern Mythic+ `/key` command without pretending both modes use identical mechanics.
 
-## Philosophy
+## Product principles
 
-ZugBot should assist guild leaders without removing player choice, respect player privacy, minimize unnecessary notifications, and remain useful to more than one specific guild.
+ZugBot should assist leaders without removing member choice, respect privacy, minimize unnecessary notifications, and remain useful across different communities.

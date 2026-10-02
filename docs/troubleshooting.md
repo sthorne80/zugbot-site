@@ -2,74 +2,72 @@
 
 ## A slash command is missing
 
-Discord command registration can take a little time after a bot update.
+Discord command registration can take time after an update. Confirm ZugBot is online, try `/about`, and reopen Discord if its command picker looks stale. Roadmap items are not necessarily released commands.
 
-First:
+## Realm autocomplete is empty
 
-1. confirm ZugBot is online;
-2. try another known command such as `/about`;
-3. reopen Discord if the command picker appears stale.
+Realm suggestions are cached from Blizzard's official realm index. A refresh can be temporarily affected by Blizzard API availability, and suggestions follow the ZugBot deployment's configured Blizzard region.
 
-If the missing command was only announced on the roadmap, it may not be released yet.
+Autocomplete failure does not disable manual slug entry. Enter the official slug directly and use the [Realm Slug Reference](realm-slugs.md) to check it. The guild `default_region` setting does not independently reroute character requests or suggestions.
+
+## Character not found
+
+Check the character spelling, the selected realm, and whether the character is available through Blizzard's API. If autocomplete is unavailable, verify the manual slug in the [Realm Slug Reference](realm-slugs.md). Temporary Blizzard API problems can also affect lookups.
+
+## `/linkmany` fails
+
+`/linkmany` has no per-entry autocomplete. Use the official realm slug from the [Realm Slug Reference](realm-slugs.md) and this format:
+
+```text
+Name RealmSlug Main|Alt; Name RealmSlug Main|Alt
+```
+
+Separate entries with semicolons or lines, submit no more than 20 at once, and mark at most one Main per batch. Omitting Main or Alt defaults that entry to Alt.
 
 ## `/key` says I have no linked characters
 
-Run `/link` first, then try `/key` again.
+Run `/link`, then use `/alts` to verify your linked characters before trying `/key` again.
 
-Use `/alts` to confirm what ZugBot currently has linked to your Discord account.
+## Planner role signup says to link first
 
-## My character lookup fails
+Tank, Healer, DPS, and Bench require a linked character. Run `/link`, then use `/alts` to confirm the character is available. Maybe and Can't Attend do not require a linked character.
 
-Check:
+## The Planner character selector is missing a character
 
-- character spelling;
-- realm spelling/slug;
-- whether the character is publicly available through Blizzard's APIs.
+With more than one linked character, Discord opens an ephemeral selector. ZugBot exposes at most 25 characters in that selector, with your main first. Use `/alts` to inspect the full linked list.
 
-Temporary Blizzard API problems can also cause lookups to fail.
+## A Planner reminder was not received
 
-## I am not receiving Smart LFG DMs
+Confirm that the user is the organizer or is currently signed up as Tank, Healer, DPS, or Bench. Maybe and Can't Attend do not receive reminders. The user must still belong to the Discord guild, and their Discord DM/privacy settings must allow ZugBot to message them.
 
-Run:
+Reminder delivery is not guaranteed, and ZugBot does not promise retries.
 
-```text
-/lfgnotify settings
-```
+## A recurring event did not behave as expected
 
-Then test delivery with:
+Cancelling an occurrence is not the same as stopping recurrence. Cancellation affects only that occurrence and the series continues. To stop future occurrences while leaving the current one intact, run:
 
 ```text
-/lfgnotify test
+/event stoprecurrence planner_event_id:<id>
 ```
 
-If the test fails, check your Discord privacy settings for that server.
+The card should show **Weekly — Stopped** or **Monthly — Stopped**. Monthly events anchored on the 29th, 30th, or 31st can clamp to the end of a shorter month and later return to the original anchor day.
 
-## Onboarding does not assign the New Member role
+Editing an occurrence changes only that occurrence and does not move the series cadence.
 
-Server leadership should check:
+## Smart LFG DMs are missing
 
-- all five ZugBot authority/membership roles are configured;
-- ZugBot has **Manage Roles**;
-- ZugBot's Discord role is above the configured New Member role;
-- the active onboarding panel is the current one.
+Run `/lfgnotify settings`, then `/lfgnotify test`. If the test fails, check Discord privacy settings for that server.
 
-## Promote/demote fails
+## Onboarding or progression fails
 
-Check both ZugBot configuration and Discord's native role hierarchy.
-
-The command will not bypass Discord permissions simply because a user has authority inside ZugBot.
+For onboarding, confirm that all five roles are configured, ZugBot has Manage Roles, its role is above New Member, and the active onboarding panel is current. For promotion or demotion, also check Discord's native hierarchy; ZugBot authority does not bypass it.
 
 ## `/version` shows `unknown` for branch or commit
 
-The bot can still be running normally. Those fields are runtime diagnostics and depend on the production process being able to execute Git in its environment.
+The bot may still be operating normally. Branch and commit are runtime diagnostics, and they depend on the production process being able to execute Git in its environment.
 
 ## Something still looks wrong
 
-Use `/about` to confirm ZugBot is responding and `/version` to capture the running version.
+Use `/about` to confirm ZugBot responds and `/version` to capture the release. When reporting a problem, include the command, error, running version, and whether it affects one user or the whole server.
 
-When reporting a problem, include:
-
-- the command you ran;
-- the error message shown by ZugBot;
-- the running version;
-- whether the issue affects one user or the whole server.
+Contact [support@zugbot.net](mailto:support@zugbot.net) for help. Do not send passwords, tokens, or other credentials.

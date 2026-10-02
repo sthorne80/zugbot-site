@@ -1,6 +1,6 @@
 site_name: ZugBot
 site_url: https://zugbot.net/
-site_description: ZugBot is a World of Warcraft guild companion and management bot for Discord.
+site_description: ZugBot keeps community planning, member coordination, and guild operations moving inside Discord.
 site_author: ZugBot
 
 theme:
@@ -33,6 +33,7 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Member Guide: member-guide.md
+  - Realm Slugs: realm-slugs.md
   - Guild Planner: planner.md
   - Guild Administration: admin-guide.md
   - Command Reference: commands.md
@@ -53,5 +54,8 @@ markdown_extensions:
 
 extra_css:
   - assets/stylesheets/commercial-v2.css
+
+extra_javascript:
+  - assets/javascripts/realm-slugs.js
 
 copyright: ZugBot documentation
