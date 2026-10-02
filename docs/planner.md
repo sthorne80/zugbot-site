@@ -2,152 +2,102 @@
 
 <div class="zug-doc-hero">
   <div>
-    <div class="zug-kicker">Released in ZugBot 0.4.0 · Role signups in 0.5.0</div>
+    <div class="zug-kicker">Released Planner · Current behavior through ZugBot 0.9.x</div>
     <h2>Plan guild events without leaving Discord.</h2>
-    <p>The Guild Planner combines ZugBot event cards with Discord Scheduled Events, guild-local timezones, persistent RSVP state, editing, cancellation, and restart recovery.</p>
+    <p>Guild Planner combines persistent event cards with native Discord Scheduled Events, linked-character role signups, reminders, recurrence, guild-local timezones, and restart recovery.</p>
   </div>
 </div>
 
 ## What members see
 
-The event card is the working surface for the guild. Members can respond without learning another calendar or opening another website.
+The Planner card is the working surface for the guild. It shows event details, Discord-localized times, live composition, and a roster. Entries are displayed as `@DiscordMember (Character)`, with the realm included when duplicate character names need disambiguation.
 
-<div class="zug-planner-demo-wrap">
-  <div class="zug-discord-preview zug-discord-preview--docs">
-    <div class="zug-preview-topline">
-      <span class="zug-preview-dot"></span>
-      Guild Planner
-    </div>
+The available responses are Tank, Healer, DPS, Bench, Maybe, and Can't Attend.
 
-    <div class="zug-preview-card">
-      <h3>Heroic Raid Night</h3>
-      <p>Progression night synchronized with Discord Scheduled Events.</p>
+## Create an event
 
-      <div class="zug-preview-meta">
-        <div>
-          <small>Starts</small>
-          <strong>Friday · 8:00 PM</strong>
-        </div>
-        <div>
-          <small>Composition</small>
-          <strong>2 Tank · 4 Healer · 11 DPS</strong>
-        </div>
-      </div>
+Run `/event create`. Discord presents command options in this order:
 
-      <div class="zug-role-buttons">
-        <span>Tank</span>
-        <span>Healer</span>
-        <span>DPS</span>
-        <span>Bench</span>
-      </div>
+1. **recurrence** — One-time, Weekly recurring, or Monthly recurring;
+2. **event_type** — the kind of guild event.
 
-      <div class="zug-preview-roster">
-        <div><b>Tanks:</b> @Member</div>
-        <div><b>Healers:</b> @Member</div>
-        <div><b>DPS:</b> @Member · +10 more</div>
-        <div><b>Maybe:</b> @Member</div>
-      </div>
-    </div>
-  </div>
-</div>
+The modal then asks for:
 
-!!! note "Current production behavior"
-    ZugBot 0.5.0 supports **Tank**, **Healer**, **DPS**, **Bench**, **Maybe**, and **Can't Attend** responses. Character-aware Planner signups are still under development and are not described here as released behavior.
+- Title
+- Local start (`YYYY-MM-DD HH:MM`)
+- Duration, such as `90m`, `2h`, or `1h 30m`
+- optional Description
 
-## Planner workflow
+Its title reflects the selected recurrence: **Create One-Time Event**, **Create Weekly Event**, or **Create Monthly Event**.
 
-### Create an event
+ZugBot creates a unique Planner card in the configured Raid/Events channel and a native Discord Scheduled Event.
 
-Run:
+## Role signups
 
-~~~text
-/event create
-~~~
+Tank, Healer, DPS, and Bench are role-based attendance and require a linked character. One linked character is selected automatically. With more than one, an ephemeral selector shows up to 25 linked characters, main first.
 
-Choose the event type, then enter the title, local start time, duration, and optional description.
+Maybe and Can't Attend record attendance state only; they do not require or select a character. Choosing another response updates the existing RSVP.
 
-ZugBot creates both:
+The selected character name, realm name, and realm slug are snapshotted onto the occurrence. Later unlinking does not remove the character name from that existing signup.
 
-- a persistent Planner card in the configured Raid / Events channel;
-- a native Discord Scheduled Event.
+## Reminders
 
-The Planner card includes the event type, organizer, status, Discord timestamps, live composition, roster, a link to the native Discord event, and the complete Planner Event ID.
+Automatic reminder windows are 24 hours and 1 hour before the event. ZugBot attempts a DM to the organizer and members currently signed up as Tank, Healer, DPS, or Bench. Maybe, Can't Attend, and people no longer in the Discord guild are excluded.
 
-### Change your RSVP
+Discord privacy settings and DM availability determine whether delivery succeeds. ZugBot does not promise delivery or retries. Each occurrence maintains its own reminder history.
 
-For active events, members can select:
+## Weekly and monthly recurrence
 
-| Response | Meaning |
-| --- | --- |
-| **Tank** | Joined as Tank |
-| **Healer** | Joined as Healer |
-| **DPS** | Joined as DPS |
-| **Bench** | Joined on the bench |
-| **Maybe** | Not committed yet |
-| **Can't Attend** | Not attending |
+Weekly recurrence preserves the configured guild-local weekday and wall-clock time. Monthly recurrence preserves the original guild-local calendar day and wall-clock time.
 
-Changing your response updates the existing RSVP rather than creating a duplicate.
+For dates near month end, the shorter month is clamped without moving the original anchor:
 
-### Edit an event
+```text
+January 31 → February 28/29 → March 31
+```
+
+Every occurrence is independent, with its own Planner Event ID, Discord Scheduled Event, Planner card, RSVPs and linked-character selections, and reminder history.
+
+Editing one occurrence does not change future cadence. Cancelling one occurrence cancels only that occurrence, and the series continues.
+
+## Stop recurrence
 
 Run:
 
-~~~text
-/event edit
-~~~
+```text
+/event stoprecurrence planner_event_id:<id>
+```
 
-Use the **Planner Event ID** shown directly on the event card.
+This stops future occurrences and leaves the current occurrence intact. The card changes to **Weekly — Stopped** or **Monthly — Stopped**. Repeating the command is safe; ZugBot reports that recurrence was already stopped and reconciles the card when possible.
 
-The organizer, server owner, configured Admin, or configured Founder can edit the event. ZugBot keeps the Planner card and Discord Scheduled Event synchronized.
+## Edit or cancel an occurrence
 
-### Cancel an event
+Use `/event edit planner_event_id:<id>` or `/event cancel planner_event_id:<id>`. The organizer, Discord server owner, or configured ZugBot Admin or Founder can manage an event.
 
-Run:
+Editing changes only the selected occurrence. Cancelling retains its roster and information, disables signup controls, and cancels its native Scheduled Event. Neither action stops or shifts a recurring series.
 
-~~~text
-/event cancel
-~~~
+## Timezones and daylight saving time
 
-Cancelled cards retain their roster and event information, switch to a cancelled state, and disable RSVP controls.
+Use `/event timezone` to configure an IANA timezone, for example:
 
-## Timezones
-
-Run:
-
-~~~text
-/event timezone
-~~~
-
-ZugBot accepts IANA timezone names such as:
-
-~~~text
+```text
 America/New_York
-Europe/London
 America/Chicago
-~~~
+Europe/London
+UTC
+```
 
-Event times are entered in the guild's configured timezone and stored internally in UTC. Discord timestamps then render correctly for each member's own local timezone.
+Members see Discord timestamps in their own local timezone. Recurrence preserves the guild-local wall-clock time as daylight saving time changes. If a configured local time is invalid during a DST transition, ZugBot does not silently shift it to another time.
 
-## Permissions
+## Permissions and persistence
 
-ZugBot needs the following permissions for the configured Raid / Events channel:
+ZugBot needs View Channel, Send Messages, Embed Links, and Manage Events for the configured Raid/Events channel. Discord Administrator is not required.
 
-- View Channel
-- Send Messages
-- Embed Links
-- Manage Events
-
-**Discord Administrator is not required.**
-
-## Built for persistence
-
-Planner events and RSVPs are stored in ZugBot's database. Persistent controls are reconstructed after a bot restart, and active Planner cards are reconciled when ZugBot comes back online.
-
-This allows the Planner to behave like an operational guild tool instead of a temporary chat command.
+Events, RSVPs, character snapshots, reminders, and recurrence state persist. Active cards and controls are restored after a bot restart.
 
 ## Related documentation
 
 - [Member Guide](member-guide.md)
 - [Guild Administration](admin-guide.md)
 - [Command Reference](commands.md)
-- [Roadmap](roadmap.md)
+- [Troubleshooting](troubleshooting.md)
