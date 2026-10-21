@@ -10,13 +10,13 @@ Discord command registration can take time after an update. Confirm ZugBot is on
 
 For `/character`, autocomplete failure does not disable manual slug entry. Enter the official slug directly and use the [Realm Slug Reference](realm-slugs.md) to check it. The guild `default_region` setting does not independently reroute character requests or suggestions.
 
-## `/link` autocomplete is empty
+## `/link` does not show verified characters
 
-`/link` no longer uses the public realm list. It searches your fresh, verified Battle.net character roster.
+`/link` takes no arguments and opens an ephemeral panel. Its verified picker shows currently unlinked characters from your fresh Battle.net roster.
 
 Run `/verify`, complete the Battle.net authorization, and click **Finish Verification**. Then try `/link` again. Characters already linked to your Discord account are normally excluded from suggestions.
 
-If a fresh verification succeeded but `/link` remains empty, Blizzard character data may be temporarily unavailable or every available roster character may already be linked.
+If a fresh verification succeeded but the picker remains empty, Blizzard character data may be temporarily unavailable or every available roster character may already be linked. You can still choose **Add Manually** without OAuth.
 
 ## I am worried `/verify` is phishing
 
@@ -32,25 +32,26 @@ See [Battle.net Verification & Privacy](verification.md) for what ZugBot receive
 
 For `/character`, check the character spelling, the selected realm, and whether the character is available through Blizzard's API. If autocomplete is unavailable, verify the manual slug in the [Realm Slug Reference](realm-slugs.md). Temporary Blizzard API problems can also affect lookups.
 
-For `/link`, use `/verify` first and select the character from your verified roster instead of typing a manual realm slug.
+For `/link`'s verified picker, refresh with `/verify` and select the character from your roster. For **Add Manually**, check the character spelling and official realm slug, with one `CharacterName RealmSlug` entry per line.
 
-## `/linkmany` fails
+## Manual linking fails
 
-`/linkmany` has no per-entry autocomplete. Use the official realm slug from the [Realm Slug Reference](realm-slugs.md) and this format:
+Run `/link`, choose **Add Manually**, and use the official realm slug from the [Realm Slug Reference](realm-slugs.md). Enter one character per line:
 
 ```text
-Name RealmSlug Main|Alt; Name RealmSlug Main|Alt
+CharacterName RealmSlug
+CharacterName RealmSlug
 ```
 
-Separate entries with semicolons or lines, submit no more than 20 at once, and mark at most one Main per batch. Omitting Main or Alt defaults that entry to Alt.
+Do not add `Main` or `Alt` to those lines. To change your Main, use the separate optional **Make Main** field; leave it blank to preserve your existing Main. Manual links remain unverified until a later `/verify` upgrades exact matches.
 
 ## `/key` says I have no linked characters
 
-Run `/verify`, then `/link`, then use `/alts` to verify your linked characters before trying `/key` again.
+Run `/link` and use either the verified picker or **Add Manually**, then use `/alts` to check your linked characters before trying `/key` again.
 
 ## Planner role signup says to link first
 
-Tank, Healer, DPS, and Bench require a linked character. Run `/verify` and `/link`, then use `/alts` to confirm the character is available. Maybe and Can't Attend do not require a linked character.
+Tank, Healer, DPS, and Bench require a linked character. Run `/link`, then use `/alts` to confirm the character is available. Battle.net verification is optional. Maybe and Can't Attend do not require a linked character.
 
 ## The Planner character selector is missing a character
 
