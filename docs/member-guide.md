@@ -12,15 +12,22 @@ The suggestion shows the human-readable realm and its official slug. You normall
 
 ## Verify and link your characters
 
-Run `/verify` before linking characters you want marked as Battle.net verified.
+Run `/link` with no arguments. ZugBot opens an ephemeral panel with two paths:
+
+- If you have a fresh verified roster, select multiple currently unlinked characters and click **Link Selected**. Use the panel's pages when more than 25 characters are available.
+- If you prefer not to use Battle.net OAuth, click **Add Manually** and enter one `CharacterName RealmSlug` per line.
+
+OAuth is optional for linking. To create or refresh a verified roster:
 
 1. Run `/verify` in Discord.
 2. Click **Verify with Battle.net**.
-3. Sign in on Battle.net's own authorization site.
+3. Confirm the browser is on a `battle.net` domain, then sign in on Battle.net's authorization site.
 4. Return to Discord and click **Finish Verification**.
-5. Run `/link`, start typing a character name or realm, select the character from your verified roster, and choose **Main** or **Alt**.
+5. Run `/link`, select the verified characters you want, and click **Link Selected**.
 
-A successful verification refreshes a time-bounded roster of characters Battle.net says belong to the authenticated account. `/link` uses that roster so you can link additional verified characters without another Battle.net login while the verification remains fresh.
+A successful `/verify` refreshes a time-bounded roster of characters Battle.net says belong to the authenticated account. Verified batch linking is atomic and reuses the roster's original timestamps and expiry; linking later does not extend the 30-day verification window.
+
+To change your Main during either workflow, deliberately choose a linked character in the separate **Make Main** control. Leave it blank to preserve the current Main.
 
 !!! warning "Do not enter Battle.net credentials into ZugBot"
     ZugBot never asks for your Battle.net password in Discord, on zugbot.net, or in a ZugBot form. Enter credentials only on Battle.net. Never paste passwords, authorization codes, raw OAuth state, tokens, or sensitive callback URLs into Discord. Read [Battle.net Verification & Privacy](verification.md) for exactly what is retained.
@@ -28,35 +35,36 @@ A successful verification refreshes a time-bounded roster of characters Battle.n
 | Command | Purpose |
 | --- | --- |
 | `/verify` | Refresh your verified Battle.net character roster |
-| `/link` | Link one character from your fresh verified roster as Main or Alt |
+| `/link` | Open the no-argument panel for verified bulk selection or manual bulk entry |
 | `/profile` | View one of your linked character profiles |
 | `/alts` | List all linked characters and identify your main |
 | `/main` | Set a linked character as your main |
 | `/unlink` | Remove a linked character |
 
-### Link several characters manually
+### Link characters manually
 
-`/linkmany` is one free-text field and does **not** provide per-character roster autocomplete. Use this format:
+In `/link`, click **Add Manually** and enter one character per line:
 
 ```text
-Name RealmSlug Main|Alt; Name RealmSlug Main|Alt
+CharacterName RealmSlug
+CharacterName RealmSlug
 ```
 
 For example:
 
 ```text
-Treehab thunderhorn alt; Zugdealer thunderhorn main
+Treehab thunderhorn
+Zugdealer thunderhorn
 ```
 
 Rules:
 
 - use Blizzard's official realm slug; see the [Realm Slug Reference](realm-slugs.md);
-- submit at most 20 entries per batch;
-- separate entries with a semicolon or a new line;
-- mark at most one Main in each batch;
-- `Main|Alt` is optional and defaults to Alt.
+- put each character on its own line;
+- use the optional separate **Make Main** field only when you intend to change your Main;
+- leave **Make Main** blank to preserve the current Main.
 
-Manual linking does not itself prove ownership. A later successful `/verify` can refresh matching linked characters as Battle.net verified.
+Manual links remain unverified. A later successful `/verify` upgrades exact matching manual links to Battle.net verified.
 
 ## Modern Mythic+
 
