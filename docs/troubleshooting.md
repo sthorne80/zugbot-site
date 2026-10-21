@@ -20,11 +20,11 @@ If a fresh verification succeeded but the picker remains empty, Blizzard charact
 
 ## I am worried `/verify` is phishing
 
-Start verification only from ZugBot's `/verify` command in Discord.
+Start verification only from ZugBot's `/verify` command or the `/link` character-linking panel in Discord.
 
-ZugBot will **never ask for your Battle.net password** in Discord, on zugbot.net, or in a ZugBot form. The sign-in page should be hosted by Battle.net; ZugBot currently sends authorization through `oauth.battle.net`.
+ZugBot will never ask you to enter your Battle.net password on zugbot.net or in Discord. When you choose **Verify with Battle.net**, ZugBot redirects your browser to Battle.net's own sign-in and authorization page. Before entering credentials, confirm the browser address is on a `battle.net` domain. After authorization, Battle.net redirects you back to ZugBot to finish verification.
 
-Do not paste your password, OAuth authorization code, raw state value, access token, or the full sensitive callback URL into Discord or a support message. If the browser shows an unexpected domain, close the page and restart `/verify` from Discord.
+If a page requesting Battle.net credentials is hosted on zugbot.net, Discord, or any non-`battle.net` domain, do not enter them. Never paste passwords, OAuth authorization codes, raw state values, access or refresh tokens, or sensitive callback URLs into Discord or a support message. Close any unexpected page and restart verification from `/verify` or `/link` in Discord.
 
 See [Battle.net Verification & Privacy](verification.md) for what ZugBot receives temporarily and what it stores.
 
