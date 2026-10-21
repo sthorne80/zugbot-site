@@ -4,33 +4,33 @@
 
 Discord command registration can take time after an update. Confirm ZugBot is online, try `/about`, and reopen Discord if its command picker looks stale. Roadmap items are not necessarily released commands.
 
-## Realm autocomplete is empty
+## Realm suggestions are empty
 
-`/character` realm suggestions are cached from Blizzard's official realm index. A refresh can be temporarily affected by Blizzard API availability, and suggestions follow the ZugBot deployment's configured Blizzard region.
+`/character` realm suggestions come from Blizzard's official realm list. They may be temporarily unavailable if Blizzard is having a problem. Suggestions use ZugBot's configured Battle.net region.
 
-For `/character`, autocomplete failure does not disable manual slug entry. Enter the official slug directly and use the [Realm Slug Reference](realm-slugs.md) to check it. The guild `default_region` setting does not independently reroute character requests or suggestions.
+If the suggestions do not appear, enter the realm's official slug yourself and use the [Realm Slug Reference](realm-slugs.md) to check it. Changing a server's default region does not change these lookups.
 
 ## `/link` does not show verified characters
 
-`/link` takes no arguments and opens an ephemeral panel. Its verified picker shows currently unlinked characters from your fresh Battle.net roster.
+Type `/link` and press Enter; you do not need to fill anything in first. ZugBot opens a private panel that only you can see. If you connected Battle.net in the last 30 days, it shows your characters that are not linked yet.
 
-Run `/verify`, complete the Battle.net authorization, and click **Finish Verification**. Then try `/link` again. Characters already linked to your Discord account are normally excluded from suggestions.
+Run `/verify`, click **Verify with Battle.net**, finish the steps on Battle.net, and click **Finish Verification** in Discord. Then try `/link` again. Characters already linked to your Discord account do not normally appear in the list.
 
-If a fresh verification succeeded but the picker remains empty, Blizzard character data may be temporarily unavailable or every available roster character may already be linked. You can still choose **Add Manually** without OAuth.
+If verification worked but the list is still empty, Blizzard's character information may be temporarily unavailable, or all available characters may already be linked. You can still choose **Add Manually** without connecting Battle.net.
 
 ## I am worried `/verify` is phishing
 
-Start verification only from ZugBot's `/verify` command in Discord.
+Start verification from ZugBot's `/verify` command in Discord, then click **Verify with Battle.net**.
 
-ZugBot will **never ask for your Battle.net password** in Discord, on zugbot.net, or in a ZugBot form. The sign-in page should be hosted by Battle.net; ZugBot currently sends authorization through `oauth.battle.net`.
+Your browser should leave ZugBot and open Battle.net's own sign-in and approval page. ZugBot will **never ask you to type your Battle.net password on zugbot.net or in Discord**. Before entering your password, check that the browser address is on a `battle.net` domain. After you approve access, Battle.net sends you back to ZugBot.
 
-Do not paste your password, OAuth authorization code, raw state value, access token, or the full sensitive callback URL into Discord or a support message. If the browser shows an unexpected domain, close the page and restart `/verify` from Discord.
+If a page on zugbot.net, Discord, or another non-`battle.net` domain asks for your Battle.net password, do not enter it. Never paste your password, sign-in code, token, or sensitive return link into Discord or a support message. If the address looks wrong, close the page and restart `/verify` from Discord.
 
 See [Battle.net Verification & Privacy](verification.md) for what ZugBot receives temporarily and what it stores.
 
 ## Character not found
 
-For `/character`, check the character spelling, the selected realm, and whether the character is available through Blizzard's API. If autocomplete is unavailable, verify the manual slug in the [Realm Slug Reference](realm-slugs.md). Temporary Blizzard API problems can also affect lookups.
+For `/character`, check the character spelling and selected realm. If realm suggestions are unavailable, check the slug in the [Realm Slug Reference](realm-slugs.md). A temporary Blizzard problem can also affect lookups.
 
 For `/link`'s verified picker, refresh with `/verify` and select the character from your roster. For **Add Manually**, check the character spelling and official realm slug, with one `CharacterName RealmSlug` entry per line.
 
@@ -55,7 +55,7 @@ Tank, Healer, DPS, and Bench require a linked character. Run `/link`, then use `
 
 ## The Planner character selector is missing a character
 
-With more than one linked character, Discord opens an ephemeral selector. ZugBot exposes at most 25 characters in that selector, with your main first. Use `/alts` to inspect the full linked list.
+With more than one linked character, Discord opens a private list that only you can see. It shows at most 25 characters, with your Main first. Use `/alts` to see every linked character.
 
 ## A Planner reminder was not received
 
@@ -65,15 +65,15 @@ Reminder delivery is not guaranteed, and ZugBot does not promise retries.
 
 ## A recurring event did not behave as expected
 
-Cancelling an occurrence is not the same as stopping recurrence. Cancellation affects only that occurrence and the series continues. To stop future occurrences while leaving the current occurrence intact, run:
+Cancelling one event date is not the same as stopping a repeating series. Cancelling affects only that date, and the series continues. To stop future dates while leaving the current event in place, run:
 
 ```text
 /event stoprecurrence planner_event_id:<id>
 ```
 
-The card should show **Weekly — Stopped** or **Monthly — Stopped**. Monthly events anchored on the 29th, 30th, or 31st can clamp to the end of a shorter month and later return to the original anchor day.
+The card should show **Weekly — Stopped** or **Monthly — Stopped**. A monthly event set for the 29th, 30th, or 31st moves to the last day of a shorter month, then returns to the original day when possible.
 
-Editing an occurrence changes only that occurrence and does not move the series cadence.
+Editing one event date changes only that date and does not move future events.
 
 ## Smart LFG DMs are missing
 
@@ -91,4 +91,4 @@ The bot may still be operating normally. Branch and commit are runtime diagnosti
 
 Use `/about` to confirm ZugBot responds and `/version` to capture the release. When reporting a problem, include the command, error, running version, and whether it affects one user or the whole server.
 
-Contact [support@zugbot.net](mailto:support@zugbot.net) for help. Do not send passwords, tokens, OAuth codes, state values, or sensitive callback URLs.
+Contact [support@zugbot.net](mailto:support@zugbot.net) for help. Do not send passwords, sign-in codes, tokens, or sensitive return links.

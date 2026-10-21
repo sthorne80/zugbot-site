@@ -6,34 +6,34 @@ ZugBot works through Discord slash commands, buttons, and selectors. Once the bo
 
 A good first session is:
 
-1. Run `/link` with no arguments. ZugBot opens an ephemeral character-linking panel that only you can see.
-2. If you have a fresh Battle.net-verified roster, select one or more currently unlinked characters and click **Link Selected**. Use the roster pages when you have more than 25 eligible characters.
-3. To link without Battle.net, click **Add Manually**. Enter one `CharacterName RealmSlug` per line and optionally fill in the separate **Make Main** field.
+1. Type `/link` and press Enter. You do not need to fill anything in first. ZugBot opens a private character-linking panel that only you can see.
+2. If you have connected Battle.net in the last 30 days, choose one or more of your characters and click **Link Selected**. If you have more than 25 characters, use the page buttons to see the rest.
+3. To link without connecting Battle.net, click **Add Manually**. Enter one `CharacterName RealmSlug` per line. **Make Main** is optional; leave it blank to keep your current Main.
 4. Run `/profile` to view a linked character and `/alts` to check every linked character.
 5. Run `/season` to see the active Modern Mythic+ dungeon pool.
 6. Use `/key` to create a Mythic+ group.
 7. Use `/lfgnotify enable` to opt into Smart LFG direct messages for your chosen roles and key range.
 8. Use Guild Planner cards to sign up as Tank, Healer, DPS, or Bench with a linked character, or choose Maybe or Can't Attend.
 
-Battle.net OAuth is optional. Run `/verify` when you want ZugBot to mark matching characters as Battle.net verified and make a fresh verified roster available in `/link`.
+Connecting Battle.net is optional. Run `/verify` if you want ZugBot to confirm which characters are on your Battle.net account. Matching manual links can become Verified after you finish.
 
 !!! warning "Battle.net sign-in safety"
-    ZugBot will **never ask for your Battle.net password** in Discord, on zugbot.net, or in a ZugBot form. Enter Battle.net credentials only on Battle.net's own site. Never paste passwords, OAuth authorization codes, raw state values, tokens, or sensitive callback URLs into Discord. See [Battle.net Verification & Privacy](verification.md) for the full flow and retention details.
+    ZugBot will **never ask you to type your Battle.net password on zugbot.net or in Discord**. When you click **Verify with Battle.net**, your browser is sent to Battle.net's own sign-in and approval page. Before entering your password, check that the address is on a `battle.net` domain. After you approve access, Battle.net sends you back to ZugBot. If any page on zugbot.net, Discord, or another non-`battle.net` domain asks for your Battle.net password, do not enter it. Never paste passwords, sign-in codes, tokens, or sensitive return links into Discord. See [Battle.net Verification & Privacy](verification.md) for more details.
 
 ## Character and realm selection
 
-`/link` takes no arguments. Its ephemeral panel shows currently unlinked characters from your fresh, verified Battle.net roster and lets you select several in one batch. Rosters with more than 25 eligible characters are paginated. You can deliberately choose one selected character as your new Main; otherwise, your existing Main stays unchanged.
+Type `/link` and press Enter; you do not need to fill anything in first. The private panel shows characters that are not linked yet. If you connected Battle.net in the last 30 days, you can select several characters from the list. If there are more than 25, use the page buttons to move through the list. **Make Main** is optional; leave it blank to keep your current Main.
 
-Verified batch linking is atomic: either the selected batch links successfully or none of it does. Each linked character inherits the original verification timestamps and expiry, so linking later does not restart or extend the 30-day proof.
+When you link several characters, ZugBot adds the whole group together. If one character cannot be added, none of them are added and your links stay unchanged. Fix the problem and try again. Linking characters later does not restart the 30-day confirmation period.
 
-If you do not want to use OAuth—or do not have a fresh verified roster—choose **Add Manually**. Enter one `CharacterName RealmSlug` per line. The separate **Make Main** field is optional; leave it blank to preserve your current Main. Manual links remain unverified. A later `/verify` upgrades exact matching manual links to Battle.net verified.
+If you do not want to connect Battle.net, choose **Add Manually**. Enter one `CharacterName RealmSlug` per line. Manual links show as Unverified. If you run `/verify` later, ZugBot can change exact matches to Verified characters.
 
-`/character` is a public lookup and continues to use Blizzard-backed realm autocomplete. Start typing the realm's display name and select the suggestion; ZugBot submits Blizzard's official realm slug internally. Manual slug entry remains available for `/character`.
+`/character` is a public lookup. Start typing the realm name and choose it from the suggestions. If suggestions are unavailable, you can type the realm's official slug yourself.
 
-You generally need the [Realm Slug Reference](realm-slugs.md) only for `/link`'s manual entry, manual public lookups, or troubleshooting. The former `/linkmany` command has been retired; its manual batch workflow now lives inside `/link`.
+You generally need the [Realm Slug Reference](realm-slugs.md) only when adding characters manually, doing a manual public lookup, or troubleshooting. The old `/linkmany` command no longer exists because its job is now inside `/link`.
 
-!!! note "Deployment region"
-    Character lookups, verified rosters, and realm suggestions use the ZugBot deployment's configured Blizzard region. A guild's `default_region` setting does not independently reroute these requests.
+!!! note "Battle.net region"
+    Character lookups, confirmed character lists, and realm suggestions currently use ZugBot's configured Battle.net region. Changing a server's default region does not change these lookups.
 
 ## For server owners and administrators
 

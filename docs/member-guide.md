@@ -8,34 +8,35 @@ Use `/character` to look up a public character without linking it:
 2. Begin typing the realm name.
 3. Select the realm suggestion, such as `Thunderhorn — thunderhorn`.
 
-The suggestion shows the human-readable realm and its official slug. You normally do not need to know the slug; manual slug entry remains available when autocomplete is unavailable.
+The suggestion shows the realm name and the short official name ZugBot uses for it, called a slug. You normally do not need to know the slug. If suggestions are unavailable, you can enter it yourself.
 
 ## Verify and link your characters
 
-Run `/link` with no arguments. ZugBot opens an ephemeral panel with two paths:
+Type `/link` and press Enter. You do not need to fill anything in first. ZugBot opens a private panel that only you can see, with two choices:
 
-- If you have a fresh verified roster, select multiple currently unlinked characters and click **Link Selected**. Use the panel's pages when more than 25 characters are available.
-- If you prefer not to use Battle.net OAuth, click **Add Manually** and enter one `CharacterName RealmSlug` per line.
+- If you connected Battle.net in the last 30 days, select one or more characters that are not linked yet and click **Link Selected**. If more than 25 characters are available, use the page buttons to see the rest.
+- If you do not want to connect Battle.net, click **Add Manually** and enter one `CharacterName RealmSlug` per line.
 
-OAuth is optional for linking. To create or refresh a verified roster:
+Battle.net verification is optional. To confirm which characters are on your Battle.net account:
 
 1. Run `/verify` in Discord.
 2. Click **Verify with Battle.net**.
-3. Confirm the browser is on a `battle.net` domain, then sign in on Battle.net's authorization site.
-4. Return to Discord and click **Finish Verification**.
-5. Run `/link`, select the verified characters you want, and click **Link Selected**.
+3. Your browser leaves ZugBot and opens Battle.net's own sign-in and approval page. Before entering your password, check that the address is on a `battle.net` domain.
+4. Sign in to Battle.net and approve access.
+5. Battle.net sends you back to ZugBot. Return to Discord and click **Finish Verification**.
+6. Run `/link`, select the verified characters you want, and click **Link Selected**.
 
-A successful `/verify` refreshes a time-bounded roster of characters Battle.net says belong to the authenticated account. Verified batch linking is atomic and reuses the roster's original timestamps and expiry; linking later does not extend the 30-day verification window.
+After `/verify`, ZugBot remembers the characters Battle.net confirmed for 30 days. When you link several characters, ZugBot adds the whole group together. If one character cannot be added, none of them are added and your links stay unchanged. Fix the problem and try again. Linking later does not restart the 30-day period.
 
 To change your Main during either workflow, deliberately choose a linked character in the separate **Make Main** control. Leave it blank to preserve the current Main.
 
 !!! warning "Do not enter Battle.net credentials into ZugBot"
-    ZugBot never asks for your Battle.net password in Discord, on zugbot.net, or in a ZugBot form. Enter credentials only on Battle.net. Never paste passwords, authorization codes, raw OAuth state, tokens, or sensitive callback URLs into Discord. Read [Battle.net Verification & Privacy](verification.md) for exactly what is retained.
+    ZugBot never asks you to type your Battle.net password on zugbot.net or in Discord. After you click **Verify with Battle.net**, enter your password only if the browser address is on a `battle.net` domain. Battle.net sends you back to ZugBot after you approve access. If a page on zugbot.net, Discord, or another non-`battle.net` domain asks for your Battle.net password, do not enter it. Never paste passwords, sign-in codes, tokens, or sensitive return links into Discord. Read [Battle.net Verification & Privacy](verification.md) to see what ZugBot keeps.
 
 | Command | Purpose |
 | --- | --- |
-| `/verify` | Refresh your verified Battle.net character roster |
-| `/link` | Open the no-argument panel for verified bulk selection or manual bulk entry |
+| `/verify` | Optionally connect Battle.net to confirm which characters are yours |
+| `/link` | Open your private character-linking panel; just type `/link` and press Enter |
 | `/profile` | View one of your linked character profiles |
 | `/alts` | List all linked characters and identify your main |
 | `/main` | Set a linked character as your main |
@@ -64,13 +65,13 @@ Rules:
 - use the optional separate **Make Main** field only when you intend to change your Main;
 - leave **Make Main** blank to preserve the current Main.
 
-Manual links remain unverified. A later successful `/verify` upgrades exact matching manual links to Battle.net verified.
+Manual links show as Unverified. If you run `/verify` later, ZugBot can change exact matches to Verified characters.
 
 ## Modern Mythic+
 
-`/season` displays the current dungeon rotation. Run `/key`, then choose a role, key level, and dungeon to create a persistent group card. If several characters are linked, ZugBot asks which one to use.
+`/season` shows the current dungeon list. Run `/key`, then choose a role, key level, and dungeon to create a group card that stays available in Discord. If several characters are linked, ZugBot asks which one to use.
 
-Group cards support Tank, Healer, and DPS joining, leaving, PUG slot management, owner controls, and Smart LFG. Active cards recover after a bot restart.
+Group cards let Tanks, Healers, and DPS join or leave. The group leader can manage open spots and use Smart LFG. Active cards come back after a bot restart.
 
 ## Smart LFG notifications
 
@@ -84,16 +85,16 @@ Choose any combination of Tank, Healer, and DPS and optional minimum or maximum 
 
 ## Guild Planner
 
-Planner cards are synchronized with native Discord Scheduled Events and show live composition and grouped rosters.
+Planner cards stay matched with Discord Scheduled Events and show the current role counts and signup list.
 
 ### Role signups and characters
 
 Tank, Healer, DPS, and Bench require at least one linked character:
 
 - with one linked character, ZugBot selects it automatically;
-- with multiple linked characters, Discord opens an ephemeral selector;
+- with multiple linked characters, Discord opens a private list that only you can see;
 - the selector shows at most the first 25 linked characters, with the main first;
-- the chosen character is snapshotted onto that occurrence.
+- the chosen character name is saved with that event date.
 
 The roster displays entries like `@DiscordMember (Character)`. The realm is added when needed to distinguish duplicate character names. Unlinking the character later does not erase the name already shown for an existing signup.
 
@@ -103,15 +104,15 @@ Maybe and Can't Attend are attendance states. They do not require a linked chara
 
 ZugBot processes reminder windows at 24 hours and 1 hour before each event. Eligible recipients are the organizer, even without an RSVP, and members currently joined as Tank, Healer, DPS, or Bench.
 
-Maybe and Can't Attend are excluded, as are people no longer in the Discord guild. Delivery also depends on Discord allowing ZugBot to DM the user; delivery and retries are not guaranteed. Every recurring occurrence has independent reminder history.
+Maybe and Can't Attend are excluded, as are people no longer in the Discord server. Discord must allow ZugBot to send the person a direct message, so delivery cannot be guaranteed. Each event date keeps its own reminder history.
 
 ### Recurring events
 
-Weekly events preserve the same guild-local weekday and wall-clock time. Monthly events preserve the original guild-local calendar day and wall-clock time. Month-end clamping does not move the anchor: January 31 becomes February 28 or 29, then returns to March 31.
+Weekly events stay on the same weekday and local time for the guild. Monthly events stay on the same day of the month and local time. If a month is shorter, an event set for the 31st moves to that month's last day, then returns to the 31st when possible: January 31 becomes February 28 or 29, then March 31.
 
-Each occurrence is a separate event with its own Planner Event ID, Discord Scheduled Event, Planner card, RSVPs, character selections, and reminder history.
+Each date is a separate event with its own Planner Event ID, Discord Scheduled Event, Planner card, signups, character choices, and reminder history.
 
-Editing one occurrence changes only that occurrence and does not move future cadence. Cancelling one occurrence cancels only that occurrence; it does not stop the series. Use `/event stoprecurrence planner_event_id:<id>` to stop future occurrences while leaving the current occurrence intact.
+Editing one event date changes only that date and does not move future events. Cancelling one date does not stop the series. Use `/event stoprecurrence planner_event_id:<id>` to stop future dates while leaving the current event in place.
 
 ## Ready checks and fun
 

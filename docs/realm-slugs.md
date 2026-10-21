@@ -1,7 +1,7 @@
 # Realm Slug Reference
 
 !!! tip
-    **For `/character`, you normally do not need this page.** Start typing your realm in Discord and choose it from ZugBot's autocomplete. You may need the official slug when using `/link`'s **Add Manually** form.
+    **For `/character`, you normally do not need this page.** Start typing your realm in Discord and choose it from ZugBot's suggestions. You may need the official slug when using `/link`'s **Add Manually** form.
 
 This reference is primarily for `/link`'s manual entry, manual public lookups, and troubleshooting. Manual character linking uses one `CharacterName RealmSlug` entry per line.
 
@@ -34,6 +34,6 @@ Zugdealer thunderhorn
 
 Use the separate optional **Make Main** field only when you intend to change your Main.
 
-The static reference is generated from Blizzard's public Game Data API and contains only region, display name, and official slug.
+This list comes from Blizzard's public game data and contains only the region, display name, and official slug.
 
 <small>Realm data is sourced from Blizzard's public API. ZugBot is an independent project and is not affiliated with or endorsed by Blizzard Entertainment.</small>
