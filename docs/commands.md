@@ -1,18 +1,21 @@
 # Command Reference
 
-These commands are implemented in ZugBot 0.9.1. Planned commands are not listed as released.
+These commands are currently implemented in Production. Planned commands are not listed as released.
 
 ## Character / Warband
 
 | Command | Description |
 | --- | --- |
 | `/character` | Look up a public character; the realm field supports Blizzard-backed autocomplete and manual slug entry |
-| `/link` | Link a Main or Alt; the realm field supports the same autocomplete and manual fallback |
-| `/linkmany` | Link up to 20 characters from one free-text field using official realm slugs |
+| `/verify` | Authenticate with Battle.net and refresh your verified character roster |
+| `/link` | Link a Main or Alt from your fresh verified roster using character/realm autocomplete |
+| `/linkmany` | Manually link up to 20 characters from one free-text field using official realm slugs |
 | `/profile` | View a linked character profile |
 | `/alts` | List linked characters |
 | `/main` | Set a linked character as the main |
 | `/unlink` | Remove a linked character |
+
+`/verify` opens Battle.net's authorization flow. ZugBot never asks for your Battle.net password; see [Battle.net Verification & Privacy](verification.md) for phishing-safety guidance and the exact retention model.
 
 `/linkmany` uses `Name RealmSlug Main|Alt; Name RealmSlug Main|Alt`. It has no per-entry autocomplete, accepts semicolon- or line-separated entries, permits one Main per batch, and defaults an omitted type to Alt. Use the [Realm Slug Reference](realm-slugs.md).
 

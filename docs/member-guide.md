@@ -2,7 +2,7 @@
 
 ## Character lookup
 
-Use `/character` to look up a public World of Warcraft character without linking it:
+Use `/character` to look up a public character without linking it:
 
 1. Type the character name.
 2. Begin typing the realm name.
@@ -10,20 +10,33 @@ Use `/character` to look up a public World of Warcraft character without linking
 
 The suggestion shows the human-readable realm and its official slug. You normally do not need to know the slug; manual slug entry remains available when autocomplete is unavailable.
 
-## Link your characters
+## Verify and link your characters
 
-`/link` uses the same realm autocomplete. Choose **Main** for your primary character or **Alt** for another character. You can change your main later.
+Run `/verify` before linking characters you want marked as Battle.net verified.
+
+1. Run `/verify` in Discord.
+2. Click **Verify with Battle.net**.
+3. Sign in on Battle.net's own authorization site.
+4. Return to Discord and click **Finish Verification**.
+5. Run `/link`, start typing a character name or realm, select the character from your verified roster, and choose **Main** or **Alt**.
+
+A successful verification refreshes a time-bounded roster of characters Battle.net says belong to the authenticated account. `/link` uses that roster so you can link additional verified characters without another Battle.net login while the verification remains fresh.
+
+!!! warning "Do not enter Battle.net credentials into ZugBot"
+    ZugBot never asks for your Battle.net password in Discord, on zugbot.net, or in a ZugBot form. Enter credentials only on Battle.net. Never paste passwords, authorization codes, raw OAuth state, tokens, or sensitive callback URLs into Discord. Read [Battle.net Verification & Privacy](verification.md) for exactly what is retained.
 
 | Command | Purpose |
 | --- | --- |
+| `/verify` | Refresh your verified Battle.net character roster |
+| `/link` | Link one character from your fresh verified roster as Main or Alt |
 | `/profile` | View one of your linked character profiles |
 | `/alts` | List all linked characters and identify your main |
 | `/main` | Set a linked character as your main |
 | `/unlink` | Remove a linked character |
 
-### Link several characters
+### Link several characters manually
 
-`/linkmany` is one free-text field and does **not** provide per-character realm autocomplete. Use this format:
+`/linkmany` is one free-text field and does **not** provide per-character roster autocomplete. Use this format:
 
 ```text
 Name RealmSlug Main|Alt; Name RealmSlug Main|Alt
@@ -43,7 +56,9 @@ Rules:
 - mark at most one Main in each batch;
 - `Main|Alt` is optional and defaults to Alt.
 
-## Modern WoW Mythic+
+Manual linking does not itself prove ownership. A later successful `/verify` can refresh matching linked characters as Battle.net verified.
+
+## Modern Mythic+
 
 `/season` displays the current dungeon rotation. Run `/key`, then choose a role, key level, and dungeon to create a persistent group card. If several characters are linked, ZugBot asks which one to use.
 
