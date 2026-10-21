@@ -33,7 +33,7 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Member Guide: member-guide.md
-  - Battle.net Verification & Privacy: verification.md
+  - Verification & Privacy: verification.md
   - Realm Slugs: realm-slugs.md
   - Guild Planner: planner.md
   - Guild Administration: admin-guide.md
@@ -59,4 +59,4 @@ extra_css:
 extra_javascript:
   - assets/javascripts/realm-slugs.js
 
-copyright: ZugBot documentation
+copyright: ZugBot documentation · <a href="/verification/">Verification &amp; Privacy</a>
