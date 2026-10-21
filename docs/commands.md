@@ -71,3 +71,11 @@ With a fresh verified roster, `/link` lets you select multiple currently unlinke
 
 | Command | Description |
 | --- | --- |
+| `/setup` | Configure ZugBot for the Discord server |
+| `/admin promote` | Promote a member by one normal progression tier |
+| `/admin demote` | Demote a member by one normal progression tier |
+| `/admin onboarding-post` | Post or replace the active Rules & Vibes agreement |
+| `/debugdb` | Show guild-scoped database/runtime counts |
+| `/endkeys` | Close active Mythic+ groups in the invoking guild |
+
+Modern and WoW: Forever preferences are stored today, but `/key` is the implemented Modern Mythic+ flow. A separate Forever group command is not released.
