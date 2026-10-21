@@ -7,7 +7,7 @@ Current production is **ZugBot 0.9.1**. This page separates released behavior fr
 ### Member and group operations
 
 - Blizzard-backed character lookup and realm autocomplete
-- linked main and alt profiles, including `/linkmany`
+- linked main and alt profiles through the unified `/link` panel, with optional Battle.net verification and manual bulk entry
 - Mythic+ group creation with linked characters and persistent cards
 - Smart LFG role and key-range preferences
 - multi-guild server setup and restart-safe persistence
