@@ -6,25 +6,25 @@ This page summarizes notable public-facing ZugBot changes. Current production is
 
 ### Changed
 
-- `/link` now takes no arguments and opens an ephemeral panel.
-- Battle.net OAuth is optional: a fresh verified roster supports atomic multi-character selection, while **Add Manually** accepts one `CharacterName RealmSlug` per line.
-- verified rosters over 25 eligible characters are paginated.
+- Type `/link` and press Enter without filling anything in first. It opens a private panel that only you can see.
+- Connecting Battle.net is optional. After verification, you can choose several confirmed characters at once. **Add Manually** accepts one `CharacterName RealmSlug` per line.
+- Character lists longer than 25 have page buttons.
 - Main changes are deliberate; leaving **Make Main** blank preserves the current Main.
-- verified links inherit the roster's original timestamps and expiry, while manual links stay unverified until a later `/verify` upgrades exact matches.
-- `/linkmany` was retired and its manual bulk workflow moved into `/link`.
+- Linking later does not extend the original 30-day confirmation period. Manual links show as Unverified until a later `/verify` confirms an exact match.
+- `/linkmany` no longer exists because its manual linking steps are now inside `/link`.
 
 ## 0.9.1 — 2026-10-02
 
 ### Added
 
-- realm autocomplete for `/character`
+- realm suggestions for `/character`
 - human-readable suggestions backed by Blizzard's official realm index
 
 ### Changed
 
 - realm suggestions are cached so typing does not request Blizzard data on every keystroke
-- autocomplete submits the official realm slug internally
-- manual realm slug entry remains available if autocomplete data is unavailable
+- choosing a suggestion uses the official realm slug
+- manual realm slug entry remains available if suggestions are unavailable
 
 ## 0.9.0 — 2026-10-01
 
@@ -80,7 +80,7 @@ Maybe and Can't Attend are excluded. Delivery depends on Discord allowing direct
 ### Changed
 
 - Planner rosters show each joined member's selected character
-- a single linked character is selected automatically; multiple characters open an ephemeral selector
+- a single linked character is selected automatically; multiple characters open a private list that only that user can see
 
 ## 0.5.0 — 2026-09-30
 

@@ -6,7 +6,7 @@ Current production is **ZugBot 0.9.1**. This page separates released behavior fr
 
 ### Member and group operations
 
-- Blizzard-backed character lookup and realm autocomplete
+- Blizzard-backed character lookup and realm suggestions
 - linked main and alt profiles through the unified `/link` panel, with optional Battle.net verification and manual bulk entry
 - Mythic+ group creation with linked characters and persistent cards
 - Smart LFG role and key-range preferences
@@ -37,7 +37,7 @@ Current production is **ZugBot 0.9.1**. This page separates released behavior fr
 - automatic voice channels
 - readiness dashboard
 - attendance tracking
-- event lifecycle reconciliation
+- checks that keep Discord events and Planner cards in agreement
 
 ### Raid operations
 

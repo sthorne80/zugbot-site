@@ -2,21 +2,21 @@
 
 <div class="zug-doc-hero">
   <div>
-    <div class="zug-kicker">Released Planner · Current behavior through ZugBot 0.9.x</div>
+    <div class="zug-kicker">Released Planner · Current through ZugBot 0.9.x</div>
     <h2>Plan guild events without leaving Discord.</h2>
-    <p>Guild Planner combines persistent event cards with native Discord Scheduled Events, linked-character role signups, reminders, recurrence, guild-local timezones, and restart recovery.</p>
+    <p>Guild Planner combines event cards with Discord Scheduled Events, linked-character role signups, reminders, repeating schedules, guild time zones, and cards that return after a restart.</p>
   </div>
 </div>
 
 ## What members see
 
-The Planner card is the working surface for the guild. It shows event details, Discord-localized times, live composition, and a roster. Entries are displayed as `@DiscordMember (Character)`, with the realm included when duplicate character names need disambiguation.
+The Planner card is where members use the event. It shows event details, each member's local time, current role counts, and the signup list. Entries appear as `@DiscordMember (Character)`. ZugBot adds the realm when two characters have the same name.
 
 The available responses are Tank, Healer, DPS, Bench, Maybe, and Can't Attend.
 
 ## Create an event
 
-Run `/event create`. Discord presents command options in this order:
+Run `/event create`. Discord asks for:
 
 1. **recurrence** — One-time, Weekly recurring, or Monthly recurring;
 2. **event_type** — the kind of guild event.
@@ -34,31 +34,31 @@ ZugBot creates a unique Planner card in the configured Raid/Events channel and a
 
 ## Role signups
 
-Tank, Healer, DPS, and Bench are role-based attendance and require a linked character. One linked character is selected automatically. With more than one, an ephemeral selector shows up to 25 linked characters, main first.
+Tank, Healer, DPS, and Bench require a linked character. One linked character is selected automatically. With more than one, a private list that only you can see shows up to 25 linked characters, Main first.
 
-Maybe and Can't Attend record attendance state only; they do not require or select a character. Choosing another response updates the existing RSVP.
+Maybe and Can't Attend only record whether someone plans to come. They do not require or select a character. Choosing another response replaces the earlier choice.
 
-The selected character name, realm name, and realm slug are snapshotted onto the occurrence. Later unlinking does not remove the character name from that existing signup.
+ZugBot saves the selected character name and realm with that event date. Unlinking the character later does not remove the name from the existing signup.
 
 ## Reminders
 
 Automatic reminder windows are 24 hours and 1 hour before the event. ZugBot attempts a DM to the organizer and members currently signed up as Tank, Healer, DPS, or Bench. Maybe, Can't Attend, and people no longer in the Discord guild are excluded.
 
-Discord privacy settings and DM availability determine whether delivery succeeds. ZugBot does not promise delivery or retries. Each occurrence maintains its own reminder history.
+Discord privacy settings determine whether ZugBot can send the direct message, so delivery cannot be guaranteed. Each event date keeps its own reminder history.
 
 ## Weekly and monthly recurrence
 
-Weekly recurrence preserves the configured guild-local weekday and wall-clock time. Monthly recurrence preserves the original guild-local calendar day and wall-clock time.
+Weekly events stay on the same weekday and local time for the guild. Monthly events stay on the same day of the month and local time.
 
-For dates near month end, the shorter month is clamped without moving the original anchor:
+For dates near the end of a month, ZugBot uses the last available day in a shorter month and returns to the chosen date when possible:
 
 ```text
 January 31 → February 28/29 → March 31
 ```
 
-Every occurrence is independent, with its own Planner Event ID, Discord Scheduled Event, Planner card, RSVPs and linked-character selections, and reminder history.
+Each date is a separate event with its own Planner Event ID, Discord Scheduled Event, Planner card, signups, linked-character choices, and reminder history.
 
-Editing one occurrence does not change future cadence. Cancelling one occurrence cancels only that occurrence, and the series continues.
+Editing one event date does not change future dates. Cancelling one event date cancels only that date, and the series continues.
 
 ## Stop recurrence
 
@@ -68,13 +68,13 @@ Run:
 /event stoprecurrence planner_event_id:<id>
 ```
 
-This stops future occurrences and leaves the current occurrence intact. The card changes to **Weekly — Stopped** or **Monthly — Stopped**. Repeating the command is safe; ZugBot reports that recurrence was already stopped and reconciles the card when possible.
+This stops future dates and leaves the current event in place. The card changes to **Weekly — Stopped** or **Monthly — Stopped**. Running the command again is safe. ZugBot says that repeating events were already stopped and updates the card when possible.
 
-## Edit or cancel an occurrence
+## Edit or cancel one event date
 
 Use `/event edit planner_event_id:<id>` or `/event cancel planner_event_id:<id>`. The organizer, Discord server owner, or configured ZugBot Admin or Founder can manage an event.
 
-Editing changes only the selected occurrence. Cancelling retains its roster and information, disables signup controls, and cancels its native Scheduled Event. Neither action stops or shifts a recurring series.
+Editing changes only the selected date. Cancelling keeps its signup list and information, disables the signup buttons, and cancels its Discord Scheduled Event. Neither action stops or moves the rest of the repeating series.
 
 ## Timezones and daylight saving time
 
@@ -87,13 +87,13 @@ Europe/London
 UTC
 ```
 
-Members see Discord timestamps in their own local timezone. Recurrence preserves the guild-local wall-clock time as daylight saving time changes. If a configured local time is invalid during a DST transition, ZugBot does not silently shift it to another time.
+Members see event times in their own time zone. Repeating events stay at the same local time for the guild when daylight saving time changes. If a chosen local time does not exist when the clocks change, ZugBot does not quietly move it to another time.
 
 ## Permissions and persistence
 
 ZugBot needs View Channel, Send Messages, Embed Links, and Manage Events for the configured Raid/Events channel. Discord Administrator is not required.
 
-Events, RSVPs, character snapshots, reminders, and recurrence state persist. Active cards and controls are restored after a bot restart.
+Events, signups, saved character names, reminders, and repeating schedules are kept. Active cards and buttons return after a bot restart.
 
 ## Related documentation
 

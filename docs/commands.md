@@ -6,24 +6,26 @@ These commands are currently implemented in Production. Planned commands are not
 
 | Command | Description |
 | --- | --- |
-| `/character` | Look up a public character; the realm field supports Blizzard-backed autocomplete and manual slug entry |
-| `/verify` | Authenticate with Battle.net and refresh your verified character roster |
-| `/link` | Open an ephemeral panel for verified bulk selection or manual bulk entry; takes no arguments |
+| `/character` | Look up a public character; start typing a realm and choose it from the suggestions, or enter its official slug |
+| `/verify` | Optionally connect Battle.net to confirm which characters are yours |
+| `/link` | Open a private character-linking panel that only you can see; type `/link` and press Enter without filling anything in |
 | `/profile` | View a linked character profile |
 | `/alts` | List linked characters |
 | `/main` | Set a linked character as the main |
 | `/unlink` | Remove a linked character |
 
-`/verify` opens Battle.net's optional authorization flow. ZugBot never asks for your Battle.net password; see [Battle.net Verification & Privacy](verification.md) for phishing-safety guidance and the exact retention model.
+Battle.net verification is optional. When you click **Verify with Battle.net**, your browser goes to Battle.net's own sign-in page. ZugBot never asks you to enter your Battle.net password on zugbot.net or in Discord. See [Battle.net Verification & Privacy](verification.md) for safety and privacy details.
 
-With a fresh verified roster, `/link` lets you select multiple currently unlinked characters, paginates rosters over 25, and links the chosen batch atomically. Without OAuth, choose **Add Manually** and enter one `CharacterName RealmSlug` per line. In either path, use the separate **Make Main** control only when you intend to change your Main; leaving it blank preserves the current Main. `/linkmany` has been retired.
+If you connected Battle.net in the last 30 days, `/link` lets you choose several of your characters from a list. Lists longer than 25 characters have page buttons. If you do not want to connect Battle.net, choose **Add Manually** and enter one `CharacterName RealmSlug` per line. **Make Main** is optional; leave it blank to keep your current Main. Manual links show as Unverified, and a later `/verify` can change exact matches to Verified. The old `/linkmany` command no longer exists because its job is now part of `/link`.
+
+When you link several characters, ZugBot adds the whole group together. If one character cannot be added, none of them are added. Your links stay unchanged so you can fix the problem and try again.
 
 ## Modern WoW / Mythic+
 
 | Command | Description |
 | --- | --- |
 | `/season` | Show the current Mythic+ dungeon pool |
-| `/key` | Create an interactive, persistent Mythic+ group |
+| `/key` | Create a Mythic+ group card that members can use in Discord |
 
 ## LFG notifications
 
@@ -41,12 +43,12 @@ With a fresh verified roster, `/link` lets you select multiple currently unlinke
 | Command | Description |
 | --- | --- |
 | `/event create` | Create a One-time, Weekly recurring, or Monthly recurring event and native Discord Scheduled Event |
-| `/event edit` | Edit one Planner occurrence |
-| `/event cancel` | Cancel one Planner occurrence |
-| `/event stoprecurrence` | Stop future occurrences without cancelling the current occurrence |
-| `/event timezone` | Set the guild Planner IANA timezone |
+| `/event edit` | Edit one event date |
+| `/event cancel` | Cancel one event date |
+| `/event stoprecurrence` | Stop future dates without cancelling the current event |
+| `/event timezone` | Set the time zone used for guild events |
 
-`/event create` asks for recurrence first and event type second. Planner cards support Tank, Healer, DPS, and Bench with linked-character selection, plus Maybe and Can't Attend. The organizer and joined-role members are eligible for 24-hour and 1-hour reminders.
+`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. Planner cards support Tank, Healer, DPS, and Bench with linked-character selection, plus Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
 
 ## General / Utility
 
@@ -54,7 +56,7 @@ With a fresh verified roster, `/link` lets you select multiple currently unlinke
 | --- | --- |
 | `/help` | Show the in-Discord command reference |
 | `/about` | Show a concise ZugBot overview |
-| `/version` | Show version and runtime diagnostics |
+| `/version` | Show the running ZugBot version and troubleshooting details |
 | `/readycheck` | Start a ready check |
 
 ## Fun
@@ -71,3 +73,11 @@ With a fresh verified roster, `/link` lets you select multiple currently unlinke
 
 | Command | Description |
 | --- | --- |
+| `/setup` | Configure ZugBot for the Discord server |
+| `/admin promote` | Promote a member by one normal progression tier |
+| `/admin demote` | Demote a member by one normal progression tier |
+| `/admin onboarding-post` | Post or replace the active Rules & Vibes agreement |
+| `/debugdb` | Show saved-item and running-process counts for the current Discord server |
+| `/endkeys` | Close active Mythic+ groups in the current Discord server |
+
+Modern and WoW: Forever preferences are stored today, but `/key` is the implemented Modern Mythic+ flow. A separate Forever group command is not released.
