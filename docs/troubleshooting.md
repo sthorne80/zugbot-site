@@ -6,31 +6,52 @@ Discord command registration can take time after an update. Confirm ZugBot is on
 
 ## Realm autocomplete is empty
 
-Realm suggestions are cached from Blizzard's official realm index. A refresh can be temporarily affected by Blizzard API availability, and suggestions follow the ZugBot deployment's configured Blizzard region.
+`/character` realm suggestions are cached from Blizzard's official realm index. A refresh can be temporarily affected by Blizzard API availability, and suggestions follow the ZugBot deployment's configured Blizzard region.
 
-Autocomplete failure does not disable manual slug entry. Enter the official slug directly and use the [Realm Slug Reference](realm-slugs.md) to check it. The guild `default_region` setting does not independently reroute character requests or suggestions.
+For `/character`, autocomplete failure does not disable manual slug entry. Enter the official slug directly and use the [Realm Slug Reference](realm-slugs.md) to check it. The guild `default_region` setting does not independently reroute character requests or suggestions.
+
+## `/link` does not show verified characters
+
+`/link` takes no arguments and opens an ephemeral panel. Its verified picker shows currently unlinked characters from your fresh Battle.net roster.
+
+Run `/verify`, complete the Battle.net authorization, and click **Finish Verification**. Then try `/link` again. Characters already linked to your Discord account are normally excluded from suggestions.
+
+If a fresh verification succeeded but the picker remains empty, Blizzard character data may be temporarily unavailable or every available roster character may already be linked. You can still choose **Add Manually** without OAuth.
+
+## I am worried `/verify` is phishing
+
+Start verification only from ZugBot's `/verify` command in Discord.
+
+ZugBot will **never ask for your Battle.net password** in Discord, on zugbot.net, or in a ZugBot form. The sign-in page should be hosted by Battle.net; ZugBot currently sends authorization through `oauth.battle.net`.
+
+Do not paste your password, OAuth authorization code, raw state value, access token, or the full sensitive callback URL into Discord or a support message. If the browser shows an unexpected domain, close the page and restart `/verify` from Discord.
+
+See [Battle.net Verification & Privacy](verification.md) for what ZugBot receives temporarily and what it stores.
 
 ## Character not found
 
-Check the character spelling, the selected realm, and whether the character is available through Blizzard's API. If autocomplete is unavailable, verify the manual slug in the [Realm Slug Reference](realm-slugs.md). Temporary Blizzard API problems can also affect lookups.
+For `/character`, check the character spelling, the selected realm, and whether the character is available through Blizzard's API. If autocomplete is unavailable, verify the manual slug in the [Realm Slug Reference](realm-slugs.md). Temporary Blizzard API problems can also affect lookups.
 
-## `/linkmany` fails
+For `/link`'s verified picker, refresh with `/verify` and select the character from your roster. For **Add Manually**, check the character spelling and official realm slug, with one `CharacterName RealmSlug` entry per line.
 
-`/linkmany` has no per-entry autocomplete. Use the official realm slug from the [Realm Slug Reference](realm-slugs.md) and this format:
+## Manual linking fails
+
+Run `/link`, choose **Add Manually**, and use the official realm slug from the [Realm Slug Reference](realm-slugs.md). Enter one character per line:
 
 ```text
-Name RealmSlug Main|Alt; Name RealmSlug Main|Alt
+CharacterName RealmSlug
+CharacterName RealmSlug
 ```
 
-Separate entries with semicolons or lines, submit no more than 20 at once, and mark at most one Main per batch. Omitting Main or Alt defaults that entry to Alt.
+Do not add `Main` or `Alt` to those lines. To change your Main, use the separate optional **Make Main** field; leave it blank to preserve your existing Main. Manual links remain unverified until a later `/verify` upgrades exact matches.
 
 ## `/key` says I have no linked characters
 
-Run `/link`, then use `/alts` to verify your linked characters before trying `/key` again.
+Run `/link` and use either the verified picker or **Add Manually**, then use `/alts` to check your linked characters before trying `/key` again.
 
 ## Planner role signup says to link first
 
-Tank, Healer, DPS, and Bench require a linked character. Run `/link`, then use `/alts` to confirm the character is available. Maybe and Can't Attend do not require a linked character.
+Tank, Healer, DPS, and Bench require a linked character. Run `/link`, then use `/alts` to confirm the character is available. Battle.net verification is optional. Maybe and Can't Attend do not require a linked character.
 
 ## The Planner character selector is missing a character
 
@@ -44,7 +65,7 @@ Reminder delivery is not guaranteed, and ZugBot does not promise retries.
 
 ## A recurring event did not behave as expected
 
-Cancelling an occurrence is not the same as stopping recurrence. Cancellation affects only that occurrence and the series continues. To stop future occurrences while leaving the current one intact, run:
+Cancelling an occurrence is not the same as stopping recurrence. Cancellation affects only that occurrence and the series continues. To stop future occurrences while leaving the current occurrence intact, run:
 
 ```text
 /event stoprecurrence planner_event_id:<id>
@@ -70,4 +91,4 @@ The bot may still be operating normally. Branch and commit are runtime diagnosti
 
 Use `/about` to confirm ZugBot responds and `/version` to capture the release. When reporting a problem, include the command, error, running version, and whether it affects one user or the whole server.
 
-Contact [support@zugbot.net](mailto:support@zugbot.net) for help. Do not send passwords, tokens, or other credentials.
+Contact [support@zugbot.net](mailto:support@zugbot.net) for help. Do not send passwords, tokens, OAuth codes, state values, or sensitive callback URLs.

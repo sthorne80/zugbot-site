@@ -2,11 +2,22 @@
 
 This page summarizes notable public-facing ZugBot changes. Current production is **0.9.1**.
 
+## Unified `/link` — 2026-10-21
+
+### Changed
+
+- `/link` now takes no arguments and opens an ephemeral panel.
+- Battle.net OAuth is optional: a fresh verified roster supports atomic multi-character selection, while **Add Manually** accepts one `CharacterName RealmSlug` per line.
+- verified rosters over 25 eligible characters are paginated.
+- Main changes are deliberate; leaving **Make Main** blank preserves the current Main.
+- verified links inherit the roster's original timestamps and expiry, while manual links stay unverified until a later `/verify` upgrades exact matches.
+- `/linkmany` was retired and its manual bulk workflow moved into `/link`.
+
 ## 0.9.1 — 2026-10-02
 
 ### Added
 
-- realm autocomplete for `/character` and `/link`
+- realm autocomplete for `/character`
 - human-readable suggestions backed by Blizzard's official realm index
 
 ### Changed

@@ -1,20 +1,22 @@
 # Command Reference
 
-These commands are implemented in ZugBot 0.9.1. Planned commands are not listed as released.
+These commands are currently implemented in Production. Planned commands are not listed as released.
 
 ## Character / Warband
 
 | Command | Description |
 | --- | --- |
 | `/character` | Look up a public character; the realm field supports Blizzard-backed autocomplete and manual slug entry |
-| `/link` | Link a Main or Alt; the realm field supports the same autocomplete and manual fallback |
-| `/linkmany` | Link up to 20 characters from one free-text field using official realm slugs |
+| `/verify` | Authenticate with Battle.net and refresh your verified character roster |
+| `/link` | Open an ephemeral panel for verified bulk selection or manual bulk entry; takes no arguments |
 | `/profile` | View a linked character profile |
 | `/alts` | List linked characters |
 | `/main` | Set a linked character as the main |
 | `/unlink` | Remove a linked character |
 
-`/linkmany` uses `Name RealmSlug Main|Alt; Name RealmSlug Main|Alt`. It has no per-entry autocomplete, accepts semicolon- or line-separated entries, permits one Main per batch, and defaults an omitted type to Alt. Use the [Realm Slug Reference](realm-slugs.md).
+`/verify` opens Battle.net's optional authorization flow. ZugBot never asks for your Battle.net password; see [Battle.net Verification & Privacy](verification.md) for phishing-safety guidance and the exact retention model.
+
+With a fresh verified roster, `/link` lets you select multiple currently unlinked characters, paginates rosters over 25, and links the chosen batch atomically. Without OAuth, choose **Add Manually** and enter one `CharacterName RealmSlug` per line. In either path, use the separate **Make Main** control only when you intend to change your Main; leaving it blank preserves the current Main. `/linkmany` has been retired.
 
 ## Modern WoW / Mythic+
 
@@ -69,12 +71,3 @@ These commands are implemented in ZugBot 0.9.1. Planned commands are not listed 
 
 | Command | Description |
 | --- | --- |
-| `/setup` | Configure ZugBot for the Discord server |
-| `/admin promote` | Promote a member by one normal progression tier |
-| `/admin demote` | Demote a member by one normal progression tier |
-| `/admin onboarding-post` | Post or replace the active Rules & Vibes agreement |
-| `/debugdb` | Show guild-scoped database/runtime counts |
-| `/endkeys` | Close active Mythic+ groups in the invoking guild |
-
-!!! note
-    Modern and WoW: Forever preferences are stored today, but `/key` is the implemented Modern Mythic+ flow. A separate Forever group command is not released.

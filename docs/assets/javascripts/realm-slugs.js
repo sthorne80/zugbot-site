@@ -89,7 +89,7 @@
         render();
       })
       .catch(function () {
-        status.textContent = "Realm reference data has not been generated yet. /character and /link autocomplete are still available in Discord.";
+        status.textContent = "Realm reference data has not been generated yet. /character autocomplete is still available in Discord.";
         results.replaceChildren();
       });
   }

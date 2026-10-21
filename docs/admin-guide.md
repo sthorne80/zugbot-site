@@ -9,7 +9,7 @@ Run `/setup`. The Discord server owner or a member with Administrator or Manage 
 ZugBot can store Bot Commands, Mythic/LFG, Raid, and Announcement channels; Modern WoW and WoW: Forever preferences; a default game mode and region; and five authority/membership roles.
 
 !!! note "Blizzard region behavior"
-    The bot deployment's configured Blizzard region controls `/character`, `/link`, and realm autocomplete requests. The guild `default_region` stored by `/setup` does not currently switch those Blizzard requests per guild.
+    The bot deployment's configured Blizzard region controls `/character`, verified rosters, manual `/link` lookups, and realm autocomplete requests. The guild `default_region` stored by `/setup` does not currently switch those Blizzard requests per guild.
 
 ## Five-role authority model
 

@@ -1,9 +1,9 @@
 # Realm Slug Reference
 
 !!! tip
-    **For `/character` and `/link`, you normally do not need this page.** Start typing your realm in Discord and choose it from ZugBot's autocomplete.
+    **For `/character`, you normally do not need this page.** Start typing your realm in Discord and choose it from ZugBot's autocomplete. You may need the official slug when using `/link`'s **Add Manually** form.
 
-This reference is primarily for `/linkmany`, manual realm entry, and troubleshooting. `/linkmany` accepts one free-text field, so each entry needs Blizzard's official realm slug.
+This reference is primarily for `/link`'s manual entry, manual public lookups, and troubleshooting. Manual character linking uses one `CharacterName RealmSlug` entry per line.
 
 ## Display names and slugs
 
@@ -22,14 +22,17 @@ These examples illustrate the difference, but simple lowercase or punctuation re
   <p class="realm-data-updated" data-realm-updated hidden></p>
   <p class="realm-search-status" data-realm-status role="status" aria-live="polite">Loading realm reference data…</p>
   <div class="realm-results" data-realm-results></div>
-  <noscript>JavaScript is required to search the generated realm reference. `/character` and `/link` autocomplete still works in Discord.</noscript>
+  <noscript>JavaScript is required to search the generated realm reference. `/character` autocomplete still works in Discord.</noscript>
 </div>
 
-For `/linkmany`, use the slug in entries such as:
+For `/link` → **Add Manually**, use the slug in entries such as:
 
 ```text
-Treehab thunderhorn alt; Zugdealer thunderhorn main
+Treehab thunderhorn
+Zugdealer thunderhorn
 ```
+
+Use the separate optional **Make Main** field only when you intend to change your Main.
 
 The static reference is generated from Blizzard's public Game Data API and contains only region, display name, and official slug.
 
