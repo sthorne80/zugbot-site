@@ -30,7 +30,7 @@ A successful `/verify` refreshes a time-bounded roster of characters Battle.net 
 To change your Main during either workflow, deliberately choose a linked character in the separate **Make Main** control. Leave it blank to preserve the current Main.
 
 !!! warning "Do not enter Battle.net credentials into ZugBot"
-    ZugBot never asks for your Battle.net password in Discord, on zugbot.net, or in a ZugBot form. Enter credentials only on Battle.net. Never paste passwords, authorization codes, raw OAuth state, tokens, or sensitive callback URLs into Discord. Read [Battle.net Verification & Privacy](verification.md) for exactly what is retained.
+    ZugBot will never ask you to enter your Battle.net password on zugbot.net or in Discord. When you choose **Verify with Battle.net** from `/verify` or the `/link` character-linking panel, ZugBot redirects your browser to Battle.net's own sign-in and authorization page. Before entering credentials, confirm the browser address is on a `battle.net` domain. After authorization, Battle.net redirects you back to ZugBot to finish verification. If a page requesting Battle.net credentials is hosted on zugbot.net, Discord, or any non-`battle.net` domain, do not enter them. Never paste passwords, OAuth authorization codes, raw state values, access or refresh tokens, or sensitive callback URLs into Discord. Read [Battle.net Verification & Privacy](verification.md) for exactly what is retained.
 
 | Command | Purpose |
 | --- | --- |
