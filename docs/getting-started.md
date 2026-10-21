@@ -18,7 +18,7 @@ A good first session is:
 Battle.net OAuth is optional. Run `/verify` when you want ZugBot to mark matching characters as Battle.net verified and make a fresh verified roster available in `/link`.
 
 !!! warning "Battle.net sign-in safety"
-    ZugBot will **never ask for your Battle.net password** in Discord, on zugbot.net, or in a ZugBot form. Enter Battle.net credentials only on Battle.net's own site. Never paste passwords, OAuth authorization codes, raw state values, tokens, or sensitive callback URLs into Discord. See [Battle.net Verification & Privacy](verification.md) for the full flow and retention details.
+    ZugBot will never ask you to enter your Battle.net password on zugbot.net or in Discord. When you choose **Verify with Battle.net** from `/verify` or the `/link` character-linking panel, ZugBot redirects your browser to Battle.net's own sign-in and authorization page. Before entering credentials, confirm the browser address is on a `battle.net` domain. After authorization, Battle.net redirects you back to ZugBot to finish verification. If a page requesting Battle.net credentials is hosted on zugbot.net, Discord, or any non-`battle.net` domain, do not enter them. Never paste passwords, OAuth authorization codes, raw state values, access or refresh tokens, or sensitive callback URLs into Discord. See [Battle.net Verification & Privacy](verification.md) for the full flow and retention details.
 
 ## Character and realm selection
 
