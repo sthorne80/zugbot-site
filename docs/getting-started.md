@@ -6,25 +6,31 @@ ZugBot works through Discord slash commands, buttons, and selectors. Once the bo
 
 A good first session is:
 
-1. Run `/verify` in Discord and click **Verify with Battle.net**.
-2. Sign in only on Battle.net's own authorization site. After the browser confirms the authorization, return to Discord and click **Finish Verification**.
-3. Run `/link`, start typing a verified character or realm, choose the character from autocomplete, and select whether it is your **Main** or an **Alt**.
+1. Run `/link` with no arguments. ZugBot opens an ephemeral character-linking panel that only you can see.
+2. If you have a fresh Battle.net-verified roster, select one or more currently unlinked characters and click **Link Selected**. Use the roster pages when you have more than 25 eligible characters.
+3. To link without Battle.net, click **Add Manually**. Enter one `CharacterName RealmSlug` per line and optionally fill in the separate **Make Main** field.
 4. Run `/profile` to view a linked character and `/alts` to check every linked character.
 5. Run `/season` to see the active Modern Mythic+ dungeon pool.
 6. Use `/key` to create a Mythic+ group.
 7. Use `/lfgnotify enable` to opt into Smart LFG direct messages for your chosen roles and key range.
 8. Use Guild Planner cards to sign up as Tank, Healer, DPS, or Bench with a linked character, or choose Maybe or Can't Attend.
 
+Battle.net OAuth is optional. Run `/verify` when you want ZugBot to mark matching characters as Battle.net verified and make a fresh verified roster available in `/link`.
+
 !!! warning "Battle.net sign-in safety"
     ZugBot will **never ask for your Battle.net password** in Discord, on zugbot.net, or in a ZugBot form. Enter Battle.net credentials only on Battle.net's own site. Never paste passwords, OAuth authorization codes, raw state values, tokens, or sensitive callback URLs into Discord. See [Battle.net Verification & Privacy](verification.md) for the full flow and retention details.
 
 ## Character and realm selection
 
-`/link` searches your fresh, verified Battle.net character roster. Characters already linked to your Discord account are normally excluded from its suggestions. If the verified roster is missing or has expired, run `/verify` again.
+`/link` takes no arguments. Its ephemeral panel shows currently unlinked characters from your fresh, verified Battle.net roster and lets you select several in one batch. Rosters with more than 25 eligible characters are paginated. You can deliberately choose one selected character as your new Main; otherwise, your existing Main stays unchanged.
+
+Verified batch linking is atomic: either the selected batch links successfully or none of it does. Each linked character inherits the original verification timestamps and expiry, so linking later does not restart or extend the 30-day proof.
+
+If you do not want to use OAuth—or do not have a fresh verified roster—choose **Add Manually**. Enter one `CharacterName RealmSlug` per line. The separate **Make Main** field is optional; leave it blank to preserve your current Main. Manual links remain unverified. A later `/verify` upgrades exact matching manual links to Battle.net verified.
 
 `/character` is a public lookup and continues to use Blizzard-backed realm autocomplete. Start typing the realm's display name and select the suggestion; ZugBot submits Blizzard's official realm slug internally. Manual slug entry remains available for `/character`.
 
-`/linkmany` remains a manual multi-link workflow and uses official realm slugs. You generally need the [Realm Slug Reference](realm-slugs.md) only for `/linkmany`, manual public lookups, or troubleshooting.
+You generally need the [Realm Slug Reference](realm-slugs.md) only for `/link`'s manual entry, manual public lookups, or troubleshooting. The former `/linkmany` command has been retired; its manual batch workflow now lives inside `/link`.
 
 !!! note "Deployment region"
     Character lookups, verified rosters, and realm suggestions use the ZugBot deployment's configured Blizzard region. A guild's `default_region` setting does not independently reroute these requests.
