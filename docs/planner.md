@@ -34,7 +34,7 @@ ZugBot creates a unique Planner card in the configured Raid/Events channel and a
 
 ## Role signups
 
-Tank, Healer, DPS, and Bench require a linked character. In current Production 0.10.0, Planner role signups use **Modern WoW linked characters only**. Forever characters do not appear in the current Planner picker.
+Tank, Healer, DPS, and Bench require a linked character. In Production 0.11.0, Planner role signups use linked characters from the event's selected game mode. Forever events offer linked Forever characters, while Modern events use linked Modern characters.
 
 One eligible Modern character is selected automatically. With more than one, a private list that only you can see shows up to 25 linked characters, Main first.
 

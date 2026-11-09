@@ -56,13 +56,14 @@ One authorization refreshes both your Modern and Forever lists when Forever info
 - `/alts` lists characters by game mode.
 - `/season` shows the current Modern Mythic+ dungeon pool.
 - `/key` creates a Modern WoW Mythic+ group.
-- Guild Planner cards support role signups with Modern linked characters in Production 0.10.0.
+- `/dungeon` creates a WoW: Forever dungeon group; choose your role and dungeon, then use the card to manage signups.
+- `/event create` can schedule Modern or Forever events with character signups matching that game mode.
 
 ## For server owners and administrators
 
 Run `/setup` inside the Discord server. Basic setup requires a **Bot Commands Channel**, a **Mythic/LFG Channel**, and an enabled default game mode.
 
-The setup panel can enable Modern WoW, WoW: Forever, or both, and requires an enabled default game mode. When both games are enabled, `/link` still asks the member which game they want. When only one is enabled, `/link` opens that game directly. Enabling Forever currently enables Forever character linking, verification, and profiles. It does not make `/key` or current Planner character signups use Forever characters.
+The setup panel can enable Modern WoW, WoW: Forever, or both, and requires an enabled default game mode. When both games are enabled, `/link` still asks the member which game they want. When only one is enabled, `/link` opens that game directly. Enabling Forever provides Forever character linking, verification, profiles, `/dungeon` grouping, and Forever Guild Planner events. `/key` remains Modern WoW-only.
 
 Raid, announcement, and role mappings are optional for basic setup, but their related Planner, administration, and onboarding features require the relevant configuration.
 

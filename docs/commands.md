@@ -29,6 +29,14 @@ When you link several characters, ZugBot adds the whole group together. If one c
 
 `/key` and `/season` are Modern WoW-only. Forever characters do not appear in `/key`.
 
+## WoW: Forever Dungeon LFG
+
+| Command | Description |
+| --- | --- |
+| `/dungeon` | Create a WoW: Forever dungeon group by choosing a role and dungeon; members join or leave through the public group card |
+
+The organizer can add or remove external PUG players, or cancel the group. Known dungeon suggestions display recommended level ranges, which are informational.
+
 ## LFG notifications
 
 | Command | Description |
@@ -50,7 +58,7 @@ When you link several characters, ZugBot adds the whole group together. If one c
 | `/event stoprecurrence` | Stop future dates without cancelling the current event |
 | `/event timezone` | Set the time zone used for guild events |
 
-`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. In Production 0.10.0, Planner role character selection uses Modern WoW linked characters only. Planner cards also support Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
+`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. In Production 0.11.0, Planner role character selection uses linked characters from the event's selected game mode, Modern WoW or WoW: Forever. Planner cards also support Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
 
 ## General / Utility
 
@@ -82,4 +90,4 @@ When you link several characters, ZugBot adds the whole group together. If one c
 | `/debugdb` | Show saved-item and running-process counts for the current Discord server |
 | `/endkeys` | Close active Mythic+ groups in the current Discord server |
 
-Modern and WoW: Forever character linking, verification, profiles, Mains, and character management are released. `/key` remains the Modern Mythic+ flow. Forever dungeon grouping and Forever Planner character signups are not released in Production 0.10.0.
+Modern and WoW: Forever character linking, verification, profiles, Mains, and character management are released. `/key` remains the Modern Mythic+ flow, while `/dungeon` is the Forever dungeon-group flow. Forever event scheduling and character signups are available in Production 0.11.0.

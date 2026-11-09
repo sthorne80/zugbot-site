@@ -1,6 +1,6 @@
 # Roadmap
 
-Current production is **ZugBot 0.10.0**. This page separates released behavior from future direction; planned work is not a delivery promise.
+Current production is **ZugBot 0.11.0**. This page separates released behavior from future direction; planned work is not a delivery promise.
 
 ## Current
 
@@ -8,7 +8,8 @@ Current production is **ZugBot 0.10.0**. This page separates released behavior f
 
 - Blizzard-backed character lookup and realm suggestions
 - Modern WoW and WoW: Forever linking and public profiles through the unified `/link` panel, with optional Battle.net verification and manual entry
-- Mythic+ group creation with linked characters and persistent cards
+- Modern WoW Mythic+ group creation with linked characters and persistent cards
+- WoW: Forever dungeon LFG with five-player role composition, linked Forever characters, PUG management, and restart-safe cards
 - Smart LFG role and key-range preferences
 - multi-guild server setup and restart-safe persistence
 
@@ -21,7 +22,7 @@ Current production is **ZugBot 0.10.0**. This page separates released behavior f
 ### Guild Planner
 
 - One-time, Weekly recurring, and Monthly recurring events
-- linked-character Tank, Healer, DPS, and Bench signups
+- game-mode-aware linked-character Tank, Healer, DPS, and Bench signups for Modern and Forever events
 - Maybe and Can't Attend states
 - native Discord Scheduled Events
 - guild-local IANA timezones with DST-aware wall-clock recurrence
@@ -50,10 +51,6 @@ Current production is **ZugBot 0.10.0**. This page separates released behavior f
 - guild dashboard and calendar views
 - roster and participation tools
 - advanced operational analytics
-
-### Additional grouping
-
-ZugBot supports Modern WoW and WoW: Forever character workflows today. A future Forever-oriented dungeon flow may complement the current Modern Mythic+ `/key` command without pretending both modes use identical mechanics.
 
 ## Product principles
 

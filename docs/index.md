@@ -40,10 +40,10 @@ hide:
     <div class="zb-section-copy">
       <p class="zb-eyebrow">01 / Get the guild together</p>
       <h2 id="planner-title">A raid night.<br>A plan.<br><em>Everyone in the loop.</em></h2>
-      <p>Create a one-time, weekly, or monthly event, let members choose their roles and Modern linked characters, and watch the roster take shape. ZugBot keeps every Planner card and native Discord Scheduled Event together.</p>
+      <p>Create a one-time, weekly, or monthly event, let members choose their roles and game-appropriate Modern or Forever linked characters, and watch the roster take shape. ZugBot keeps every Planner card and native Discord Scheduled Event together.</p>
       <ul class="zb-detail-list">
         <li>Tank, Healer, DPS, Bench, Maybe, and Can't Attend</li>
-        <li>Modern linked-character signups with live composition</li>
+        <li>Modern and Forever character signups with live composition</li>
         <li>Automatic 24-hour and 1-hour reminders</li>
         <li>One-time, weekly, and monthly schedules</li>
       </ul>
