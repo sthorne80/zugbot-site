@@ -1,88 +1,85 @@
 # Battle.net Verification & Privacy
 
-Battle.net verification is optional. It lets ZugBot confirm which WoW characters are on your Battle.net account. If you do not want to connect Battle.net, you can still use `/link` and choose **Add Manually**.
+Battle.net verification is optional. It lets ZugBot confirm which Modern WoW and WoW: Forever characters are on the Battle.net account you authorize. If you prefer not to connect Battle.net, use `/link` and choose **Add Manually**.
 
 !!! danger "Enter your Battle.net password only on Battle.net"
-    ZugBot will never ask you to type your Battle.net password on zugbot.net or in Discord. When you click **Verify with Battle.net**, your browser is sent to Battle.net's own sign-in and approval page. Before entering your password, check that the browser address is on a `battle.net` domain. After you approve access, Battle.net sends you back to ZugBot to finish. If a page on zugbot.net, Discord, or any other non-`battle.net` domain asks for your Battle.net password, do not enter it.
+    ZugBot never asks you to type your Battle.net password on zugbot.net or in Discord. After you click **Verify with Battle.net**, enter your password only when the browser address is on a `battle.net` domain. Never paste passwords, sign-in codes, tokens, or sensitive return links into Discord.
 
-## How to verify and link characters
+## Verify and link characters
 
 1. Run `/verify` in Discord.
 2. Click **Verify with Battle.net**.
-3. Check that the browser address is on a `battle.net` domain.
-4. Sign in to Battle.net and approve access.
-5. Battle.net sends you back to ZugBot.
-6. Return to Discord and click **Finish Verification**.
-7. Type `/link` and press Enter. You do not need to fill anything in first.
-8. In the private panel that only you can see, choose one or more characters and click **Link Selected**.
+3. Check that the sign-in page is on a `battle.net` domain.
+4. Sign in and approve access.
+5. Return to Discord and click **Finish Verification**.
+6. Run `/link`.
+7. If ZugBot asks which game you want, choose **Modern WoW** or **WoW: Forever**. Servers with one enabled game open that flow directly.
+8. Select characters and click **Link Selected**.
 
-If you have more than 25 characters, use the page buttons to see the rest. **Make Main** is optional; leave it blank to keep your current Main.
+One authorization refreshes both character lists when Blizzard's Forever information is available. If Forever cannot be refreshed temporarily, Modern verification can still finish and existing Forever verification is left unchanged.
 
-ZugBot's confirmation currently lasts **30 days**. Run `/verify` again when you want to renew it.
+Lists longer than 25 characters have page buttons. Verification lasts **30 days**. Linking a character later does not extend that period.
 
-## Simple privacy summary
+## What Verified and Unverified mean
 
-ZugBot keeps enough information to remember which WoW characters were confirmed on your Battle.net account and when that confirmation expires.
+**Verified** means Battle.net confirmed that character was on the account authorized by the Discord user during a current verification period.
 
-- The confirmation currently lasts 30 days.
-- ZugBot does not save your Battle.net password.
-- ZugBot does not keep the temporary sign-in credentials or tokens used while connecting to Battle.net.
-- Your BattleTag or display label is not kept in the long-term confirmed-character list.
+**Unverified** means the character was added manually. ZugBot checks that the public character exists, but a public profile alone does not prove ownership.
 
-## Linking several characters
+Existing links are not automatically removed when verification expires. Run `/verify` again to refresh ownership confirmation.
 
-If you verified with Battle.net, `/link` shows your characters that are not linked yet. You can select several at once.
+## Link without Battle.net
 
-ZugBot adds the whole group together. If one character cannot be added, none of them are added and your links stay unchanged. Fix the problem and try again. Linking characters later does not restart or extend the 30-day confirmation period.
+Run `/link`. If ZugBot asks which game you want, choose the intended game. Then click **Add Manually**.
 
-## Linking without Battle.net
-
-Type `/link` and press Enter, then choose **Add Manually**. Enter one character on each line in this format:
+Modern format:
 
 ```text
 CharacterName RealmSlug
-CharacterName RealmSlug
 ```
 
-**Make Main** is optional. Leave it blank to keep your current Main.
+Forever format:
 
-Manual links show as Unverified because typing a character name does not prove that it belongs to your Battle.net account. If you run `/verify` later, ZugBot can change exact matches to Verified characters.
+```text
+Abrakadaver Salwyn
+```
 
-The old `/linkmany` command no longer exists. Its job is now inside `/link`.
+Forever uses the full character name and no realm. See the [WoW: Forever guide](forever.md).
+
+## Simple privacy summary
+
+- ZugBot never collects or stores your Battle.net password.
+- OAuth authorization codes and access tokens stay in memory and are not persisted.
+- Raw OAuth state and raw Battle.net account responses are not persisted.
+- BattleTag and the temporary display label are not stored in the long-term character roster.
+- Temporary protected verification results are cleared after they are used.
+- The OAuth API and Discord bot are isolated services with separate responsibilities.
+- Logs record sanitized lifecycle status and counts, not codes, tokens, raw state, BattleTag, or raw account responses.
 
 ## Sign-in safety checklist
 
-- Start from ZugBot's `/verify` command in Discord.
-- After clicking **Verify with Battle.net**, check that the sign-in page is on a `battle.net` domain.
-- Never enter your Battle.net password on zugbot.net, in Discord, or on another non-`battle.net` domain.
-- Never paste passwords, sign-in codes, tokens, or sensitive return links into Discord or a support message.
-- If the address looks wrong or anything feels unexpected, close the page and restart `/verify` from Discord.
+- Start from `/verify` in Discord.
+- Enter your password only on a `battle.net` address.
+- Never send support your password, sign-in code, token, or sensitive return link.
+- If the address looks wrong, close the page and restart `/verify` from Discord.
 
-ZugBot support does not need your Battle.net password or any sign-in code, token, or return link to help you.
+## Technical details: stored character data
 
-## If verification expires
-
-After 30 days, run `/verify` again before creating new Verified links. Existing linked characters are not automatically removed when the confirmation expires.
-
-## Technical details (optional)
-
-This section uses technical terms for readers who want to know exactly what is kept.
-
-The long-term confirmed-character list contains:
+The long-term confirmed-character roster keeps only bounded information needed to offer and reconcile characters:
 
 | Stored | Why |
 | --- | --- |
-| Discord user ID | Connects the confirmed list to the Discord member who completed verification |
-| Battle.net region | Keeps characters matched to the correct region |
-| Character and realm names | Shows and matches characters in `/link` |
-| Current character and realm IDs, when Battle.net provides them | Adds evidence for the current list; these IDs are not treated as permanent proof after a realm transfer |
-| Confirmation time and expiration time | Applies the current 30-day limit |
-| Server-created matching keys | Prevents duplicate or unclear character records |
+| Discord user ID | Connects the confirmed list to the Discord member who verified |
+| Battle.net region | Keeps the roster in the correct region |
+| Modern character name and realm information | Displays and matches Modern characters |
+| Modern character and realm IDs, when available | Helps identify the current Modern roster entry |
+| Forever full display name | Displays the Forever character |
+| Forever stable Blizzard character ID | Matches Forever ownership even if the visible name changes |
+| Verification and expiration times | Applies the 30-day confirmation period |
+| Server-created matching keys | Prevents duplicate or ambiguous records |
 
-A new verification replaces the user's previous list for that region. If a character is missing from a later Battle.net list, it is no longer offered as a currently confirmed choice. ZugBot does not guess whether the character was renamed, transferred, or deleted.
+Forever characters do not have a realm field in ZugBot. Forever ownership reconciliation uses Blizzard's stable character ID rather than treating the visible full name as permanent identity.
 
-During sign-in, ZugBot briefly handles the Battle.net authorization code and access token in memory so it can request the protected character list. ZugBot does not write those temporary credentials to the confirmed-character list or save them for later use. It also does not save refresh tokens, the raw OAuth state value, raw Battle.net account responses, request or response headers, or sensitive callback details.
+A successful refresh replaces the relevant current roster. A temporary Forever API failure does not erase or extend existing Forever verification. Temporary OAuth material remains memory-only and is cleared after the verification flow completes.
 
-A BattleTag or display label may appear briefly while the sign-in is being completed. It is not copied into the long-term confirmed-character list, and the temporary result is cleared after verification finishes.
-
-For command instructions, see the [Member Guide](member-guide.md). For problems with the flow, see [Troubleshooting](troubleshooting.md).
+For step-by-step character instructions, see the [Member Guide](member-guide.md). For problems, see [Troubleshooting](troubleshooting.md).

@@ -6,7 +6,16 @@ Each Discord server keeps its own ZugBot setup, leadership roles, and activity i
 
 Run `/setup`. The Discord server owner or a member with Administrator or Manage Server permission can change setup.
 
-ZugBot can store Bot Commands, Mythic/LFG, Raid, and Announcement channels; Modern WoW and WoW: Forever preferences; a default game mode and region; and five authority/membership roles.
+ZugBot can store Bot Commands, Mythic/LFG, Raid, and Announcement channels; Modern WoW and WoW: Forever enablement; a default game mode and region; and five authority/membership roles.
+
+`/setup` stores which game modes are enabled and requires an enabled default game mode. In current Production 0.10.0, that stored default does not silently choose a `/link` flow when both games are enabled. Instead:
+
+- if both Modern and Forever are enabled, `/link` asks the member which game they want;
+- if only one game is enabled, `/link` opens that game's flow directly.
+
+Enabling Forever currently enables Forever character linking, verification, profiles, Mains, and character management.
+
+`/key` remains Modern Mythic+ only. Current Production 0.10.0 Planner role character selection is also Modern-only; enabling Forever does not change either feature.
 
 !!! note "Battle.net region"
     ZugBot's configured Battle.net region controls `/character`, confirmed character lists, manual `/link` lookups, and realm suggestions. Changing a server's default region in `/setup` does not currently change these lookups.
@@ -47,6 +56,8 @@ Planner uses the configured Raid channel and provides:
 - a way to stop future dates without cancelling the current event.
 
 The organizer manages their event. The Discord server owner and configured ZugBot Admin and Founder roles can also manage guild events. Editing or cancelling one date does not move future dates.
+
+Planner role character selection uses Modern linked characters in Production 0.10.0.
 
 ### Planner permissions
 

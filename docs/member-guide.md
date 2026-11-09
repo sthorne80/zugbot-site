@@ -1,118 +1,101 @@
 # Member Guide
 
-## Character lookup
+## Link characters by game
 
-Use `/character` to look up a public character without linking it:
+Type `/link` and press Enter. ZugBot opens a private panel only you can see.
 
-1. Type the character name.
-2. Begin typing the realm name.
-3. Select the realm suggestion, such as `Thunderhorn — thunderhorn`.
+1. If ZugBot asks which game you want, choose **Modern WoW** or **WoW: Forever**. With only one enabled game, its flow opens directly.
+2. Select characters from a fresh Battle.net list, click **Verify with Battle.net**, or choose **Add Manually**.
+3. Select or enter characters.
+4. Click **Link Selected** or submit the manual form.
+5. Optionally choose a Main for that game.
 
-The suggestion shows the realm name and the short official name ZugBot uses for it, called a slug. You normally do not need to know the slug. If suggestions are unavailable, you can enter it yourself.
+If both game modes are enabled, `/link` asks which one you want. If only one is enabled, ZugBot opens that flow directly.
 
-## Verify and link your characters
+### Verify once for both games
 
-Type `/link` and press Enter. You do not need to fill anything in first. ZugBot opens a private panel that only you can see, with two choices:
+Battle.net verification is optional. To refresh the characters Battle.net confirms belong to you:
 
-- If you connected Battle.net in the last 30 days, select one or more characters that are not linked yet and click **Link Selected**. If more than 25 characters are available, use the page buttons to see the rest.
-- If you do not want to connect Battle.net, click **Add Manually** and enter one `CharacterName RealmSlug` per line.
-
-Battle.net verification is optional. To confirm which characters are on your Battle.net account:
-
-1. Run `/verify` in Discord.
+1. Run `/verify`.
 2. Click **Verify with Battle.net**.
-3. Your browser leaves ZugBot and opens Battle.net's own sign-in and approval page. Before entering your password, check that the address is on a `battle.net` domain.
-4. Sign in to Battle.net and approve access.
-5. Battle.net sends you back to ZugBot. Return to Discord and click **Finish Verification**.
-6. Run `/link`, select the verified characters you want, and click **Link Selected**.
+3. Sign in and approve access on Battle.net's own website.
+4. Return to Discord and click **Finish Verification**.
+5. Run `/link`. If ZugBot asks which game you want, choose it. Then select characters and click **Link Selected**.
 
-After `/verify`, ZugBot remembers the characters Battle.net confirmed for 30 days. When you link several characters, ZugBot adds the whole group together. If one character cannot be added, none of them are added and your links stay unchanged. Fix the problem and try again. Linking later does not restart the 30-day period.
+The same authorization refreshes Modern WoW and WoW: Forever rosters when Forever information is available. Verified lists last 30 days. Lists with more than 25 characters have page buttons.
 
-To change your Main during either workflow, deliberately choose a linked character in the separate **Make Main** control. Leave it blank to preserve the current Main.
+If a batch cannot be linked safely, none of that batch is added. Fix the problem and try again.
 
 !!! warning "Do not enter Battle.net credentials into ZugBot"
-    ZugBot never asks you to type your Battle.net password on zugbot.net or in Discord. After you click **Verify with Battle.net**, enter your password only if the browser address is on a `battle.net` domain. Battle.net sends you back to ZugBot after you approve access. If a page on zugbot.net, Discord, or another non-`battle.net` domain asks for your Battle.net password, do not enter it. Never paste passwords, sign-in codes, tokens, or sensitive return links into Discord. Read [Battle.net Verification & Privacy](verification.md) to see what ZugBot keeps.
+    ZugBot never asks for your Battle.net password on zugbot.net or in Discord. Enter it only on a `battle.net` address. Never paste passwords, sign-in codes, tokens, or sensitive return links into Discord. See [Battle.net Verification & Privacy](verification.md).
 
-| Command | Purpose |
-| --- | --- |
-| `/verify` | Optionally connect Battle.net to confirm which characters are yours |
-| `/link` | Open your private character-linking panel; just type `/link` and press Enter |
-| `/profile` | View one of your linked character profiles |
-| `/alts` | List all linked characters and identify your main |
-| `/main` | Set a linked character as your main |
-| `/unlink` | Remove a linked character |
+### Modern manual linking
 
-### Link characters manually
-
-In `/link`, click **Add Manually** and enter one character per line:
-
-```text
-CharacterName RealmSlug
-CharacterName RealmSlug
-```
-
-For example:
+Run `/link`. If ZugBot asks which game you want, choose **Modern WoW**. Click **Add Manually** and enter one character per line:
 
 ```text
 Treehab thunderhorn
 Zugdealer thunderhorn
 ```
 
-Rules:
+The format is `CharacterName RealmSlug`. A realm slug is Blizzard's short official realm name. You can find it in the [Realm Slug Reference](realm-slugs.md).
 
-- use Blizzard's official realm slug; see the [Realm Slug Reference](realm-slugs.md);
-- put each character on its own line;
-- use the optional separate **Make Main** field only when you intend to change your Main;
-- leave **Make Main** blank to preserve the current Main.
+### Forever manual linking
 
-Manual links show as Unverified. If you run `/verify` later, ZugBot can change exact matches to Verified characters.
+Run `/link`. If ZugBot asks which game you want, choose **WoW: Forever**. Click **Add Manually** and enter one full character name per line:
+
+```text
+Abrakadaver Salwyn
+Pallyamorous Smitegeist
+```
+
+Do not add a realm. Forever characters use their full names and have no realm field in ZugBot. See the [WoW: Forever guide](forever.md).
+
+Manual links are Unverified until a later Battle.net verification confirms ownership.
+
+## Main characters and `/alts`
+
+Modern and Forever each have an independent Main. Changing the Forever Main does not change the Modern Main.
+
+- Leave **Make Main** blank while linking to preserve the current Main.
+- Use `/main`, select the game, then choose the intended linked character.
+- Use `/alts` to see separate Modern WoW and WoW: Forever sections.
+- Use `/unlink`, select the game, and choose the intended character.
+
+## Character profiles
+
+Use `/profile` and select a linked character.
+
+- Modern profiles include realm-based Blizzard information.
+- Forever profiles use the full character name and do not show or require a realm.
+
+Use `/character` for an unlinked public Modern character lookup. Start typing the realm and choose a suggestion. If suggestions are unavailable, enter the official realm slug.
 
 ## Modern Mythic+
 
-`/season` shows the current dungeon list. Run `/key`, then choose a role, key level, and dungeon to create a group card that stays available in Discord. If several characters are linked, ZugBot asks which one to use.
+`/season` shows the current Modern dungeon list. `/key` creates a Modern WoW Mythic+ group. Forever characters do not appear in `/key` character selection.
 
-Group cards let Tanks, Healers, and DPS join or leave. The group leader can manage open spots and use Smart LFG. Active cards come back after a bot restart.
+Group cards let Tanks, Healers, and DPS join or leave. The leader can manage open spots and use Smart LFG. Active cards return after a bot restart.
 
 ## Smart LFG notifications
 
-Smart LFG is opt-in and configured per Discord server:
+Smart LFG is for Modern Mythic+ and is configured per Discord server:
 
 ```text
 /lfgnotify enable tank:true healer:false dps:true min_level:5 max_level:10
 ```
 
-Choose any combination of Tank, Healer, and DPS and optional minimum or maximum key levels. Use `/lfgnotify settings` to review preferences, `/lfgnotify test` to test direct-message delivery, and `/lfgnotify disable` to opt out for that server.
+Use `/lfgnotify settings` to review preferences, `/lfgnotify test` to test direct messages, and `/lfgnotify disable` to opt out.
 
 ## Guild Planner
 
-Planner cards stay matched with Discord Scheduled Events and show the current role counts and signup list.
+Production 0.10.0 Planner role signups use **Modern WoW linked characters only**. Forever characters do not appear in the current Planner character picker.
 
-### Role signups and characters
+Tank, Healer, DPS, and Bench require a linked Modern character. With one eligible character, ZugBot selects it automatically. With several, Discord opens a private list with the Main first. Maybe and Can't Attend do not require a character.
 
-Tank, Healer, DPS, and Bench require at least one linked character:
+The chosen character is saved with that event date, so the roster still renders if the character is later unlinked. Reminders are attempted 24 hours and 1 hour before the event for the organizer and current role signups.
 
-- with one linked character, ZugBot selects it automatically;
-- with multiple linked characters, Discord opens a private list that only you can see;
-- the selector shows at most the first 25 linked characters, with the main first;
-- the chosen character name is saved with that event date.
-
-The roster displays entries like `@DiscordMember (Character)`. The realm is added when needed to distinguish duplicate character names. Unlinking the character later does not erase the name already shown for an existing signup.
-
-Maybe and Can't Attend are attendance states. They do not require a linked character or open the character selector. Changing any response replaces the existing response instead of creating a duplicate.
-
-### Automatic reminders
-
-ZugBot processes reminder windows at 24 hours and 1 hour before each event. Eligible recipients are the organizer, even without an RSVP, and members currently joined as Tank, Healer, DPS, or Bench.
-
-Maybe and Can't Attend are excluded, as are people no longer in the Discord server. Discord must allow ZugBot to send the person a direct message, so delivery cannot be guaranteed. Each event date keeps its own reminder history.
-
-### Recurring events
-
-Weekly events stay on the same weekday and local time for the guild. Monthly events stay on the same day of the month and local time. If a month is shorter, an event set for the 31st moves to that month's last day, then returns to the 31st when possible: January 31 becomes February 28 or 29, then March 31.
-
-Each date is a separate event with its own Planner Event ID, Discord Scheduled Event, Planner card, signups, character choices, and reminder history.
-
-Editing one event date changes only that date and does not move future events. Cancelling one date does not stop the series. Use `/event stoprecurrence planner_event_id:<id>` to stop future dates while leaving the current event in place.
+Weekly and monthly dates are independent events. Editing or cancelling one date does not rewrite the series. Use `/event stoprecurrence planner_event_id:<id>` to stop future dates.
 
 ## Ready checks and fun
 

@@ -3,7 +3,7 @@
 !!! tip
     **For `/character`, you normally do not need this page.** Start typing your realm in Discord and choose it from ZugBot's suggestions. You may need the official slug when using `/link`'s **Add Manually** form.
 
-This reference is primarily for `/link`'s manual entry, manual public lookups, and troubleshooting. Manual character linking uses one `CharacterName RealmSlug` entry per line.
+This reference is for **Modern WoW** manual `/link` entry, public Modern character lookups, and troubleshooting. Modern manual linking uses one `CharacterName RealmSlug` entry per line. WoW: Forever characters use their full name and do not use a realm slug.
 
 ## Display names and slugs
 
