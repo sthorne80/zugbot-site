@@ -73,7 +73,7 @@ Use `/character` for an unlinked public Modern character lookup. Start typing th
 
 ## Modern Mythic+
 
-`/season` shows the current Modern dungeon list. `/key` creates a Modern WoW Mythic+ group. Forever characters do not appear in `/key` character selection.
+`/season` shows the current Modern dungeon list. `/key` creates a Modern WoW Mythic+ group. Forever characters do not appear in `/key` character selection. Use `/dungeon` to create a Forever five-player dungeon group with role signup and external PUG controls.
 
 Group cards let Tanks, Healers, and DPS join or leave. The leader can manage open spots and use Smart LFG. Active cards return after a bot restart.
 
@@ -89,7 +89,7 @@ Use `/lfgnotify settings` to review preferences, `/lfgnotify test` to test direc
 
 ## Guild Planner
 
-Production 0.10.0 Planner role signups use **Modern WoW linked characters only**. Forever characters do not appear in the current Planner character picker.
+Production 0.11.0 Planner role signups use the linked characters for the selected event game mode, including WoW: Forever.
 
 Tank, Healer, DPS, and Bench require a linked Modern character. With one eligible character, ZugBot selects it automatically. With several, Discord opens a private list with the Main first. Maybe and Can't Attend do not require a character.
 
