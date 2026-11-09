@@ -40,10 +40,10 @@ hide:
     <div class="zb-section-copy">
       <p class="zb-eyebrow">01 / Get the guild together</p>
       <h2 id="planner-title">A raid night.<br>A plan.<br><em>Everyone in the loop.</em></h2>
-      <p>Create a one-time, weekly, or monthly event, let members choose their roles and linked characters, and watch the roster take shape. ZugBot keeps every Planner card and native Discord Scheduled Event together.</p>
+      <p>Create a one-time, weekly, or monthly event, let members choose their roles and Modern linked characters, and watch the roster take shape. ZugBot keeps every Planner card and native Discord Scheduled Event together.</p>
       <ul class="zb-detail-list">
         <li>Tank, Healer, DPS, Bench, Maybe, and Can't Attend</li>
-        <li>Linked-character signups with live composition</li>
+        <li>Modern linked-character signups with live composition</li>
         <li>Automatic 24-hour and 1-hour reminders</li>
         <li>One-time, weekly, and monthly schedules</li>
       </ul>
@@ -73,7 +73,7 @@ hide:
   <div class="zb-shell">
     <div class="zb-section-heading"><p class="zb-eyebrow">The rest of the guild comes with it</p><h2 id="tools-title">One bot. A lot less busywork.</h2></div>
     <div class="zb-tool-grid">
-      <article class="zb-tool"><span class="zb-tool-number">02</span><div><h3>Characters &amp; Profiles</h3><p>Link several characters from one private panel. Battle.net verification is optional, and manual links can be verified later.</p><a class="zb-text-link" href="verification/">Verification &amp; privacy</a></div></article>
+      <article class="zb-tool"><span class="zb-tool-number">02</span><div><h3>Characters &amp; Profiles</h3><p>Link Modern WoW and WoW: Forever characters from one private panel. Battle.net verification is optional, and manual links can be verified later.</p><a class="zb-text-link" href="verification/">Verification &amp; privacy</a></div></article>
       <article class="zb-tool"><span class="zb-tool-number">03</span><div><h3>Group Coordination</h3><p>Build role-based groups with linked characters, persistent cards, and practical owner controls right where members already talk.</p><a class="zb-text-link" href="commands/">See group commands</a></div></article>
       <article class="zb-tool"><span class="zb-tool-number">04</span><div><h3>Smart Notifications</h3><p>Reach members whose role and key-range preferences match an open group, without turning every opportunity into an everyone ping.</p><a class="zb-text-link" href="member-guide/">Configure notifications</a></div></article>
       <article class="zb-tool"><span class="zb-tool-number">05</span><div><h3>Guild Administration</h3><p>Set up your channels, map your guild's authority roles, and welcome newcomers with a persistent rules agreement. Your server, your structure.</p><a class="zb-text-link" href="admin-guide/">Open the admin guide</a></div></article>

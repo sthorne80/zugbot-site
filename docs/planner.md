@@ -2,7 +2,7 @@
 
 <div class="zug-doc-hero">
   <div>
-    <div class="zug-kicker">Released Planner · Current through ZugBot 0.9.x</div>
+    <div class="zug-kicker">Released Planner · Current through ZugBot 0.10.x</div>
     <h2>Plan guild events without leaving Discord.</h2>
     <p>Guild Planner combines event cards with Discord Scheduled Events, linked-character role signups, reminders, repeating schedules, guild time zones, and cards that return after a restart.</p>
   </div>
@@ -34,7 +34,9 @@ ZugBot creates a unique Planner card in the configured Raid/Events channel and a
 
 ## Role signups
 
-Tank, Healer, DPS, and Bench require a linked character. One linked character is selected automatically. With more than one, a private list that only you can see shows up to 25 linked characters, Main first.
+Tank, Healer, DPS, and Bench require a linked character. In current Production 0.10.0, Planner role signups use **Modern WoW linked characters only**. Forever characters do not appear in the current Planner picker.
+
+One eligible Modern character is selected automatically. With more than one, a private list that only you can see shows up to 25 linked characters, Main first.
 
 Maybe and Can't Attend only record whether someone plans to come. They do not require or select a character. Choosing another response replaces the earlier choice.
 

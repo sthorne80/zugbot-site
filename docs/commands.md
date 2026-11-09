@@ -7,16 +7,16 @@ These commands are currently implemented in Production. Planned commands are not
 | Command | Description |
 | --- | --- |
 | `/character` | Look up a public character; start typing a realm and choose it from the suggestions, or enter its official slug |
-| `/verify` | Optionally connect Battle.net to confirm which characters are yours |
-| `/link` | Open a private character-linking panel that only you can see; type `/link` and press Enter without filling anything in |
-| `/profile` | View a linked character profile |
-| `/alts` | List linked characters |
-| `/main` | Set a linked character as the main |
-| `/unlink` | Remove a linked character |
+| `/verify` | Refresh Modern WoW and, when available, WoW: Forever character lists from one Battle.net authorization |
+| `/link` | Link Modern or Forever characters from a private panel only you can see |
+| `/profile` | View a linked Modern or Forever character profile |
+| `/alts` | Show linked characters in separate game-mode sections |
+| `/main` | Set the Main character for the selected game mode |
+| `/unlink` | Remove a linked character from the selected game mode |
 
 Battle.net verification is optional. When you click **Verify with Battle.net**, your browser goes to Battle.net's own sign-in page. ZugBot never asks you to enter your Battle.net password on zugbot.net or in Discord. See [Battle.net Verification & Privacy](verification.md) for safety and privacy details.
 
-If you connected Battle.net in the last 30 days, `/link` lets you choose several of your characters from a list. Lists longer than 25 characters have page buttons. If you do not want to connect Battle.net, choose **Add Manually** and enter one `CharacterName RealmSlug` per line. **Make Main** is optional; leave it blank to keep your current Main. Manual links show as Unverified, and a later `/verify` can change exact matches to Verified. The old `/linkmany` command no longer exists because its job is now part of `/link`.
+If you connected Battle.net in the last 30 days, `/link` lets you choose several characters from either roster. Lists longer than 25 characters have page buttons. If you do not want to connect Battle.net, choose **Add Manually**. Modern uses `CharacterName RealmSlug`; Forever uses the full character name and no realm. Modern and Forever have separate Main characters. The old `/linkmany` command no longer exists because its job is now part of `/link`.
 
 When you link several characters, ZugBot adds the whole group together. If one character cannot be added, none of them are added. Your links stay unchanged so you can fix the problem and try again.
 
@@ -26,6 +26,8 @@ When you link several characters, ZugBot adds the whole group together. If one c
 | --- | --- |
 | `/season` | Show the current Mythic+ dungeon pool |
 | `/key` | Create a Mythic+ group card that members can use in Discord |
+
+`/key` and `/season` are Modern WoW-only. Forever characters do not appear in `/key`.
 
 ## LFG notifications
 
@@ -48,7 +50,7 @@ When you link several characters, ZugBot adds the whole group together. If one c
 | `/event stoprecurrence` | Stop future dates without cancelling the current event |
 | `/event timezone` | Set the time zone used for guild events |
 
-`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. Planner cards support Tank, Healer, DPS, and Bench with linked-character selection, plus Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
+`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. In Production 0.10.0, Planner role character selection uses Modern WoW linked characters only. Planner cards also support Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
 
 ## General / Utility
 
@@ -80,4 +82,4 @@ When you link several characters, ZugBot adds the whole group together. If one c
 | `/debugdb` | Show saved-item and running-process counts for the current Discord server |
 | `/endkeys` | Close active Mythic+ groups in the current Discord server |
 
-Modern and WoW: Forever preferences are stored today, but `/key` is the implemented Modern Mythic+ flow. A separate Forever group command is not released.
+Modern and WoW: Forever character linking, verification, profiles, Mains, and character management are released. `/key` remains the Modern Mythic+ flow. Forever dungeon grouping and Forever Planner character signups are not released in Production 0.10.0.

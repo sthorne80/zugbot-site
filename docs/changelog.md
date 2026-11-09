@@ -1,17 +1,37 @@
 # Changelog
 
-This page summarizes notable public-facing ZugBot changes. Current production is **0.9.1**.
+This page summarizes notable public-facing ZugBot changes. Current production is **0.10.0**.
 
-## Unified `/link` — 2026-10-21
+## 0.10.0 — 2026-11-08
+
+### Added
+
+- optional Battle.net ownership verification started from Discord
+- 30-day verified character lists for Modern WoW and, when available, WoW: Forever
+- first-class Modern and Forever character linking, profiles, independent Mains, and game-aware character management
+- verified multi-character linking with page controls for rosters longer than 25 characters
+- manual linking inside `/link` for members who do not want to connect Battle.net
+- public Forever profiles and stable Forever ownership matching through Blizzard's character ID
 
 ### Changed
 
 - Type `/link` and press Enter without filling anything in first. It opens a private panel that only you can see.
-- Connecting Battle.net is optional. After verification, you can choose several confirmed characters at once. **Add Manually** accepts one `CharacterName RealmSlug` per line.
+- Choose Modern WoW or WoW: Forever when both are enabled for the server.
+- Connecting Battle.net is optional. After verification, you can choose several confirmed characters at once.
+- Modern **Add Manually** accepts one `CharacterName RealmSlug` per line. Forever accepts one full character name per line and no realm.
 - Character lists longer than 25 have page buttons.
-- Main changes are deliberate; leaving **Make Main** blank preserves the current Main.
+- Main changes are deliberate; leaving **Make Main** blank preserves the current Main for that game.
 - Linking later does not extend the original 30-day confirmation period. Manual links show as Unverified until a later `/verify` confirms an exact match.
 - `/linkmany` no longer exists because its manual linking steps are now inside `/link`.
+- `/alts`, `/profile`, `/main`, and `/unlink` understand the selected game mode.
+- `/key` remains Modern-only, and Production 0.10.0 Planner character signups remain Modern-only.
+
+### Security and privacy
+
+- Battle.net passwords are entered only on Battle.net and are never collected by ZugBot.
+- Authorization codes, access tokens, raw state, and raw Battle.net account responses are not persisted.
+- BattleTag/display labels are not kept in the long-term roster, and temporary verification results are cleared after use.
+- OAuth and Discord bot responsibilities remain isolated, with sanitized lifecycle logging that excludes sensitive OAuth material.
 
 ## 0.9.1 — 2026-10-02
 

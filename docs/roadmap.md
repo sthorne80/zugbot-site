@@ -1,13 +1,13 @@
 # Roadmap
 
-Current production is **ZugBot 0.9.1**. This page separates released behavior from future direction; planned work is not a delivery promise.
+Current production is **ZugBot 0.10.0**. This page separates released behavior from future direction; planned work is not a delivery promise.
 
 ## Current
 
 ### Member and group operations
 
 - Blizzard-backed character lookup and realm suggestions
-- linked main and alt profiles through the unified `/link` panel, with optional Battle.net verification and manual bulk entry
+- Modern WoW and WoW: Forever linking and public profiles through the unified `/link` panel, with optional Battle.net verification and manual entry
 - Mythic+ group creation with linked characters and persistent cards
 - Smart LFG role and key-range preferences
 - multi-guild server setup and restart-safe persistence
@@ -53,7 +53,7 @@ Current production is **ZugBot 0.9.1**. This page separates released behavior fr
 
 ### Additional grouping
 
-ZugBot stores Modern WoW and WoW: Forever preferences today. A future Forever-oriented dungeon flow may complement the current Modern Mythic+ `/key` command without pretending both modes use identical mechanics.
+ZugBot supports Modern WoW and WoW: Forever character workflows today. A future Forever-oriented dungeon flow may complement the current Modern Mythic+ `/key` command without pretending both modes use identical mechanics.
 
 ## Product principles
 
