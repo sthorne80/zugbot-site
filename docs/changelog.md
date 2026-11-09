@@ -1,6 +1,21 @@
 # Changelog
 
-This page summarizes notable public-facing ZugBot changes. Current production is **0.10.0**.
+This page summarizes notable public-facing ZugBot changes. Current production is **0.11.0**.
+
+## 0.11.0 — 2026-11-09
+
+### Added
+
+- WoW: Forever dungeon LFG via `/dungeon`, with known-dungeon autocomplete, recommended level ranges, and a five-player group card (Tank, Healer, three DPS)
+- Forever character selection and interactive role signup, leave, group cancellation, and external-player PUG management
+- WoW: Forever Guild Planner events with one-time, weekly, and monthly scheduling and game-specific linked-character role signups
+
+### Fixed
+
+- Serialized concurrent dungeon interactions so the public roster does not get overwritten by a stale update
+- Restored persistent dungeon controls at startup even if the initial message fetch or refresh fails
+
+Modern `/key` and `/season` remain Modern WoW-only. See [WoW: Forever](forever.md) for setup and usage.
 
 ## 0.10.0 — 2026-11-08
 
