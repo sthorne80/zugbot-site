@@ -34,7 +34,7 @@ Battle.net ownership verification is optional. You can link a public character m
 
 ZugBot does **not collect or store your Battle.net password**. OAuth codes, access tokens, and raw Blizzard account data are processed temporarily rather than retained in the long-term character roster. Stored character records may include Blizzard character identifiers and matching information needed to confirm ownership. Ownership verification is current for **30 days**; expiration does not automatically unlink a character.
 
-See [Battle.net Verification & Privacy](../verification/) for additional technical details.
+See [Battle.net Verification & Privacy](verification.md) for additional technical details.
 
 ## When information is visible or shared
 
