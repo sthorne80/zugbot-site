@@ -48,7 +48,7 @@ Brewfest Kegs, Peon Fight Club, dice rolls, scores, and other games are **fictio
 
 ## Privacy and content
 
-The [ZugBot Privacy Policy](../privacy/) describes what information the service processes, what can be visible to guild members or staff, and how to request help with your data.
+The [ZugBot Privacy Policy](privacy.md) describes what information the service processes, what can be visible to guild members or staff, and how to request help with your data.
 
 You are responsible for content you choose to submit. Some actions create public posts in a selected Discord channel; others are restricted staff operations. Do not submit credentials, financial details, or unrelated sensitive personal information.
 
