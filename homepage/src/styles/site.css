@@ -1,0 +1,20 @@
+:where(button, input, select) { font: inherit; }
+:where(a, button, input, select, summary):focus-visible { outline: 3px solid #ffb582; outline-offset: 4px; }
+[hidden] { display: none !important; }
+.desktop-nav [aria-current="page"], .mobile-nav [aria-current="page"] { color: var(--ember); }
+.mobile-nav nav { max-height: calc(100dvh - 4rem); overflow-y: auto; }
+.site-footer { background: #121415; border-top: 1px solid #353735; }
+.home-help { border-top: 1px solid var(--rule); background: #1b1d1d; }
+.foot-inner { display: grid; grid-template-columns: 1.25fr repeat(3,minmax(0,1fr)); gap: 2.2rem; padding-block: 3rem 3.4rem; }
+.foot-brand > p { max-width: 17rem; margin-top: 1rem; color: var(--muted); line-height: 1.5; }
+.foot-inner nav p { font: 700 .92rem/1.4 var(--display); color: #f4b18a; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 .65rem; }
+.foot-inner nav ul { list-style: none; padding: 0; }
+.foot-inner nav a { display: inline-block; padding-block: .23rem; font-size: .98rem; color: #c4c4be; }
+.foot-inner nav a:hover { color: var(--ember); text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 48rem) {
+  .foot-inner { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.8rem; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+@media (max-height: 30rem) and (max-width: 54rem) {
+  .mobile-nav nav { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}

@@ -1,20 +1,22 @@
-# ZugBot Website & Documentation
+# ZugBot website
 
-This public repository contains the website and user documentation for **ZugBot**, a World of Warcraft guild companion and management bot for Discord.
+This repository builds the public product site and field manual for ZugBot. Discord runs the Activity. The website serves static pages, guides, and labeled local demonstrations.
 
-Production bot source code is maintained separately and is not published from this repository.
+## Run it locally
 
-## Local preview
+Use Node 24.22.3 and Python 3.13. From the repository root with a Python environment active:
 
-```bash
+```sh
 python -m pip install -r requirements.txt
-mkdocs serve
+npm --prefix homepage ci
+python homepage/build.py
+python homepage/preview.py
 ```
 
-Then open the local address printed by MkDocs.
+Open the loopback address printed by the preview server. The default is `http://127.0.0.1:4321/`. Use `--port` for another port. The full build checks article content, routes, canonical URLs, fragments, static assets, search and both sitemaps.
 
-## Production
+For frontend editing, run `npm --prefix homepage run dev` after installing dependencies. It prepares the MkDocs data before starting Astro's dev server. Rerun preparation after editing guide Markdown. The production-equivalent preview uses `homepage/dist/`. The npm build and preview commands also work with an active Python environment or a `PYTHON` environment variable pointing to its interpreter.
 
-The site is deployed to **https://zugbot.net** with GitHub Pages.
+## Review and release
 
-Documentation changes should describe released functionality accurately. Planned features belong on the roadmap and should not be presented as currently available.
+The Pages workflow builds the complete site and attaches a downloadable static preview to the run. Deployment requires an explicit manual workflow run from `main` with the publish input enabled. See [architecture, URL ownership and release notes](homepage/README.md).

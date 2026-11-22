@@ -2,3 +2,7 @@ node_modules/
 .astro/
 .sites-runtime/
 dist/
+.generated/
+.build-*/
+.build.lock
+__pycache__/

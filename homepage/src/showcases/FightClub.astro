@@ -1,0 +1,101 @@
+---
+import { BookOpen, Crown, Dices, HeartPulse, Shield, Shovel, Swords, Trophy } from '@lucide/astro';
+import ShowHero from './ShowHero.astro';
+
+const rounds = [
+  { round: 1, moveA: 'Attack', hpA: 30, iconA: Swords, moveB: 'Defend', hpB: 26, iconB: Shield, roll: 16, roller: 'Grub', note: 'Grub rolls a strong hit for 9 damage. Mugrok defends and takes 4 after rounding down.' },
+  { round: 2, moveA: 'Special', hpA: 24, iconA: Shovel, moveB: 'Attack', hpB: 17, iconB: Swords, roll: 14, roller: 'Grub', note: 'Grub lands a Brewfest Shovel Swing for 6 + 3 damage. Mugrok rolls a 10 and hits back for 6.' },
+  { round: 3, moveA: 'Recover', hpA: 19, iconA: HeartPulse, moveB: 'Attack', hpB: 17, iconB: Swords, roll: 19, roller: 'Mugrok', note: 'Grub recovers 4 HP before damage lands. Mugrok’s strong hit deals 9, leaving Grub at 19.' },
+];
+const moves = [
+  { name: 'Attack', icon: Swords, text: 'Roll a D20. A 10–14 lands for 6 damage, 15–19 deals 9, and a natural 20 hits for 14. Lower rolls deal zero.' },
+  { name: 'Defend', icon: Shield, text: 'Brace for the hit. Trade your attack for half the incoming damage, rounded down.' },
+  { name: 'Recover', icon: HeartPulse, text: 'Regain up to 4 HP before incoming damage. Recovery caps at the starting total of 30 HP.' },
+  { name: 'Special', icon: Shovel, text: 'A successful Brewfest Shovel Swing adds 3 damage. Wait two full rounds before using it again.' },
+];
+---
+<div class="showcase sc-fight">
+  <ShowHero category="The Tavern · D20 duels" title="Peon" accent="Fight Club" intro="Two peons. Thirty hit points apiece. Pick a move in secret, let the D20 land, and give the guild something to talk about after raid." link="/peon-fight-club/" action="Read the rules" secondaryLink="/get-started/" secondaryAction="Get started">
+    <figure class="sc-demo duel">
+      <figcaption><strong><BookOpen aria-hidden="true" />Combat Journal</strong><span class="sc-caption">Illustrative round replay</span></figcaption>
+      <fieldset class="sc-switch">
+        <legend class="sc-sr">Review a sample combat round</legend>
+        <div class="sc-row-switch">
+          {rounds.map(({round,moveA,hpA,iconA:IconA,moveB,hpB,iconB:IconB,roll,roller,note}) => (
+            <Fragment>
+              <input class="sc-option" type="radio" id={`duel-round-${round}`} name="duel-replay" checked={round === 1} aria-controls={`journal-round-${round}`} />
+              <label for={`duel-round-${round}`} style={`--tab:${round}`}>Round {round}</label>
+              <div class="sc-pane" id={`journal-round-${round}`}>
+                <div class="duel-floor">
+                  <div class="combatant">
+                    <span class="fighter-mark"><IconA aria-hidden="true" /></span><b>Grub</b><span>{moveA}</span>
+                    <span class="vital"><i style={`width:${hpA / 30 * 100}%`}></i></span><small>{hpA} / 30 HP</small>
+                  </div>
+                  <div class="roll-result"><div class="d20" role="img" aria-label={`D20 roll of ${roll}`}><i></i><i></i><i></i><i></i><b>{roll}</b></div><span class="sc-tag">{roller}’s D20</span></div>
+                  <div class="combatant rival">
+                    <span class="fighter-mark"><IconB aria-hidden="true" /></span><b>Mugrok</b><span>{moveB}</span>
+                    <span class="vital"><i style={`width:${hpB / 30 * 100}%`}></i></span><small>{hpB} / 30 HP</small>
+                  </div>
+                </div>
+                <div class="round-note"><Dices size={20} aria-hidden="true" /><p>{note}</p></div>
+              </div>
+            </Fragment>
+          ))}
+        </div>
+      </fieldset>
+    </figure>
+  </ShowHero>
+  <section class="sc-section wrap" aria-labelledby="move-title">
+    <p class="kicker"><span class="marker" aria-hidden="true"></span>Combat moves</p>
+    <h2 id="move-title">Choose your next move.</h2>
+    <p class="sc-description">Both fighters lock in a choice before ZugBot reveals the round. Each round has a 15-minute deadline.</p>
+    <div class="move-list">
+      {moves.map(({name, icon:Icon, text}) => <article><div class="move-icon"><Icon size={26} aria-hidden="true" /></div><h3>{name}</h3><p>{text}</p></article>)}
+    </div>
+  </section>
+  <section class="sc-section wrap sc-split" aria-labelledby="championship">
+    <div class="champion-copy"><div class="trophy-seal"><Trophy size={32} aria-hidden="true" /></div><p class="kicker">Championship</p><h2 id="championship">A day with<br />the crown.</h2>
+      <p class="sc-description">A qualifying win can earn the 24-hour Reigning Peon Champion trophy. The cosmetic title can pass to another winner or renew with a victory.</p>
+    </div>
+    <ul class="sc-list">
+      <li><Swords aria-hidden="true" /><div><h3>Issue a challenge</h3><p>Open Fun in the Activity, choose an eligible channel and a guildmate, then send the challenge. Your opponent has 24 hours to answer a new invitation.</p></div></li>
+      <li><BookOpen aria-hidden="true" /><div><h3>Replay the journal</h3><p>Follow rolls, moves, HP, and commentary round by round. A knockout ends the duel. After 15 rounds, higher HP wins and a tie is a draw.</p></div></li>
+      <li><Crown aria-hidden="true" /><div><h3>Visit the Hall of Fame</h3><p>Browse previous champions and battle records. Spectators need access to the original channel and its history to view the fight.</p></div></li>
+    </ul>
+  </section>
+  <section class="wrap sc-callout" aria-labelledby="lost-match"><div><h2 id="lost-match">Missing battle message?</h2><p>Fighters can restore an eligible deleted message from Fights and results and keep the saved round.</p></div><a class="button secondary" href="/peon-fight-club/#resume-cancel-or-restore-after-a-deleted-message">Recovery guide</a></section>
+</div>
+<style>
+  .duel {background:#221d1e;}
+  .duel-floor {padding:clamp(1.25rem,3.5vw,3rem) clamp(.65rem,2vw,1.7rem);display:grid;grid-template-columns:1fr minmax(5rem,1.25fr) 1fr;gap:.7rem;align-items:center;position:relative;isolation:isolate;overflow:hidden;
+    background:radial-gradient(ellipse at 50% 60%,#834a3255,transparent 65%),linear-gradient(115deg,#342728,#1d1b1b 55%,#312623);}
+  .duel-floor::before {content:'';position:absolute;z-index:-1;left:50%;top:50%;height:110%;aspect-ratio:1;border:1px solid #b9875a35;outline:1px solid #b9875a18;outline-offset:12px;transform:translate(-50%,-50%) rotate(45deg);}
+  .combatant,.roll-result {display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0;}
+  .fighter-mark {color:#ed986d;background:#5d362a;border:1px solid #8d5540;width:3.3rem;height:2.75rem;display:grid;place-items:center;clip-path:polygon(10% 0,90% 0,100% 15%,100% 75%,50% 100%,0 75%,0 15%);}
+  .fighter-mark svg {width:1.45rem;height:1.45rem;}
+  .rival .fighter-mark {background:#354440;border-color:#697b6d;color:#c6d2b7;}
+  .combatant b {font:700 clamp(1.5rem,2.8vw,2.6rem)/1 var(--display);margin:.4rem 0 .14rem;text-transform:uppercase;}
+  .combatant > span:not(.fighter-mark,.vital) {color:#dad0c4;font-size:.95rem;}
+  .combatant small {color:#e2ceba;font:600 .89rem/1.2 var(--display);letter-spacing:.045em;}
+  .vital {display:block;width:min(7rem,100%);height:4px;background:#65554e;margin:.5rem 0 .26rem;}
+  .vital i {display:block;height:100%;background:#efad76;}
+  .rival .vital i {background:#b4c5a3;}
+  .d20 {position:relative;display:grid;place-items:center;width:clamp(5.4rem,9.7vw,10rem);aspect-ratio:1/1.08;background:conic-gradient(from 30deg,#ba5935 0 60deg,#693024 60deg 120deg,#8c4128 120deg 180deg,#b45331 180deg 240deg,#d47646 240deg 300deg,#ef9960 300deg);
+    clip-path:polygon(50% 0%,98% 25%,98% 75%,50% 100%,2% 75%,2% 25%);}
+  .d20 i {position:absolute;inset:0;background:#e58a53;clip-path:polygon(50% 0,20% 33%,80% 33%);}
+  .d20 i:nth-child(2){background:#773823;clip-path:polygon(2% 25%,20% 33%,2% 75%);}
+  .d20 i:nth-child(3){background:#c46b40;clip-path:polygon(98% 25%,80% 33%,98% 75%);}
+  .d20 i:nth-child(4){background:linear-gradient(#c37146,#8d482d);clip-path:polygon(20% 34%,80% 34%,50% 84%);}
+  .d20 b {z-index:1;margin-top:-.05em;color:#fff0d6;text-shadow:0 2px 1px #493021;font:italic 800 clamp(2.3rem,4.7vw,5rem)/1 var(--display);}
+  .roll-result .sc-tag {margin-top:.6rem;font-size:.78rem;}
+  .round-note {display:flex;align-items:flex-start;gap:.7rem;color:#e4d6c8;padding:1rem;border-top:1px solid var(--sc-line);background:#292222;}
+  .round-note svg {flex:none;color:var(--sc-ink);}
+  .round-note p {font-size:1rem;line-height:1.4;min-height:2.8em;}
+  .move-list {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-top:1.6rem;}
+  .move-list article {background:linear-gradient(140deg,#2a2221,#1a1b1c 75%);border:1px solid var(--sc-line);padding:clamp(1rem,2vw,1.7rem);}
+  .move-icon {color:var(--sc-ink);margin-bottom:1.25rem;}
+  .move-list h3 {margin-bottom:.55rem;}
+  .trophy-seal {display:grid;place-items:center;width:4rem;height:4rem;float:right;margin:0 0 1rem 1rem;border:1px solid #796144;background:radial-gradient(ellipse,#60422b,#2c2620 80%);border-radius:50%;color:#e8bc77;box-shadow:inset 0 0 0 4px #292522,inset 0 0 0 5px #67513b;}
+  @media (max-width:62rem){.move-list {grid-template-columns:repeat(2,minmax(0,1fr));}.duel-floor{gap:.45rem;}}
+  @media (max-width:28rem){.duel-floor {gap:.35rem;padding-inline:.45rem;}.move-list {grid-template-columns:1fr;}.move-list article {display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;}.move-icon {grid-row:1/3;margin:0;}.move-list h3,.move-list p {margin:0;}}
+</style>

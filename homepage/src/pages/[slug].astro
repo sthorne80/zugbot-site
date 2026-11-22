@@ -1,0 +1,52 @@
+---
+import Site from '../layouts/Site.astro';
+import SearchForm from '../help/SearchForm.astro';
+import { shelves } from '../help/catalog';
+import guides from '../../.generated/guides.json';
+import { BookOpen, List, ChevronDown } from '@lucide/astro';
+import '../styles/manual.css';
+
+export function getStaticPaths() {
+  return guides.map(guide => ({params: {slug: guide.slug}, props: {guide}}));
+}
+const { guide } = Astro.props;
+const shelf = shelves.find(group => group.guides.some(([slug]) => slug === guide.slug));
+const record = shelf?.guides.find(([slug]) => slug === guide.slug);
+const contents = guide.headings.filter(heading => heading.level === 2);
+const related = shelf?.guides.filter(([slug]) => slug !== guide.slug).slice(0,3) || [];
+---
+<Site title={guide.title + ' · Field manual — ZugBot'} description={record?.[2] || guide.title}>
+  <div class="guide-strip">
+    <div class="wrap guide-strip-inner">
+      <nav aria-label="Breadcrumb"><a href="/documentation/"><BookOpen size={18} aria-hidden="true" />Field manual</a>
+        <span aria-hidden="true">/</span>{shelf && <a href={'/documentation/#' + shelf.id}>{shelf.title}</a>}</nav>
+      <SearchForm compact />
+    </div>
+  </div>
+  <div class="wrap guide-frame">
+    <aside class="guide-aside" aria-label="Guide navigation">
+      <div class="guide-aside-card">
+        <details class="contents" open>
+          <summary><List size={18} aria-hidden="true" /> On this page <ChevronDown size={16} aria-hidden="true" /></summary>
+          <ol>{contents.map(({id,text}) => <li><a href={'#'+id}>{text}</a></li>)}</ol>
+        </details>
+        <a class="manual-return" href="/documentation/">All guides</a>
+      </div>
+    </aside>
+    <article class="guide-copy" data-guide-content set:html={guide.html} />
+  </div>
+  {related.length > 0 && <section class="wrap guide-related" aria-labelledby="guide-more-links">
+    <h2 id="guide-more-links">More from the manual</h2>
+    <div>{related.map(([slug,title,copy]) => <a href={'/'+slug+'/'}><strong>{title}</strong><span>{copy}</span></a>)}</div>
+  </section>}
+  {guide.slug === 'realm-slugs' && <script is:inline src="/assets/javascripts/realm-slugs.js" defer></script>}
+  <script>
+    const contents = document.querySelector<HTMLDetailsElement>('.contents');
+    const small = window.matchMedia('(max-width: 52rem)');
+    function sizeContents() { if (contents) contents.open = !small.matches; }
+    sizeContents(); small.addEventListener('change', sizeContents);
+    contents?.addEventListener('click', event => {
+      if (small.matches && event.target instanceof Element && event.target.closest('a')) contents.open = false;
+    });
+  </script>
+</Site>

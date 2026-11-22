@@ -1,0 +1,15 @@
+---
+import Site from '../layouts/Site.astro';
+import mascot from '../../../docs/assets/zugbot-mascot-v1.svg?url';
+import '../styles/manual.css';
+---
+<Site title="Page not found — ZugBot" description="Return to ZugBot or look up a guide in the field manual." errorPage>
+  <section class="manual-mast lost-page"><div class="wrap manual-mast-inner">
+    <div class="manual-heading"><p class="kicker"><span class="slashes" aria-hidden="true"></span>Error 404</p>
+      <h1>Lost in the<br /><em>stronghold?</em></h1>
+      <p>This page couldn’t be found. The field manual has the guild guides, commands, and troubleshooting steps.</p>
+      <div class="actions"><a class="button primary" href="/">Back to ZugBot</a><a class="button secondary" href="/documentation/">Field manual</a></div>
+    </div>
+    <div class="manual-emblem" aria-hidden="true"><div class="emblem-rings"></div><img src={mascot} alt="" width="320" height="320" /></div>
+  </div></section>
+</Site>

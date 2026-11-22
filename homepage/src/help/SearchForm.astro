@@ -1,0 +1,10 @@
+---
+import { Search } from '@lucide/astro';
+const { compact = false, id = 'manual-query' } = Astro.props;
+---
+<form class:list={['manual-search', { compact }]} role="search" action="/documentation/" method="get">
+  <Search aria-hidden="true" size={21} />
+  <label class="sr-only" for={id}>Search the field manual</label>
+  <input type="search" name="q" id={id} placeholder={compact ? 'Search the manual' : 'Search guides, commands, and guild tools'} autocomplete="off" maxlength="180" />
+  <button type="submit">Search</button>
+</form>

@@ -1,45 +1,47 @@
-# ZugBot homepage prototype
+# Site architecture and route ownership
 
-This branch previews the proposed product homepage at the custom-domain root. All detailed guides come from the existing MkDocs build. The production workflow still builds only MkDocs.
+The original prototype directory, `homepage/`, now contains the entire static Astro website. One shared layout supplies the navigation, footer, local fonts, focus states, mobile menu and canonical URL. Product showcases and guides share that layout. The three interactive feature demonstrations use locally illustrated examples of documented Discord behavior. The website does not authenticate users or make bot requests.
 
-## Preview locally
+## Build path
 
-Use Node.js 24.22.3 or another version supported by the pinned Astro release, npm, and Python 3.13. Run the following from the repository root, with your preferred Python environment active.
+1. `mkdocs.export.yml` inherits the existing MkDocs configuration. A build-only hook exports the rendered article HTML and headings for each non-homepage Markdown source in `docs/`. It retains code, admonitions, tables, internal links, and legal wording.
+2. `homepage/build.py` prepares guide data in `.generated/`, along with the original public assets and search data. Astro renders the product routes, help center, old guide routes and error page into a fresh candidate directory.
+3. The assembler replaces the stale MkDocs homepage search records with the nine new product/help destinations. Detailed guide sections remain searchable. One XML sitemap and its gzip copy describe all 24 public page URLs. The 404 is excluded.
+4. `check_site.py` verifies the expected route set, collision rules, one H1 per page, canonicals, duplicate IDs, guide markup parity, internal links and fragments, search targets, CSS asset URLs and legacy asset bytes. The builder swaps in `dist/` after validation. The review server serves unknown paths with the actual 404 status and page.
 
-```sh
-python -m pip install -r requirements.txt
-npm --prefix homepage ci
-npm --prefix homepage run build
-python homepage/preview.py
-```
+Astro, MkDocs, their existing dependencies, and GitHub Pages handle the entire site. Search runs locally in the browser. The Node and Python build tools are not required on the hosting platform. [Astro Pages guide](https://docs.astro.build/en/guides/deploy/github/) · [GitHub Pages artifacts](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
-Open the loopback URL printed by the server. The default is `http://127.0.0.1:4321/`. Stop it with Ctrl+C. Use `--port 4322` to select a different port, or `python homepage/preview.py --check` for a build and compatibility check without serving. Rebuild Astro and restart the preview after editing the homepage. The existing `mkdocs serve` command continues to preview the production design.
+## Product routes
 
-## What is in the branch
+| Visitor destination | Public route | Detailed material |
+| --- | --- | --- |
+| Home | `/` | The eight existing public homepage fragment IDs are preserved. |
+| Features | `/features/` | Links to showcases and released capability guides. |
+| Guild Command Center | `/guild-command-center/` | Existing guide stays at `/discord-activity/`. |
+| Peon Fight Club | `/tavern/peon-fight-club/` | Existing rules and bookmarks stay at `/peon-fight-club/`. |
+| Guild Planner | `/guild-planner/` | Existing guide stays at `/planner/`. |
+| Characters & Groups | `/characters-and-groups/` | Links to `/member-guide/`, `/forever/` and verification. |
+| Get Started | `/get-started/` | Existing detailed walkthrough stays at `/getting-started/`. |
+| Support | `/support/` | Integrates the Lab invite, email, troubleshooting and donation links. |
+| Documentation | `/documentation/` | Search plus a categorized index of all 15 guides. |
 
-| Path under `homepage/` | Purpose |
+### Existing guide URLs
+
+All fifteen have the new Astro guide shell. The exact article content and original heading IDs come from the existing documents. None of these addresses requires a redirect.
+
+| Group | Preserved routes |
 | --- | --- |
-| `src/pages/index.astro` | Homepage, navigation, accessible mobile menu, real feature guides, starter commands and support. Imports the existing fortress artwork and v2 emblem directly from `docs/assets/`. |
-| `src/styles/home.css` | Responsive hero art direction, typography, feature cards, keyboard focus and reduced-motion styles. |
-| `package.json`, `package-lock.json`, `astro.config.mjs` | Pinned Astro and design dependencies, static output at the domain root, isolated `/_zugbot/` assets. |
-| `public/_zugbot/licenses/` | Upstream notices for the locally served Barlow fonts and Lucide interface icons. |
-| `preview.py` | Local-only composer and link checker. Builds MkDocs strictly, overlays the built homepage in a fresh temporary review tree, compares every other file, and checks links, fragments, assets and search destinations. |
-| `.gitignore`, `README.md` | Exclude generated files and document how to review the branch. |
+| Launch and coordination | `/getting-started/`, `/discord-activity/`, `/peon-fight-club/`, `/planner/`, `/member-guide/`, `/forever/` |
+| Reference and operations | `/commands/`, `/admin-guide/`, `/realm-slugs/`, `/troubleshooting/` |
+| Release history | `/changelog/`, `/roadmap/` |
+| Integration and legal | `/privacy/`, `/terms/`, `/verification/` |
 
-The seven requested destinations are reachable from the homepage. Home is the logo, Features and Support are sections, and Guild Command Center, Peon Fight Club, Get Started and Documentation open existing guides. Only the homepage has a new design. Feature copy follows the website's release notes and guides. The three feature illustrations are navigation icons. [Production changelog](https://zugbot.net/changelog/) · [Guild Command Center](https://zugbot.net/discord-activity/) · [Peon Fight Club](https://zugbot.net/peon-fight-club/) · [Guild Planner](https://zugbot.net/planner/)
+Original reachable assets, including the realm lookup JavaScript and JSON, remain at their published paths. The legacy search JSON endpoint, both sitemap paths and `/404.html` remain available. The home bookmarks are `#main-content`, `#hero-title`, `#features`, `#planner-title`, `#tools-title`, `#start-title`, `#support`, and `#support-title`. OAuth callbacks on separate API hosts are outside the website artifact. The website audit cannot enumerate private external bookmarks.
 
-## Architecture recommendation
+## Content and operational notes
 
-Use Astro's static output for reviewed product pages and keep MkDocs Material responsible for the existing guide tree. GitHub Pages can serve the resulting HTML, styles, fonts, images and search index at the current custom domain. The website needs no server runtime or OAuth handler. A separate `/docs/` migration would introduce redirects and change relative paths for existing users. [Astro on GitHub Pages](https://docs.astro.build/en/guides/deploy/github/) · [MkDocs configuration](https://www.mkdocs.org/user-guide/configuration/) · [GitHub Pages artifacts](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
-
-For a later approved release, use the same three-directory design as the local preview. Build MkDocs and Astro separately, copy the MkDocs artifact to a fresh assembly directory, then add only approved Astro output. The sole allowed overlap today is `index.html`. Keep each generator's assets isolated and run the compatibility checks before uploading a single Pages artifact. Preserve the prior artifact and commit for rollback. Introduce any workflow change in its own reviewed change.
-
-## Route and deployment constraints
-
-- Direct public checks on November 22, 2026 covered the homepage, 15 guides, all 14 repository assets, the 404 document, both sitemap formats and the Material search index. Each returned HTTP 200 directly. Each page canonical matched its requested URL. [Live sitemap](https://zugbot.net/sitemap.xml)
-- Keep `/privacy/`, `/terms/` and `/verification/` at their exact paths with their complete MkDocs documents and fragments. Preserve `/getting-started/`, `/discord-activity/`, `/peon-fight-club/`, `/member-guide/`, `/forever/`, `/realm-slugs/`, `/planner/`, `/admin-guide/`, `/commands/`, `/troubleshooting/`, `/roadmap/` and `/changelog/`. The last two guides distinguish released features from plans. External bookmarks and private integration settings cannot be enumerated from the website alone.
-- Keep `/assets/`, `/search/search_index.json`, `/sitemap.xml`, `/sitemap.xml.gz` and `/404.html`. Realm lookup needs both its JavaScript and the JSON next to the script directory. Preserve the eight legacy homepage content IDs used in `preview.py`.
-- Existing MkDocs search has six homepage records with the old homepage wording. Their targets are valid in the prototype. Refresh these entries for an approved cutover. Extend both sitemaps when future product pages add URLs. Reserve distinct routes for marketing pages that would otherwise collide with guides.
-- The baseline uses a floating MkDocs Material dependency range. Phase 1 built with MkDocs 1.6.1 and Material 9.8.2. Compare protected HTML against the approved release when dependencies change. Material's maintainers state critical maintenance ends May 5, 2027. Track the documentation theme's lifecycle independently of the homepage rollout. [Maintainer update](https://squidfunk.github.io/mkdocs-material/blog/2025/11/05/zensical/)
-- Pull requests build MkDocs. Pushes to main and manual dispatch can deploy. All runs currently share a cancel-in-progress concurrency group. When introducing Astro CI, give review builds separate concurrency and gate deployment on the approved production ref. The custom domain is already configured for Pages Actions. [Existing workflow](https://github.com/sthorne80/zugbot-site/blob/13f419d6d5d3a68c6a6fdce080fa2355afea7cc2/.github/workflows/pages.yml)
-- The original Discord Lab invite returned Discord error `50270` (expired) on November 22. The owner-supplied replacement resolves to the ZugBot Lab welcome channel. Discord reports an expiration of December 22, 2026 at 12:30 p.m. Eastern. Revalidate the invite at release. The existing support email and donation destinations remain linked. [ZugBot Lab](https://discord.gg/DYJHceHZy)
+- On November 22, 2026, all 16 existing page routes, 14 tracked public assets and four generated public resources responded directly with HTTP 200. The donation destinations resolved and the supplied Discord invitation resolved to ZugBot Lab. Discord reported its expiration as December 22, 2026 at 12:30 p.m. Eastern. Recheck the invitation before release.
+- The website repository contains no released product screenshots or verified public Production install URL. The demonstrations are labeled illustrations. Onboarding uses Discord's documented installation path and points to support for the approved app profile. [Discord app guide](https://support.discord.com/hc/en-us/articles/21334461140375-Using-Apps-on-Discord)
+- The branch workflow builds on PRs and pushes to main and the redesign branch. Review artifacts expire after seven days. Only the manually enabled deploy job on main can write Pages. Keep an approved prior artifact or Git revision available for rollback.
+- Use `python homepage/build.py` or `npm --prefix homepage run build` for a release-equivalent artifact. A direct Astro build skips assembly checks and final search/sitemap generation. Serving the artifact from a repository subpath requires a distinct base-path build. The production custom domain and local review both use the origin root.
+- Keep the protected Markdown and integration route checks when upgrading MkDocs or its plugins. The tested Material release is 9.8.2. Its maintainers plan to end critical maintenance May 5, 2027. [Maintainer update](https://squidfunk.github.io/mkdocs-material/blog/2025/11/05/zensical/)

@@ -1,0 +1,88 @@
+---
+import '@fontsource/barlow/latin-400.css';
+import '@fontsource/barlow/latin-600.css';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/barlow-condensed/latin-700.css';
+import '@fontsource/barlow-condensed/latin-800-italic.css';
+import '../styles/home.css';
+import '../styles/site.css';
+import { Menu } from '@lucide/astro';
+import emblem from '../../../docs/assets/zugbot-logo-v2.svg?url';
+
+interface Props { title: string; description: string; errorPage?: boolean }
+const { title, description, errorPage = false } = Astro.props;
+const path = Astro.url.pathname;
+const nav = [
+  ['Features', '/features/'], ['Command Center', '/guild-command-center/'],
+  ['Fight Club', '/tavern/peon-fight-club/'], ['Documentation', '/documentation/'], ['Support', '/support/'],
+];
+const sections = [
+  { title: 'Explore', links: [
+    ['Features', '/features/'], ['Guild Command Center', '/guild-command-center/'], ['Peon Fight Club', '/tavern/peon-fight-club/'],
+    ['Guild Planner', '/guild-planner/'], ['Characters & Groups', '/characters-and-groups/'],
+  ] },
+  { title: 'Field manual', links: [
+    ['Get started', '/get-started/'], ['Documentation', '/documentation/'], ['Command reference', '/commands/'],
+    ['Troubleshooting', '/troubleshooting/'], ['Changelog', '/changelog/'],
+  ] },
+  { title: 'ZugBot', links: [
+    ['Support & community', '/support/'], ['Roadmap', '/roadmap/'], ['Verification', '/verification/'],
+    ['Privacy policy', '/privacy/'], ['Terms of service', '/terms/'],
+  ] },
+];
+const canonical = new URL(path, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111314" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {errorPage ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    <link rel="icon" href={emblem} type="image/svg+xml" />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#main-content">Skip to content</a>
+    <header class="topbar">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="/" aria-label="ZugBot home" aria-current={path === '/' ? 'page' : undefined}><img src={emblem} width="43" height="43" alt="" />ZUG<span>BOT</span></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          {nav.map(([label, href]) => <a href={href} aria-current={path === href ? 'page' : undefined}>{label}</a>)}
+        </nav>
+        <a class="nav-cta" href="/get-started/" aria-current={path === '/get-started/' ? 'page' : undefined}>Get started</a>
+        <details class="mobile-nav">
+          <summary><Menu size={22} aria-hidden="true" /> Menu</summary>
+          <nav aria-label="Mobile navigation">
+            {[['Home', '/'], ...nav.slice(0,3), ['Guild Planner','/guild-planner/'], ['Characters & Groups','/characters-and-groups/'], ...nav.slice(3), ['Get started','/get-started/']].map(([label, href]) =>
+              <a href={href} aria-current={path === href ? 'page' : undefined}>{label}</a>)}
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="wrap foot-inner">
+        <div class="foot-brand">
+          <a class="wordmark" href="/" aria-label="ZugBot home"><img src={emblem} width="41" height="41" alt="" />ZUG<span>BOT</span></a>
+          <p>Your World of Warcraft guild companion on Discord.</p>
+        </div>
+        {sections.map(group => <nav aria-label={group.title + ' footer links'}><p>{group.title}</p><ul>{group.links.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul></nav>)}
+      </div>
+    </footer>
+    <script>
+      const menu = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+      document.addEventListener('click', (event) => {
+        if (menu?.open && event.target instanceof Element && (!menu.contains(event.target) || event.target.closest('a'))) menu.open = false;
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menu?.open) {
+          menu.open = false;
+          menu.querySelector('summary')?.focus();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+---
+import './product.css';
+import { BookOpen, Gamepad2, MessageCircle, Settings2 } from '@lucide/astro';
+import { lab } from './links';
+---
+<div class="prod-page launch-page">
+  <section class="prod-hero" aria-labelledby="launch-heading">
+    <div class="wrap prod-hero-inner">
+      <div>
+        <p class="prod-label">Get started</p>
+        <h1 id="launch-heading">Report<br /><em>for duty.</em></h1>
+        <p class="prod-lead">ZugBot runs where your guild already meets. Open the Activity in Discord, link a character, and give your next raid or dungeon group a home.</p>
+      </div>
+      <nav class="launch-paths" aria-label="Choose your starting point">
+        <a href="#member-setup"><Gamepad2 aria-hidden="true" /><div><strong>I’m a guild member</strong><span>Open ZugBot in a server that already has it.</span></div></a>
+        <a href="#server-setup"><Settings2 aria-hidden="true" /><div><strong>I’m setting up a server</strong><span>Add the app and configure your guild’s channels.</span></div></a>
+      </nav>
+    </div>
+  </section>
+  <section class="wrap prod-section prod-split" id="member-setup" aria-labelledby="member-start">
+    <div class="prod-heading"><p class="prod-label">For guild members</p><h2 id="member-start">Your first<br />launch</h2>
+      <p>New to ZugBot? You can try it with the community in the public Lab.</p>
+      <div class="prod-actions"><a class="button secondary" href={lab}><MessageCircle size={18} aria-hidden="true" />Visit ZugBot Lab</a></div>
+    </div>
+    <ol class="launch-steps">
+      <li><div><h3>Open the App Launcher</h3><p>Enter a channel that allows Activities in a guild with ZugBot enabled. Open Discord’s App Launcher, choose <strong>ZugBot</strong>, and launch the Activity. Discord may ask permission to identify you and your servers.</p></div></li>
+      <li><div><h3>Link your first character</h3><p>Type <code>/link</code> in Discord. Choose Retail or WoW: Forever if asked. In the private picker, choose <strong>Add Manually</strong> or use the optional Battle.net verification flow. You can set a Main for each game.</p><a class="prod-link" href="/characters-and-groups/">See character entry examples</a></div></li>
+      <li><div><h3>Find your next group</h3><p>Open <strong>Groups</strong> in the Activity to coordinate a dungeon. Visit <strong>Events</strong> to see the guild calendar and reserve your role with a character from the event’s game.</p><a class="prod-link" href="/guild-command-center/">Tour the Command Center</a></div></li>
+    </ol>
+  </section>
+  <section class="setup-section" id="server-setup" aria-labelledby="owner-start">
+    <div class="wrap prod-section prod-split">
+      <div class="prod-heading"><p class="prod-label">For server owners &amp; admins</p><h2 id="owner-start">Set up<br />your guild</h2>
+        <p>Server owners and members with Manage Server can add apps. Members who need ZugBot installed can ask a server administrator.</p>
+      </div>
+      <ol class="launch-steps">
+        <li><div><h3>Add ZugBot in Discord</h3><p>Open the approved ZugBot app profile in Discord. If <strong>Add App</strong> is available, choose your server, review the permissions, and authorize the installation. Check <strong>Server Settings → Integrations</strong> to confirm it was added.</p>
+          <p>If you need the Production app profile or your server isn’t available for installation, contact ZugBot support for access.</p>
+          <div class="prod-row-links"><a class="prod-link" href="/support/">ZugBot support</a><a class="prod-link" href="https://support.discord.com/hc/en-us/articles/21334461140375-Using-Apps-on-Discord">Discord’s app installation guide</a></div>
+        </div></li>
+        <li><div><h3>Choose channels and game modes</h3><p>Run <code>/setup</code> in your server. Choose a Bot Commands Channel and a Mythic/LFG Channel, enable the games your guild plays, and select an enabled default game. Set the Raid channel if you’ll use Guild Planner.</p></div></li>
+        <li><div><h3>Check the first event or group</h3><p>Launch the Activity from an eligible channel. Try a group card or create an event in the configured channel. Planner needs <strong>Manage Events</strong>. For role assignment, map the guild’s roles and check ZugBot’s position in the Discord hierarchy.</p>
+          <a class="prod-link" href="/admin-guide/">Check the full setup and permissions</a>
+        </div></li>
+      </ol>
+    </div>
+  </section>
+  <aside class="wrap prod-section first-guides" aria-label="More setup help"><BookOpen aria-hidden="true" /><div><h3>Keep the field guide handy</h3><p class="prod-copy">Follow the full walkthrough or find a fix if the Activity is missing.</p></div><div class="prod-row-links"><a class="prod-link" href="/getting-started/">Setup walkthrough</a><a class="prod-link" href="/troubleshooting/">Troubleshooting</a></div></aside>
+</div>
+<style>
+  .launch-page .prod-hero { background: radial-gradient(ellipse at 86% 100%,#50342b,transparent 60%),repeating-linear-gradient(130deg,transparent 0 9px,#ffffff04 9px 10px),#191818; }
+  .launch-paths { display:grid; border-block:1px solid #796052; background:#1d1b1a; }
+  .launch-paths a { display:flex; gap:1.1rem; align-items:center; padding:clamp(1.25rem,2.7vw,2.3rem); border-inline:1px solid #594b42; }
+  .launch-paths a + a { border-top:1px solid #55483f; }
+  .launch-paths a:hover { background:#33261f; }
+  .launch-paths svg { box-sizing:content-box; width:26px; height:26px; padding:.7rem; border:1px solid #8a654e; color:#efb78d; flex-shrink:0; }
+  .launch-paths strong,.launch-paths span { display:block; }
+  .launch-paths strong { font:600 clamp(1.5rem,2.25vw,2.15rem)/1.1 var(--display); }
+  .launch-paths span { margin-top:.4rem; color:#d0c7bf; line-height:1.4; }
+  .launch-page .prod-heading .prod-label { color:var(--copper); font-size:.9rem; margin-bottom:.6rem; }
+  .launch-steps { counter-reset:step; display:grid; gap:0; list-style:none; margin:0; padding:0; }
+  .launch-steps li { counter-increment:step; display:grid; grid-template-columns:2.8rem minmax(0,1fr); gap:1.15rem; position:relative; padding:0 0 1.8rem; }
+  .launch-steps li::before { content:counter(step,decimal-leading-zero); position:relative; z-index:1; height:2.8rem; display:grid; place-items:center; border:1px solid #866348; background:#32251e; color:#f1bd95; font:600 1.25rem var(--display); }
+  .launch-steps li:not(:last-child)::after { content:''; position:absolute; left:1.4rem; top:2.8rem; bottom:0; border-left:1px solid #5c4638; }
+  .launch-steps li:last-child { padding-bottom:0; }
+  .launch-steps h3 { margin:.15rem 0 .5rem; }
+  .launch-steps p { font-size:1.055rem; color:var(--muted); }
+  .launch-steps p + p,.launch-steps .prod-link { margin-top:.65rem; }
+  .launch-steps strong { color:var(--pale); }
+  .setup-section { border-block:1px solid var(--rule); background:#191b1b; }
+  .first-guides { display:flex; gap:1.1rem; align-items:center; }
+  .first-guides > svg { flex:none; color:var(--copper); }
+  .first-guides .prod-row-links { margin-left:auto; }
+  @media(max-width:44rem) {
+    .launch-paths a { padding:1rem; gap:.85rem; }
+    .launch-steps li { grid-template-columns:2.3rem minmax(0,1fr); gap:.8rem; }
+    .launch-steps li::before { height:2.3rem; }
+    .launch-steps li:not(:last-child)::after { left:1.15rem; top:2.3rem; }
+    .first-guides { display:grid; grid-template-columns:auto 1fr; }
+    .first-guides .prod-row-links { grid-column:2; margin-left:0; }
+  }
+</style>

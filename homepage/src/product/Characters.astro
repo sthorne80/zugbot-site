@@ -1,0 +1,95 @@
+---
+import './product.css';
+import { BadgeCheck, BellRing, Castle, Shield, Swords, UsersRound } from '@lucide/astro';
+---
+<div class="prod-page roster-page">
+  <section class="prod-hero" aria-labelledby="characters-heading">
+    <div class="wrap prod-hero-inner">
+      <div>
+        <p class="prod-label">Characters &amp; groups</p>
+        <h1 id="characters-heading">Rally your<br /><em>party.</em></h1>
+        <p class="prod-lead">Bring your main and alts into Discord. Keep a roster for each game and find the guildmates you need for your next dungeon.</p>
+        <div class="prod-actions"><a class="button primary" href="#dungeon-groups">Explore groups</a><a class="prod-link" href="/member-guide/">Member guide</a></div>
+      </div>
+      <div class="roster-demo">
+        <p class="roster-label"><UsersRound size={18} aria-hidden="true" /> Illustrative linking example</p>
+        <fieldset class="mode-selector">
+          <legend>Choose a game</legend>
+          <input type="radio" id="sample-retail" name="sample-game" checked /><label for="sample-retail">Retail WoW</label>
+          <input type="radio" id="sample-forever" name="sample-game" /><label for="sample-forever">WoW: Forever</label>
+          <div class="character-sheet retail-sheet">
+            <div class="character-name"><span class="character-seal"><Shield aria-hidden="true" /></span><div><h2>Treehab</h2><p>Thunderhorn</p></div></div>
+            <div class="sample-command"><span>Manual link entry</span><code>Treehab thunderhorn</code></div>
+            <p>Enter a character name and the official realm slug.</p>
+          </div>
+          <div class="character-sheet forever-sheet">
+            <div class="character-name"><span class="character-seal"><Castle aria-hidden="true" /></span><div><h2>Abrakadaver Salwyn</h2><p>WoW: Forever</p></div></div>
+            <div class="sample-command"><span>Manual link entry</span><code>Abrakadaver Salwyn</code></div>
+            <p>Enter the full character name, including the surname. Leave out the realm.</p>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </section>
+  <section class="wrap prod-section" id="dungeon-groups" aria-labelledby="group-heading">
+    <div class="prod-heading"><h2 id="group-heading">Build a dungeon group</h2><p>Members join or leave through a role card in Discord. Active cards come back after a bot restart.</p></div>
+    <div class="party-worlds">
+      <article class="party-world retail"><div class="world-heading"><Shield size={28} aria-hidden="true" /><h3>Retail Mythic+</h3></div>
+        <p class="prod-copy">Use <code>/season</code> to check the dungeon pool. Start a group with <code>/key</code> and recruit a tank, healer, or DPS from your guild’s linked Retail characters.</p>
+        <div class="world-foot"><BellRing size={19} aria-hidden="true" /><div><strong>Smart LFG alerts</strong><p>Opt into DMs for your roles and optional minimum and maximum key levels in each server.</p></div></div>
+        <a class="prod-link" href="/member-guide/#smart-lfg-notifications">Set up Smart LFG</a>
+      </article>
+      <article class="party-world forever"><div class="world-heading"><Castle size={28} aria-hidden="true" /><h3>WoW: Forever dungeons</h3></div>
+        <p class="prod-copy">Use <code>/dungeon</code>, choose your role and dungeon, and select a linked Forever character. Known dungeons show recommended levels.</p>
+        <div class="world-foot"><Swords size={19} aria-hidden="true" /><div><strong>One tank, one healer, three DPS</strong><p>Fill the five open slots, add outside players to the card, or cancel the group as organizer.</p></div></div>
+        <a class="prod-link" href="/forever/">Read the Forever guide</a>
+      </article>
+    </div>
+  </section>
+  <section class="wrap prod-section prod-split" aria-labelledby="roster-heading">
+    <div class="prod-heading"><h2 id="roster-heading">Keep your<br />roster yours</h2><p>Retail and Forever each have their own Main. You can change either selection as your guild’s needs change.</p></div>
+    <div class="roster-notes">
+      <article><h3>Link and manage characters</h3><p>Run <code>/link</code> for a private character picker. Choose a game if asked, then add characters manually or from a verified list. Use <code>/alts</code> to see them, <code>/main</code> to change a Main, and <code>/unlink</code> to remove a character.</p></article>
+      <article><h3>Share a profile</h3><p>Run <code>/profile</code> for a linked character. The Activity’s public lookup can post an unlinked character card to a channel you choose. For a public Retail lookup in chat, use <code>/character</code>.</p></article>
+      <article><h3><BadgeCheck size={21} aria-hidden="true" /> Optional Battle.net verification</h3><p>Start <code>/verify</code> in Discord and sign in on Battle.net. The confirmation lasts 30 days and can refresh both rosters when Forever data is available. You can also link manually and confirm ownership later.</p><a class="prod-link" href="/verification/">How verification works</a></article>
+    </div>
+  </section>
+</div>
+<style>
+  .roster-page .prod-hero { background: radial-gradient(ellipse at 83% 80%, #34413a 0%, transparent 63%), #161919; border-color: #536459; }
+  .roster-page .prod-hero h1 em { color: #afd1bb; }
+  .roster-demo { border: 1px solid #706758; background: #1d211f; min-width: 0; }
+  .roster-label { padding: .85rem 1.25rem; display: flex; align-items: center; gap:.55rem; border-bottom: 1px solid #57584e; color:#dbcdb2; font:700 .88rem/1.3 var(--display); letter-spacing:.12em; text-transform:uppercase; }
+  .mode-selector { min-width: 0; border: 0; margin: 1rem 0 0; padding: 0 clamp(1rem,2.6vw,2rem) 1.35rem; }
+  .mode-selector legend { margin-bottom: .55rem; padding: 0; font-weight:600; color:#e3e2d9; }
+  .mode-selector > input { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }
+  .mode-selector > label { display: inline-block; padding: .5rem .85rem; margin-right: .3rem; border:1px solid #62675c; cursor:pointer; color:#d0d0c6; font:600 1rem/1.3 var(--display); }
+  .mode-selector input:checked + label { color:#17221b; background:#bdd3b9; border-color:#d1dfcb; }
+  .mode-selector input:focus-visible + label { outline:3px solid #ffaf7b; outline-offset:3px; }
+  .character-sheet { margin-top:1.1rem; }
+  #sample-retail:checked ~ .forever-sheet, #sample-forever:checked ~ .retail-sheet { display:none; }
+  .character-name { display:flex; align-items:center; gap:.85rem; border-top:1px solid #4b5047; padding-top:1.1rem; }
+  .character-seal { display:grid; place-items:center; flex:none; width:3.4rem; height:3.4rem; background:linear-gradient(125deg,#374738,#243027); border:1px solid #70856f; color:#c8d5ba; }
+  .forever-sheet .character-seal { color:#e8c4a0; border-color:#89725a; background:linear-gradient(125deg,#493a2e,#302820); }
+  .character-name h2 { font:600 clamp(1.5rem,2.5vw,2rem)/1.05 var(--display); text-transform:none; }
+  .character-name p, .character-sheet > p { color:#c4c9bf; }
+  .character-sheet > p { margin-top:.55rem; font-size:1rem; }
+  .sample-command { display:grid; gap:.2rem; margin-top:1.05rem; padding:.7rem 1rem; background:#131816; border-left:2px solid #a6b896; }
+  .sample-command span { color:#b5bcb1; font-size:.85rem; }
+  .sample-command code { color:#e7e9dc; }
+  .party-worlds { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+  .party-world { padding:clamp(1.3rem,2.4vw,2.2rem); border:1px solid #50594e; background:linear-gradient(135deg,#243029,#1a1d1c 74%); }
+  .party-world.forever { border-color:#615243; background:linear-gradient(135deg,#332b23,#1d1d1c 74%); }
+  .world-heading { display:flex; align-items:center; gap:.75rem; margin-bottom:.8rem; }
+  .world-heading svg,.world-foot svg { color:var(--green); flex-shrink:0; }
+  .forever .world-heading svg,.forever .world-foot svg { color:var(--brass); }
+  .world-heading h3 { font-size:clamp(1.7rem,2.6vw,2.5rem); }
+  .world-foot { display:flex; gap:.7rem; border-top:1px solid #4b4e46; margin-top:1.1rem; padding-block:1rem; }
+  .world-foot svg { margin-top:.2rem; }
+  .world-foot p,.roster-notes p { color:var(--muted); margin-top:.3rem; }
+  .roster-notes article { padding-block:1rem; border-top:1px solid var(--rule); }
+  .roster-notes h3 { display:flex; align-items:center; gap:.45rem; }
+  .roster-notes h3 svg { color:var(--green); flex:none; }
+  .roster-notes .prod-link { margin-top:.75rem; }
+  @media(max-width:44rem) { .party-worlds { grid-template-columns:1fr; } }
+</style>

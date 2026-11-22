@@ -1,0 +1,112 @@
+---
+import './product.css';
+import { Beer, CalendarDays, Castle, ShieldCheck, Swords, Terminal, UsersRound } from '@lucide/astro';
+import mascot from '../../../docs/assets/zugbot-mascot-v1.svg?url';
+
+const operations = [
+  {
+    icon: CalendarDays, title: 'Plan the pull', label: 'Guild Planner', tone: 'sage',
+    body: 'Set a raid date once, weekly, or monthly. Members pick a linked character and sign up by role. Each date gets its own roster, reminders, and native Discord Scheduled Event.',
+    href: '/guild-planner/', link: 'Explore Guild Planner',
+  },
+  {
+    icon: UsersRound, title: 'Fill the party', label: 'Characters & groups', tone: 'gold',
+    body: 'Keep separate Retail and Forever rosters, look up profiles, and form role-based dungeon groups. Retail players can opt into alerts for the roles and key levels they want.',
+    href: '/characters-and-groups/', link: 'Explore characters and groups',
+  },
+  {
+    icon: Swords, title: 'Take it to the tavern', label: 'Peon Fight Club', tone: 'red',
+    body: 'Challenge a guildmate to a D20 duel. Both peons lock in private moves, then the Combat Journal tells the tale. Qualifying wins can earn a 24-hour Champion trophy.',
+    href: '/tavern/peon-fight-club/', link: 'Enter Peon Fight Club',
+  },
+  {
+    icon: ShieldCheck, title: 'Keep order in the hall', label: 'Guild leadership', tone: 'blue',
+    body: 'Members can report incidents. Authorized leaders can review cases, manage onboarding, and post announcements. Guild Setup controls game modes, posting channels, and mapped roles.',
+    href: '/admin-guide/', link: 'Read the leadership guide',
+  },
+];
+---
+<div class="prod-page feature-overview">
+  <section class="prod-hero" aria-labelledby="features-heading">
+    <div class="wrap prod-hero-inner">
+      <div>
+        <p class="prod-label">Features</p>
+        <h1 id="features-heading">Your guild<br /><em>toolkit.</em></h1>
+        <p class="prod-lead">Bring the raid together, find your fifth, or crown a tavern champion. ZugBot keeps your World of Warcraft guild moving inside Discord.</p>
+        <div class="prod-actions"><a class="button primary" href="#toolkit">Browse the toolkit</a><a class="prod-link" href="/commands/">Command reference</a></div>
+      </div>
+      <a class="guild-console" href="/guild-command-center/">
+        <div class="console-drawing" aria-hidden="true"><span></span><img src={mascot} width="512" height="512" alt="" /></div>
+        <div class="console-caption"><Castle aria-hidden="true" /><div><span>Discord Activity</span><strong>Explore the Guild Command Center</strong></div></div>
+      </a>
+    </div>
+  </section>
+  <section class="wrap prod-section" id="toolkit" aria-labelledby="toolkit-heading">
+    <div class="prod-heading"><h2 id="toolkit-heading">What’s on the guild board?</h2></div>
+    <div class="operation-grid">
+      {operations.map(({ icon: Icon, title, label, tone, body, href, link }) => (
+        <article class:list={['operation', tone]}>
+          <div class="operation-line"><Icon aria-hidden="true" /><span>{label}</span></div>
+          <h3>{title}</h3><p class="prod-copy">{body}</p><a class="prod-link" href={href}>{link}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="wrap prod-section prod-split" aria-labelledby="extras-heading">
+    <div class="prod-heading"><h2 id="extras-heading">Between<br />raid nights</h2><p>Small tools for the things that happen while everyone’s online.</p></div>
+    <div class="prod-disclosures">
+      <details open>
+        <summary><span><Beer aria-hidden="true" /> Brewfest and tavern games</span></summary>
+        <div><p class="prod-copy">Open Fun to tap a Brewfest Keg with ten claims, hand out beers, roll dice, flip a coin, or summon a little peon wisdom. Choose an eligible channel when posting a game to the guild.</p><a class="prod-link" href="/discord-activity/">Read the Activity guide</a></div>
+      </details>
+      <details>
+        <summary><span><Terminal aria-hidden="true" /> Slash commands and ready checks</span></summary>
+        <div><p class="prod-copy">Start a ready check with <code>/readycheck</code>, browse in-server help with <code>/help</code>, and see the running build with <code>/version</code>. Character, group, event, and utility commands work alongside the Activity.</p><a class="prod-link" href="/commands/">Browse commands</a></div>
+      </details>
+      <details>
+        <summary><span><ShieldCheck aria-hidden="true" /> Staff permissions and onboarding</span></summary>
+        <div><p class="prod-copy">The Rules &amp; Vibes panel records agreement and can assign the configured New Member role. Staff access follows the guild’s mapped roles and Discord permissions. Formal moderation writes and automatic Champion role assignment are disabled in Production.</p><a class="prod-link" href="/admin-guide/">Check staff permissions</a></div>
+      </details>
+    </div>
+  </section>
+</div>
+<style>
+  .feature-overview .prod-hero {
+    background: radial-gradient(ellipse at 95% 82%, #513126 0, #282323 37%, transparent 70%), #161718;
+  }
+  .guild-console { display: block; position: relative; background: #242323; border: 1px solid #755545; }
+  .console-drawing {
+    min-height: clamp(12rem, 18vw, 19rem); display: grid; place-items: center; overflow: hidden; position: relative;
+    background-color: #251f1c;
+    background-image: linear-gradient(#bea38d0e 1px, transparent 1px), linear-gradient(90deg,#bea38d0e 1px,transparent 1px), radial-gradient(ellipse at 50% 75%,#79442c80,transparent 75%);
+    background-size: 20px 20px,20px 20px,auto;
+  }
+  .console-drawing::before, .console-drawing::after {
+    content: ''; position: absolute; width: 48%; aspect-ratio: 1; border: 1px solid #9f7960; opacity: .45; transform: rotate(45deg);
+  }
+  .console-drawing::after { width: 64%; opacity: .22; }
+  .console-drawing span { position: absolute; width: 65%; height: 60%; border-inline: 1px solid #ae81657a; }
+  .console-drawing img { position: relative; z-index: 1; width: clamp(9.2rem, 14vw, 16rem); height: auto; }
+  .console-caption { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.3rem; border-top: 1px solid #6c5547; background: #221f1f; }
+  .console-caption svg { color: var(--copper); flex-shrink: 0; }
+  .console-caption span, .operation-line span { font: 700 .82rem/1.4 var(--display); text-transform: uppercase; letter-spacing: .12em; color: var(--copper); }
+  .console-caption strong { display: block; font: 600 clamp(1.2rem, 2.1vw, 1.85rem)/1.15 var(--display); }
+  .guild-console:hover .console-caption strong { text-decoration: underline; text-underline-offset: .14em; }
+  .operation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .operation { --tint:#b2d2c3; --panel-tint:#25312c; border: 1px solid #484744; padding: clamp(1.2rem, 2.4vw, 2.2rem); background: linear-gradient(130deg,var(--panel-tint),#191b1c 76%); }
+  .operation.gold { --tint:#f1c996; --panel-tint:#322c21; }
+  .operation.red { --tint:#f5a18a; --panel-tint:#382822; }
+  .operation.blue { --tint:#aeccdb; --panel-tint:#232c32; }
+  .operation-line { display:flex; align-items:center; gap:.55rem; padding-bottom:1rem; color:var(--tint); }
+  .operation-line span { color:var(--tint); }
+  .operation-line svg { width:20px; height:20px; }
+  .operation h3 { font-size:clamp(1.65rem,2.65vw,2.6rem); }
+  .operation .prod-copy { margin: .65rem 0 .9rem; }
+  .feature-overview summary span { display:flex; align-items:center; gap:.65rem; }
+  .feature-overview summary svg { width: 20px; flex-shrink:0; color:var(--copper); }
+  @media (max-width: 44rem) {
+    .operation-grid { grid-template-columns:1fr; }
+    .console-drawing { min-height:8rem; }
+    .console-drawing img { width:7rem; }
+  }
+</style>

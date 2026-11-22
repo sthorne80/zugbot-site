@@ -1,0 +1,77 @@
+---
+import './product.css';
+import { BookOpen, Coffee, HandCoins, Mail, MessageCircle } from '@lucide/astro';
+import fortress from '../../../docs/assets/zugbot-fortress.webp?url';
+import { coffee, email, lab, patreon } from './links';
+
+const issues = [
+  ['ZugBot is missing from the App Launcher', 'Check that ZugBot is installed and enabled in this server and the channel allows Activities. Ask an administrator to confirm the installation and server access.', '/getting-started/', 'Activity setup'],
+  ['My character isn’t in the picker', 'Check the selected game. For a verified list, refresh with /verify and return to /link. For manual entry, Retail needs a character and realm slug. Forever needs the full character name.', '/member-guide/', 'Character linking guide'],
+  ['An event reminder never arrived', 'ZugBot attempts reminders for organizers and current Tank, Healer, DPS, and Bench signups. Confirm your signup and check that the server allows direct messages to you.', '/planner/#reminders', 'Planner reminders'],
+  ['A battle message was deleted', 'Open Fun → Peon Fight Club → Fights and results. Refresh, select your fight, and use Restore Battle Message if available. A restored message keeps the saved round and journal.', '/peon-fight-club/', 'Fight Club recovery'],
+];
+---
+<div class="prod-page support-page">
+  <section class="prod-hero" aria-labelledby="support-page-heading">
+    <div class="wrap prod-hero-inner">
+      <div>
+        <p class="prod-label">Support</p>
+        <h1 id="support-page-heading">Need<br /><em>a hand?</em></h1>
+        <p class="prod-lead">Get your guild unstuck. Find an answer in the guides, ask the community, or send a problem straight to ZugBot support.</p>
+        <div class="prod-actions"><a class="button primary" href="#common-issues">Find a fix</a><a class="prod-link" href={email}>Email support</a></div>
+      </div>
+      <article class="lab-panel" id="community">
+        <img src={fortress} width="1536" height="1024" alt="" />
+        <div><p class="lab-label"><MessageCircle size={17} aria-hidden="true" /> Community Discord</p>
+          <h2>ZugBot Lab</h2><p>Try commands with the public testing community.</p><a class="button secondary" href={lab}>Visit ZugBot Lab</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="wrap prod-section prod-split" id="common-issues" aria-labelledby="issue-heading">
+    <div class="prod-heading"><h2 id="issue-heading">Common issues</h2><p>Start with the symptom you’re seeing in Discord.</p><div class="prod-actions"><a class="prod-link" href="/troubleshooting/">All troubleshooting topics</a></div></div>
+    <div class="prod-disclosures">
+      {issues.map(([title, detail, href, link]) => <details><summary>{title}</summary><div><p class="prod-copy">{detail}</p><a class="prod-link" href={href}>{link}</a></div></details>)}
+    </div>
+  </section>
+  <section class="wrap prod-section contact-block" aria-labelledby="contact-heading">
+    <div><p class="prod-label">Contact</p><h2 id="contact-heading">Report a problem</h2><p class="prod-copy">Include the command or Activity section, the error you saw, the result of <code>/version</code>, and whether other guildmates are affected. Keep passwords, sign-in codes, and verification return links private.</p></div>
+    <div class="contact-actions"><a class="button secondary" href={email}><Mail size={17} aria-hidden="true" />support@zugbot.net</a><a class="prod-link" href="/documentation/"><BookOpen size={17} aria-hidden="true" />Visit the help center</a></div>
+  </section>
+  <section class="contributions" aria-labelledby="donation-heading">
+    <div class="wrap prod-section prod-split">
+      <div class="prod-heading"><p class="prod-label">Independent development</p><h2 id="donation-heading">Support ZugBot</h2><p>Contributions help cover infrastructure and development tools.</p></div>
+      <div class="donation-choices">
+        <a href={coffee}><Coffee aria-hidden="true" /><div><strong>Buy Me a Coffee</strong><span>Give one-time support</span></div></a>
+        <a href={patreon}><HandCoins aria-hidden="true" /><div><strong>Patreon</strong><span>Support monthly development</span></div></a>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+  .support-page .prod-hero { background:linear-gradient(125deg,#17191a,#282321); }
+  .lab-panel { position:relative; isolation:isolate; overflow:hidden; align-self:stretch; display:flex; align-items:flex-end; min-height:20rem; border:1px solid #77583e; background:#241b16; }
+  .lab-panel img { position:absolute; width:100%; height:100%; inset:0; object-fit:cover; object-position:63% 34%; z-index:-2; }
+  .lab-panel::after { content:''; position:absolute; inset:0; z-index:-1; background:linear-gradient(0deg,#171310 0%,#1f1511df 35%,#1b16153a 80%); }
+  .lab-panel > div { padding:clamp(1.3rem,2.4vw,2.3rem); }
+  .lab-panel .lab-label { display:flex; align-items:center; gap:.5rem; color:#f3c4a1; font:700 .85rem/1.35 var(--display); text-transform:uppercase; letter-spacing:.12em; }
+  .lab-panel h2 { margin-block:.4rem .3rem; font-size:clamp(2.3rem,4vw,3.8rem); }
+  .lab-panel .button { margin-top:1rem; }
+  .contact-block { display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+  .contact-block h2,.contributions h2 { margin:.5rem 0 .8rem; }
+  .contact-block .prod-copy { max-width:45rem; }
+  .contact-actions { display:flex; flex-shrink:0; flex-direction:column; gap:1rem; align-items:flex-start; }
+  .contact-actions .button { text-transform:none; font:600 1.08rem/1.3 var(--body); letter-spacing:0; }
+  .contributions { border-top:1px solid var(--rule); background:#1c1e1d; }
+  .contributions .prod-heading { margin:0; }
+  .contributions .prod-label { color:var(--copper); font-size:.9rem; margin:0; }
+  .donation-choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-self:center; gap:.85rem; }
+  .donation-choices a { display:flex; align-items:center; gap:.85rem; padding:1.2rem; border:1px solid #59564c; background:#252522; }
+  .donation-choices a:hover { border-color:var(--copper); }
+  .donation-choices svg { flex-shrink:0; color:var(--brass); }
+  .donation-choices strong,.donation-choices span { display:block; }
+  .donation-choices strong { font:600 1.5rem/1.1 var(--display); }
+  .donation-choices span { color:var(--muted); margin-top:.3rem; }
+  @media(max-width:56rem) { .donation-choices { grid-template-columns:1fr; } }
+  @media(max-width:44rem) { .lab-panel { min-height:16rem; } .contact-block { flex-direction:column; align-items:flex-start; gap:1rem; } }
+</style>

@@ -1,0 +1,4 @@
+# Render the same Markdown, plugins, links, and section IDs as the original site.
+INHERIT: mkdocs.yml
+hooks:
+  - homepage/build_guides.py

@@ -1,13 +1,14 @@
 {
-  "name": "zugbot-homepage",
+  "name": "zugbot-site",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "engines": { "node": ">=22.23.4" },
   "scripts": {
+    "predev": "node scripts/python.mjs build.py --prepare",
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "node scripts/python.mjs build.py",
+    "preview": "node scripts/python.mjs preview.py"
   },
   "dependencies": {
     "@fontsource/barlow": "5.3.0",

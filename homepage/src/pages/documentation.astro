@@ -1,0 +1,43 @@
+---
+import Site from '../layouts/Site.astro';
+import SearchForm from '../help/SearchForm.astro';
+import { shelves } from '../help/catalog';
+import { Compass, Flag, Terminal, ScrollText, BookOpen } from '@lucide/astro';
+import mascot from '../../../docs/assets/zugbot-mascot-v1.svg?url';
+import '../styles/manual.css';
+const icons = [Compass, Flag, Terminal, ScrollText];
+---
+<Site title="Documentation · Guild field manual — ZugBot" description="Search ZugBot’s field manual for Discord commands, guild setup, raid signups, troubleshooting, and character guides.">
+  <section class="manual-mast">
+    <div class="wrap manual-mast-inner">
+      <div class="manual-heading">
+        <p class="kicker"><span class="slashes" aria-hidden="true"></span>Documentation</p>
+        <h1>Guild field<br /><em>manual.</em></h1>
+        <p>Find the right command, set up your guild, or get a raid night back on track.</p>
+        <SearchForm />
+        <noscript><p>Search uses JavaScript. The guide library below works without it.</p></noscript>
+      </div>
+      <div class="manual-emblem" aria-hidden="true"><div class="emblem-rings"></div><img src={mascot} alt="" width="320" height="320" /></div>
+    </div>
+  </section>
+  <section class="wrap manual-results" aria-labelledby="results-title" hidden data-results>
+    <div class="results-heading"><h2 id="results-title">Search results</h2><a class="text-link" href="/documentation/">Clear search</a></div>
+    <p role="status" aria-live="polite" data-search-status></p><ul data-result-list></ul>
+  </section>
+  <section class="wrap manual-library" aria-labelledby="library-title">
+    <div class="library-heading"><div><p class="kicker"><span class="marker" aria-hidden="true"></span>Guide library</p><h2 id="library-title">Browse by topic</h2></div>
+      <a class="reference" href="/commands/"><BookOpen size={19} aria-hidden="true" /> Command reference</a>
+    </div>
+    <div class="shelves">
+      {shelves.map(({title,id,description,guides},index) => {
+        const Icon = icons[index];
+        return <section class="shelf" id={id} aria-labelledby={'shelf-' + id}>
+          <div class="shelf-heading"><span class="shelf-icon"><Icon size={25} strokeWidth={1.5} aria-hidden="true" /></span>
+            <div><h3 id={'shelf-' + id}>{title}</h3><p>{description}</p></div></div>
+          <ul>{guides.map(([slug, name, copy]) => <li><a href={'/'+slug+'/'}><strong>{name}</strong><span>{copy}</span></a></li>)}</ul>
+        </section>
+      })}
+    </div>
+  </section>
+  <script>import '../help/search';</script>
+</Site>

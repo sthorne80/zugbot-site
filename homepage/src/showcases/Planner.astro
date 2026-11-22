@@ -1,0 +1,106 @@
+---
+import { BellRing, CalendarDays, Clock3, Repeat2, UsersRound } from '@lucide/astro';
+import ShowHero from './ShowHero.astro';
+
+const rhythms = [
+  { label: 'One-time', name: 'Saturday dungeon night', days: [14], when: 'Saturday, Nov 14 · 19:00', icon: CalendarDays },
+  { label: 'Weekly', name: 'Friday raid night', days: [6,13,20,27], when: 'Fridays · 20:00', icon: Repeat2 },
+  { label: 'Monthly', name: 'Guild meetup', days: [30], when: 'Day 30 each month · 18:30', icon: Repeat2 },
+];
+const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const roles = [
+  { name: 'Tank', detail: 'Reserve a tank slot using a linked character from the event’s game.' },
+  { name: 'Healer', detail: 'Join the healing roster with an eligible linked character.' },
+  { name: 'DPS', detail: 'Sign up to deal damage on a linked character from the event’s game.' },
+  { name: 'Bench', detail: 'Stay available as a substitute. Bench signups also use a linked character.' },
+  { name: 'Maybe', detail: 'Record tentative availability without selecting a character.' },
+  { name: 'Can’t Attend', detail: 'Let the organizer know you will miss this date. This response records attendance without a character selection.' },
+];
+---
+<div class="showcase sc-planner">
+  <ShowHero category="Guild events · Discord Activity" title="Guild" accent="Planner" intro="Pick the night. Build the roster. Every date gets a signup card, a native Discord Scheduled Event, and its own reminder schedule." link="/planner/" action="Planner guide" secondaryLink="/get-started/" secondaryAction="Get started">
+    <figure class="sc-demo planner-demo">
+      <figcaption><strong><CalendarDays aria-hidden="true" />Event calendar</strong><span class="sc-caption">Illustrative schedule</span></figcaption>
+      <fieldset class="sc-switch">
+        <legend class="sc-sr">Preview a schedule type</legend>
+        <div class="sc-row-switch">
+          {rhythms.map(({label,name,days,when,icon:Icon},i) => (
+            <Fragment>
+              <input type="radio" class="sc-option" id={`schedule-${i}`} name="schedule-preview" checked={i === 1} aria-controls={`calendar-${i}`} />
+              <label for={`schedule-${i}`} style={`--tab:${i+1}`}>{label}</label>
+              <div class="sc-pane calendar-panel" id={`calendar-${i}`}>
+                <div class="calendar-sheet">
+                  <p class="month-title">November <span>2026</span></p>
+                  <div class="month-grid" aria-hidden="true">
+                    {weekdays.map(day => <span class="sc-day-name">{day}</span>)}
+                    {Array.from({length:30},(_,day) => <span class:list={['calendar-day',{'has-event':days.includes(day+1)}]}>{day+1}</span>)}
+                  </div>
+                  <p class="sc-sr">November event dates: {days.join(', ')}.</p>
+                </div>
+                <div class="calendar-note"><Icon aria-hidden="true" /><div><span class="sc-tag">{label} event</span><strong>{name}</strong><span>{when} · Guild time</span></div></div>
+              </div>
+            </Fragment>
+          ))}
+        </div>
+      </fieldset>
+    </figure>
+  </ShowHero>
+  <section class="sc-section sc-split wrap" aria-labelledby="plan-night">
+    <div>
+      <p class="kicker"><span class="marker" aria-hidden="true"></span>Event management</p>
+      <h2 id="plan-night">Set the night.<br />Keep the rhythm.</h2>
+      <p class="sc-description">An authorized organizer can use Events in the Activity or start with <code>/event create</code>. The Planner card goes to the configured Raid/Events channel.</p>
+      <a class="text-link" href="/planner/#create-an-event">Create your first event</a>
+    </div>
+    <ul class="sc-list">
+      <li><Clock3 aria-hidden="true" /><div><h3>Schedule in guild time</h3><p>Give the event a title, local start, and duration. Members see their local time, and recurring dates keep the guild’s chosen time across daylight saving changes.</p></div></li>
+      <li><Repeat2 aria-hidden="true" /><div><h3>Repeat only what you need</h3><p>Plan a one-off, weekly, or monthly event. Each date has independent signups. Cancelling one Friday leaves the next Friday on the calendar.</p></div></li>
+      <li><BellRing aria-hidden="true" /><div><h3>Remind the roster</h3><p>At 24 hours and 1 hour before the event, ZugBot attempts to DM the organizer and current Tank, Healer, DPS, and Bench signups. Delivery depends on Discord privacy settings.</p></div></li>
+    </ul>
+  </section>
+  <section class="sc-section wrap sc-split" aria-labelledby="role-title">
+    <div>
+      <p class="kicker"><span class="marker" aria-hidden="true"></span>Role signups</p>
+      <h2 id="role-title">Bring the right character.</h2>
+      <p class="sc-description">A Retail event offers Retail characters. A Forever event offers Forever characters. Members with several eligible characters choose privately, with their Main first.</p>
+      <a class="text-link" href="/characters-and-groups/">Explore characters and groups</a>
+    </div>
+    <figure class="sc-demo signup-panel">
+      <figcaption><strong><UsersRound aria-hidden="true" />Role signup</strong><span class="sc-caption">Illustrative responses</span></figcaption>
+      <fieldset class="sc-switch">
+        <legend class="sc-sr">Explore an RSVP response</legend>
+        <div class="role-switch">
+          {roles.map(({name,detail},i) => (
+            <Fragment>
+              <input class="sc-option" type="radio" id={`rsvp-${i}`} name="rsvp-preview" checked={i === 0} aria-controls={`response-${i}`} />
+              <label for={`rsvp-${i}`} style={`--col:${i%3+1};--row:${Math.floor(i/3)+1}`}>{name}</label>
+              <div class="sc-pane role-detail" id={`response-${i}`}><strong>{name}</strong><p>{detail}</p></div>
+            </Fragment>
+          ))}
+        </div>
+      </fieldset>
+    </figure>
+  </section>
+  <section class="wrap sc-callout" aria-labelledby="planner-guide"><div><h2 id="planner-guide">Managing a series?</h2><p>Find the commands for changing a date, stopping recurrence, and setting the guild timezone.</p></div><a class="button secondary" href="/planner/#stop-recurrence">Recurring event controls</a></section>
+</div>
+<style>
+  .calendar-panel {background:linear-gradient(135deg,#222d29,#181e1d 75%);}
+  .calendar-sheet {padding:1rem clamp(.85rem,2vw,1.85rem) .75rem;}
+  .month-title {display:flex;align-items:baseline;gap:.45rem;font:700 clamp(1.6rem,2.4vw,2.3rem)/1 var(--display);text-transform:uppercase;padding-bottom:.8rem;}
+  .month-title span {font-weight:600;color:#b2c7bc;}
+  .month-grid {display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;}
+  .sc-day-name {text-align:center;color:#c4cfc9;padding:.25rem 0 .4rem;font-size:.78rem;}
+  .calendar-day {display:grid;place-items:center;min-height:1.8rem;border:1px solid #65756b40;color:#d5d9d4;background:#1b211f;font:600 1rem/1 var(--display);}
+  .has-event {color:#e2ffed;border-color:#819f8e;background:#395448;box-shadow:inset 0 -2px #afcfba;}
+  .calendar-note {display:flex;align-items:center;gap:1rem;border-top:1px solid var(--sc-line);background:#202724;padding:1rem clamp(.85rem,2vw,1.85rem);}
+  .calendar-note svg {display:block;flex:none;width:2rem;height:2rem;color:var(--sc-ink);}
+  .calendar-note strong,.calendar-note span {display:block;}
+  .calendar-note strong {margin:.18rem 0 .22rem;font:600 1.5rem/1.1 var(--display);}
+  .calendar-note span:last-child {color:#c7d0ca;font-size:.96rem;}
+  .role-switch {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+  .role-switch label {min-height:2.8rem;display:grid;place-items:center;padding:.5rem .28rem;grid-column:var(--col);grid-row:var(--row);border-right:1px solid var(--sc-line);border-bottom:1px solid var(--sc-line);font:600 1.02rem/1.2 var(--display);}
+  .role-switch input:checked + label {box-shadow:inset 0 -2px var(--sc-ink);}
+  .role-detail {grid-row:3;grid-column:1/-1;padding:1.35rem;background:#1c2421;}
+  .role-detail strong {font:600 1.8rem/1.1 var(--display);}
+  .role-detail p {margin-top:.4rem;}
+</style>
