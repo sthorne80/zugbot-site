@@ -1,0 +1,156 @@
+---
+import '@fontsource/barlow/latin-400.css';
+import '@fontsource/barlow/latin-600.css';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/barlow-condensed/latin-700.css';
+import '@fontsource/barlow-condensed/latin-800-italic.css';
+import '../styles/home.css';
+import {
+  BookOpen, CalendarDays, Castle, Gamepad2, Menu, MessageCircle,
+  Shield, Swords, Terminal, UsersRound,
+} from '@lucide/astro';
+import fortress from '../../../docs/assets/zugbot-fortress.webp?url';
+import emblem from '../../../docs/assets/zugbot-logo-v2.svg?url';
+
+const navigation = [
+  { title: 'Features', href: '#features' },
+  { title: 'Command Center', href: '/discord-activity/' },
+  { title: 'Fight Club', href: '/peon-fight-club/' },
+  { title: 'Documentation', href: '/getting-started/' },
+  { title: 'Support', href: '#support' },
+];
+const features = [
+  {
+    title: 'Guild Command Center', category: 'Guild operations', theme: 'command', icon: Castle,
+    text: 'See upcoming events, find a group, and manage your characters from one Activity inside Discord.',
+    href: '/discord-activity/', action: 'Explore the Command Center',
+  },
+  {
+    title: 'Peon Fight Club', category: 'Tavern games', theme: 'tavern', icon: Swords,
+    text: 'Challenge a guildmate to a D20 duel. Choose your moves in secret and relive each round in the Combat Journal.',
+    href: '/peon-fight-club/', action: 'Learn the rules',
+  },
+  {
+    title: 'Guild Planner', category: 'Events & signups', theme: 'planner', icon: CalendarDays,
+    text: 'Schedule raid night, take character and role signups, and let ZugBot remind the guild when it’s time to pull.',
+    href: '/planner/', action: 'Read the Planner guide',
+  },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111314" />
+    <title>ZugBot — Your guild, geared up.</title>
+    <meta name="description" content="Gather your World of Warcraft guild inside Discord. Plan raid nights, find dungeon groups, and challenge a guildmate in Peon Fight Club." />
+    <link rel="canonical" href={Astro.site} />
+    <link rel="icon" href={emblem} type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main-content">Skip to content</a>
+    <header class="topbar">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="/" aria-label="ZugBot home"><img src={emblem} width="43" height="43" alt="" />ZUG<span>BOT</span></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          {navigation.map(link => <a href={link.href}>{link.title}</a>)}
+        </nav>
+        <a class="nav-cta" href="/getting-started/">Get started</a>
+        <details class="mobile-nav">
+          <summary><Menu size={22} aria-hidden="true" /> Menu</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="/">Home</a>
+            {navigation.map(link => <a href={link.href}>{link.title}</a>)}
+            <a href="/getting-started/">Get started</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-image"><img src={fortress} width="1536" height="1024" alt="ZugBot, an armored mechanical orc, holding a tablet in a banner-lined fortress." fetchpriority="high" /></div>
+        <div class="wrap hero-inner">
+          <div class="hero-copy">
+            <p class="kicker"><span class="slashes" aria-hidden="true"></span>World of Warcraft guild companion</p>
+            <h1 id="hero-title">Your guild,<br /><em>geared up.</em></h1>
+            <p class="lead">Plan raid nights, rally dungeon groups, and settle tavern rivalries. Your guild’s command center lives inside Discord.</p>
+            <div class="actions">
+              <a class="button primary" href="/getting-started/"><Gamepad2 size={21} aria-hidden="true" />Get started</a>
+              <a class="button secondary" href="#features">Explore features</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-seam" aria-hidden="true"></div>
+      </section>
+      <div class="compatibility">
+        <ul class="wrap">
+          <li><MessageCircle aria-hidden="true" />Discord Activity</li>
+          <li><Shield aria-hidden="true" />Retail WoW &amp; WoW: Forever</li>
+          <li><Terminal aria-hidden="true" />Slash commands</li>
+        </ul>
+      </div>
+      <section class="features wrap" id="features" aria-labelledby="tools-title">
+        <div class="section-header">
+          <div><p class="kicker"><span class="marker" aria-hidden="true"></span>Features</p><h2 id="tools-title">Inside the guild hall</h2></div>
+          <a class="reference" href="/commands/"><BookOpen size={18} aria-hidden="true" />Command reference</a>
+        </div>
+        <div class="cards">
+          {features.map(({ title, category, theme, icon: Icon, text, href, action }) => (
+            <article class:list={['card', theme]}>
+              <div class="insignia" aria-hidden="true">
+                <div class="ruling"></div><div class="seal"><Icon strokeWidth={1.4} /></div>
+                <i class="corner tl"></i><i class="corner br"></i>
+              </div>
+              <div class="card-copy">
+                <p class="category">{category}</p>
+                <h3 id={theme === 'planner' ? 'planner-title' : undefined}>{title}</h3>
+                <p>{text}</p>
+                <a class="card-link" href={href}>{action}</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class="start wrap" aria-labelledby="start-title">
+        <div class="start-intro">
+          <p class="kicker"><span class="marker" aria-hidden="true"></span>Get started</p>
+          <h2 id="start-title">Report for duty.</h2>
+          <p>In a server with ZugBot enabled, open Discord’s App Launcher in an eligible channel and choose ZugBot. Prefer a slash command? Start with one of these.</p>
+          <a class="text-link" href="/getting-started/">Read the setup guide</a>
+        </div>
+        <ul class="command-list" aria-label="Starter commands">
+          <li><UsersRound aria-hidden="true" /><div><code>/link</code><p>Link a Retail or Forever character.</p></div></li>
+          <li><Shield aria-hidden="true" /><div><code>/key</code><p>Form a Retail Mythic+ group.</p></div></li>
+          <li><Castle aria-hidden="true" /><div><code>/dungeon</code><p>Gather a WoW: Forever dungeon party.</p></div></li>
+        </ul>
+      </section>
+    </main>
+    <footer id="support">
+      <div class="wrap support-row">
+        <div><p class="kicker"><span class="marker" aria-hidden="true"></span>Support</p><h2 id="support-title">Need a hand?</h2>
+        <p>Find help with setup, character links, and guild permissions.</p></div>
+        <div class="actions"><a class="button secondary" href="/troubleshooting/">Troubleshooting</a><a class="button secondary" href="mailto:support@zugbot.net">Email support</a></div>
+      </div>
+      <div class="wrap footer-bottom">
+        <a class="wordmark" href="/" aria-label="ZugBot home"><img src={emblem} width="32" height="32" alt="" />ZUG<span>BOT</span></a>
+        <nav aria-label="Support and policies">
+          <a href="/verification/">Verification</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>
+          <a href="https://buymeacoffee.com/ZugBot">Buy Me a Coffee</a><a href="https://patreon.com/ZugBot">Patreon</a>
+        </nav>
+      </div>
+    </footer>
+    <script>
+      const menu = document.querySelector<HTMLDetailsElement>('.mobile-nav');
+      menu?.addEventListener('click', (event) => {
+        if (event.target instanceof Element && event.target.closest('a')) menu.open = false;
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menu?.open) {
+          menu.open = false;
+          menu.querySelector('summary')?.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
