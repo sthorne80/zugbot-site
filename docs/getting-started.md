@@ -1,6 +1,15 @@
 # Getting Started
 
-ZugBot works through Discord slash commands, buttons, and private selectors. You do not need another dashboard.
+ZugBot offers Discord slash commands, buttons, private selectors, **and a graphical Discord Activity**. You can use the Guild Command Center without visiting a separate login website.
+
+## Open the Guild Command Center
+
+1. In a server where ZugBot is installed and enabled, open Discord's **App Launcher** from an eligible channel.
+2. Select **ZugBot** and launch its Activity. Approve the limited **identify** and **guilds** scopes if requested.
+3. Explore **Dashboard**, **Events**, **Groups**, **Characters**, **Fun**, or **Report an incident**. Staff sections appear only for members who pass authorization.
+4. To challenge a guildmate, open **Fun → Peon Fight Club**. New challenges have 24 hours for a response, plus cancellation and deleted-message recovery controls.
+
+The existing slash commands still work. See [Discord Activity](discord-activity.md) and [Peon Fight Club](peon-fight-club.md).
 
 ## First choose your game
 
@@ -57,7 +66,9 @@ One authorization refreshes both your Modern and Forever lists when Forever info
 - `/season` shows the current Modern Mythic+ dungeon pool.
 - `/key` creates a Modern WoW Mythic+ group.
 - `/dungeon` creates a WoW: Forever dungeon group; choose your role and dungeon, then use the card to manage signups.
-- `/event create` can schedule Modern or Forever events with character signups matching that game mode.
+- `/event create` or the Activity's Events section can schedule Retail or Forever events with character signups matching that game mode.
+- The Activity's **Characters → Public Character Lookup** can post an unlinked public character card to a permitted channel.
+- **Fun** also includes Brewfest Keg and Peon Fight Club, alongside existing utility slash commands.
 
 ## For server owners and administrators
 
