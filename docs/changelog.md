@@ -1,6 +1,30 @@
 # Changelog
 
-This page summarizes notable public-facing ZugBot changes. Current production is **0.11.0**.
+This page summarizes notable public-facing ZugBot changes. For the exact running build, use `/version` in Discord. November 22's features are live in Production; historical version entries remain below.
+
+## November 22, 2026 — Guild Command Center and Tavern (Production)
+
+### Released
+
+- A **Discord Embedded Activity** with Dashboard, calendar and Events, Retail Mythic+ and WoW: Forever Groups, Characters, public character lookup, and Fun
+- Permission-controlled **Leadership**, Guild Setup, member directory, casework, incident reports, onboarding, announcements, and eligible server tools
+- **Brewfest Keg** with ten persistent claims, plus new Tavern posting controls
+- **Peon Fight Club** with two-player D20 combat, private moves, saved Combat Journal, 24-hour Champion trophy, Hall of Fame, and battle archive
+- Highest valid configured authority tier when a member holds overlapping Admin, Founder, or Moderator roles, still subject to native Discord permissions and hierarchy
+
+### Improvements
+
+- New Peon Fight Club challenges remain open for **24 hours**; existing challenges keep their original deadlines
+- **Cancel Challenge** releases an unanswered pair without awarding a result
+- **Restore Battle Message** can recover a deleted scoreboard without resetting HP, round, choices, journal, or expiration
+- Channel discovery handles unsupported Discord channel types without exposing restricted channels
+- Expanded combat commentary and polished journals, trophies, portraits, and Activity navigation
+
+### Safety
+
+The eight formal moderation writes and automatic Discord Champion role assignment remain disabled in Production. Existing slash commands and IDs were preserved; graphical Activity sections are not new slash commands.
+
+Learn more in [Discord Activity](discord-activity.md), [Peon Fight Club](peon-fight-club.md), and [Guild Administration](admin-guide.md).
 
 ## 0.11.0 — 2026-11-09
 

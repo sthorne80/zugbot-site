@@ -1,5 +1,13 @@
 # Member Guide
 
+## Use the Discord Activity
+
+Open the server-installed **ZugBot** from Discord's **App Launcher** to enter the graphical Guild Command Center. The Activity has Dashboard, Events, Groups, Characters, Fun, and incident reporting. Authorized staff see extra sections. It uses your Discord login and the guild's existing permissions; a separate website account is not required.
+
+**Characters** includes linked Retail WoW (called Modern WoW in some command screens) and WoW: Forever profiles, optional verification, and public character lookup. **Fun** includes the ten-claim Brewfest Keg and **Peon Fight Club**, with 24-hour challenges and deleted-message recovery. See the [Activity](discord-activity.md) and [Peon Fight Club](peon-fight-club.md) guides.
+
+The existing slash commands below also work.
+
 ## Link characters by game
 
 Type `/link` and press Enter. ZugBot opens a private panel only you can see.
@@ -89,9 +97,9 @@ Use `/lfgnotify settings` to review preferences, `/lfgnotify test` to test direc
 
 ## Guild Planner
 
-Production 0.11.0 Planner role signups use the linked characters for the selected event game mode, including WoW: Forever.
+Guild Planner role signups use linked characters for the selected event game mode, including Retail WoW and WoW: Forever. You can also browse the event calendar in the Activity's **Events** section.
 
-Tank, Healer, DPS, and Bench require a linked Modern character. With one eligible character, ZugBot selects it automatically. With several, Discord opens a private list with the Main first. Maybe and Can't Attend do not require a character.
+Tank, Healer, DPS, and Bench require a linked character from the **event's selected game mode**. With one eligible character, ZugBot selects it automatically. With several, Discord opens a private list with the Main first. Maybe and Can't Attend do not require a character.
 
 The chosen character is saved with that event date, so the roster still renders if the character is later unlinked. Reminders are attempted 24 hours and 1 hour before the event for the organizer and current role signups.
 
@@ -99,4 +107,4 @@ Weekly and monthly dates are independent events. Editing or cancelling one date 
 
 ## Ready checks and fun
 
-ZugBot also includes `/readycheck`, `/roll`, `/coinflip`, `/beer`, `/freebeer`, and `/zug`.
+ZugBot also includes `/readycheck`, `/roll`, `/coinflip`, `/beer`, `/freebeer`, and `/zug`. The Activity's Fun page adds a persistent Brewfest Keg and Peon Fight Club with private moves, Combat Journal, a 24-hour Champion, cancellation, and message recovery. These are Activity controls rather than additional slash commands.

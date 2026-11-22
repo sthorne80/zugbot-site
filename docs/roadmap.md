@@ -1,57 +1,46 @@
 # Roadmap
 
-Current production is **ZugBot 0.11.0**. This page separates released behavior from future direction; planned work is not a delivery promise.
+This page distinguishes features **live in Production** from ideas under consideration. Proposed work is not a promise or release date.
 
-## Current
+## Available now
 
-### Member and group operations
+### Guild Command Center in Discord
 
-- Blizzard-backed character lookup and realm suggestions
-- Modern WoW and WoW: Forever linking and public profiles through the unified `/link` panel, with optional Battle.net verification and manual entry
-- Modern WoW Mythic+ group creation with linked characters and persistent cards
-- WoW: Forever dungeon LFG with five-player role composition, linked Forever characters, PUG management, and restart-safe cards
-- Smart LFG role and key-range preferences
-- multi-guild server setup and restart-safe persistence
+- Graphical Discord Activity with Dashboard, Events, Groups, Characters, Fun, incident reporting, and permission-controlled Leadership and Guild Setup
+- Retail WoW Mythic+ and WoW: Forever group coordination
+- One-time, weekly, and monthly events, linked-character signups, native Discord Scheduled Events, and reminders
+- Linked characters, independent Mains, optional Battle.net ownership verification, and public profile lookup
+- Member directory and authorized staff tools using configured authority, Discord permissions, guild boundaries, and hierarchy
+- Persistent guild configuration and restart-safe records
 
-### Guild administration
+### Tavern and Peon Fight Club
 
-- Admin, Founder, Moderator, Member, and New Member authority model
-- controlled promotion and demotion
-- persistent Rules & Vibes onboarding
+- Dice, coins, peon wisdom, beers, and a ten-claim Brewfest Keg
+- Two-fighter D20 Peon Fight Club, Combat Journal, trophy and 24-hour Champion, Hall of Fame, and battle archive
+- New 24-hour challenge window; cancellation and safe recovery after deleted Discord messages
 
-### Guild Planner
+### Safeguards
 
-- One-time, Weekly recurring, and Monthly recurring events
-- game-mode-aware linked-character Tank, Healer, DPS, and Bench signups for Modern and Forever events
-- Maybe and Can't Attend states
-- native Discord Scheduled Events
-- guild-local IANA timezones with DST-aware wall-clock recurrence
-- automatic 24-hour and 1-hour reminders
-- `/event stoprecurrence`
-- independent occurrences and restart recovery
+- Member authentication and guild/channel permissions
+- Highest valid configured authority tier for overlapping staff roles, with specific checks for each action
+- Formal moderation writes and automatic Discord Champion role assignment **disabled** in Production
+- Slash commands remain available alongside the Activity
 
-## Planned
+## Planned ideas — not currently available
 
-### Event operations
+### Local ZugBot AI assistant
 
-- event discussion threads
-- automatic voice channels
-- readiness dashboard
-- attendance tracking
-- checks that keep Discord events and Planner cards in agreement
+A possible future Activity section could connect to a locally hosted Ollama model. The design being considered includes a **bounded request queue**, per-member limits, a **sleeping peon** status when the host computer is offline, and optional cited searches of current WoW sources where permitted.
 
-### Raid operations
+**ZugBot AI chat and web searching are not live Production features.** Cloud AI inference is not an automatic fallback.
 
-- raid composition tools
-- utility and readiness assistance
-- raid supplies coordination
+### Other ideas
 
-### Dashboard and analytics
-
-- guild dashboard and calendar views
-- roster and participation tools
-- advanced operational analytics
+- More raid readiness, composition, and supplies assistance
+- Guild activity insights and richer participation analytics
+- Better event discussions and coordination
+- More Tavern activities after existing games prove useful
 
 ## Product principles
 
-ZugBot should assist leaders without removing member choice, respect privacy, minimize unnecessary notifications, and remain useful across different communities.
+Respect members' privacy and server autonomy, enforce Discord permissions, minimize spam, keep useful data durable, and make guild coordination enjoyable.

@@ -2,7 +2,7 @@
 
 <div class="zug-doc-hero">
   <div>
-    <div class="zug-kicker">Released Planner · Current through ZugBot 0.10.x</div>
+    <div class="zug-kicker">Released Planner · Activity and slash commands</div>
     <h2>Plan guild events without leaving Discord.</h2>
     <p>Guild Planner combines event cards with Discord Scheduled Events, linked-character role signups, reminders, repeating schedules, guild time zones, and cards that return after a restart.</p>
   </div>
@@ -16,7 +16,7 @@ The available responses are Tank, Healer, DPS, Bench, Maybe, and Can't Attend.
 
 ## Create an event
 
-Run `/event create`. Discord asks for:
+Open the graphical **Events** section of the [Discord Activity](discord-activity.md) to browse a calendar and use eligible event tools, or run `/event create`. The slash command asks for:
 
 1. **recurrence** — One-time, Weekly recurring, or Monthly recurring;
 2. **event_type** — the kind of guild event.
@@ -34,9 +34,9 @@ ZugBot creates a unique Planner card in the configured Raid/Events channel and a
 
 ## Role signups
 
-Tank, Healer, DPS, and Bench require a linked character. In Production 0.11.0, Planner role signups use linked characters from the event's selected game mode. Forever events offer linked Forever characters, while Modern events use linked Modern characters.
+Tank, Healer, DPS, and Bench require a linked character. Planner role signups use linked characters from the event's selected game mode. Forever events offer linked Forever characters, while Modern events use linked Modern characters.
 
-One eligible Modern character is selected automatically. With more than one, a private list that only you can see shows up to 25 linked characters, Main first.
+With one eligible character for the event's game, ZugBot can select it automatically. With more than one, a private picker offers eligible characters from that game, Main first.
 
 Maybe and Can't Attend only record whether someone plans to come. They do not require or select a character. Choosing another response replaces the earlier choice.
 
