@@ -32,6 +32,8 @@ theme:
 nav:
   - Home: index.md
   - Getting Started: getting-started.md
+  - Discord Activity: discord-activity.md
+  - Peon Fight Club: peon-fight-club.md
   - Member Guide: member-guide.md
   - Verification & Privacy: verification.md
   - "WoW: Forever": forever.md
