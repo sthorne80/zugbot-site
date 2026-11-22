@@ -1,5 +1,25 @@
 # Troubleshooting
 
+## The Discord Activity is missing or won't launch
+
+The graphical Guild Command Center launches through **Discord's App Launcher**, not through a separate login page on zugbot.net. It requires ZugBot to be installed and enabled in the server and a channel where Activities can launch. If it's absent, ask an administrator to check the installation and approved guild scope. Do not grant unrelated high-level Discord permissions just to make the Activity show up.
+
+## Leadership or Guild Setup is missing
+
+These tabs are intentionally hidden from ordinary members. Leadership requires a recognized configured staff tier plus operation-specific Discord permissions. Guild Setup requires server ownership or Manage Server, and protected writes have extra safeguards. Multiple configured staff roles resolve to the highest valid authority tier; Discord Administrator alone does not grant a missing ZugBot tier.
+
+Formal moderation writes remain disabled in Production even for authorized staff.
+
+## A Fun posting channel is missing
+
+ZugBot only lists channels the member and bot can use. Some posts require **Read Message History** or **Embed Links**. Unsupported channel types are excluded. Select an ordinary text channel where both users have the required permissions; do not make private channels public to work around the selector.
+
+## A Peon Fight Club message disappeared
+
+Open **Fun → Peon Fight Club → Fights and results**. Refresh, choose the saved match, then select **Cancel Challenge** if you're the challenger and it has not been accepted, or **Restore Battle Message** to explicitly replace a deleted scoreboard. Restoring preserves HP, private submitted choices, round number, and journal. Discord delivery uncertainty is not retried blindly.
+
+New challenges have **24 hours** for a response; an active round has **15 minutes**. Previously created challenges retain their saved deadlines. See [Peon Fight Club](peon-fight-club.md).
+
 ## A slash command is missing
 
 Discord command registration can take time after an update. Confirm ZugBot is online, try `/about`, and reopen Discord if its command picker looks stale. Roadmap items are not necessarily released commands.
@@ -81,11 +101,11 @@ That is expected. Forever characters use a full character name and do not have a
 
 ## Planner role signup says to link first
 
-Production 0.10.0 Planner role signups use Modern WoW linked characters only. Forever characters do not appear. Run `/link`; if ZugBot asks which game you want, choose Modern WoW. Then use `/alts` to confirm the character is available. Battle.net verification is optional. Maybe and Can't Attend do not require a linked character.
+Planner role signups use characters linked to the **selected event game mode**. For Retail WoW events, link a Retail (Modern) character. For WoW: Forever events, link a Forever character. Confirm with `/alts`. Battle.net verification is optional. Maybe and Can't Attend do not require a linked character.
 
 ## The Planner character selector is missing a character
 
-With more than one eligible Modern character, Discord opens a private list that only you can see. It shows at most 25 characters, with your Modern Main first. Use `/alts` to see every linked character. Forever characters are intentionally excluded from current Production Planner signups.
+With multiple eligible characters in the event's game mode, Discord opens a private selection. Your Main for that game is prioritized. Use `/alts` to inspect your Retail and Forever rosters; characters from the other game are not offered for this event.
 
 ## A Planner reminder was not received
 
@@ -111,7 +131,7 @@ Run `/lfgnotify settings`, then `/lfgnotify test`. If the test fails, check Disc
 
 ## Onboarding or progression fails
 
-For onboarding, confirm that all five roles are configured, ZugBot has Manage Roles, its role is above New Member, and the active onboarding panel is current. For promotion or demotion, also check Discord's native hierarchy; ZugBot authority does not bypass it.
+For onboarding, confirm that all five roles are configured, ZugBot has Manage Roles, its role is above New Member, and the active onboarding panel is current. For promotion or demotion, also check Discord's native hierarchy; ZugBot authority does not bypass it. When a person holds overlapping mapped roles, the highest valid tier applies, and scoped role edits may require reconciliation if Discord changes concurrently.
 
 ## `/version` shows `unknown` for branch or commit
 

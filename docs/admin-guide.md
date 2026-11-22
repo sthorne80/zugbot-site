@@ -4,7 +4,7 @@ Each Discord server keeps its own ZugBot setup, leadership roles, and activity i
 
 ## Server setup
 
-Run `/setup`. The Discord server owner or a member with Administrator or Manage Server permission can change setup.
+Run `/setup` or open **Guild Setup** in the [Discord Activity](discord-activity.md). Server owners and members with **Manage Server** can inspect setup. Protected authority-role and posting-channel changes require additional checks.
 
 ZugBot can store Bot Commands, Mythic/LFG, Raid, and Announcement channels; Modern WoW and WoW: Forever enablement; a default game mode and region; and five authority/membership roles.
 
@@ -28,7 +28,7 @@ The configured hierarchy is:
 Admin > Founder > Moderator > Member > New Member
 ```
 
-The Discord server chooses the actual roles mapped to those tiers. The guild owner is ZugBot's root authority even without the configured Admin role.
+The Discord server chooses the actual roles mapped to those tiers. The guild owner is ZugBot's root authority even without the configured Admin role. Members with overlapping mapped roles are evaluated at their **highest valid tier**: Admin + Founder + Moderator resolves to Admin, and Founder + Moderator resolves to Founder. A Discord Administrator permission alone does not create an unconfigured ZugBot authority tier.
 
 Normal progression is:
 
@@ -36,7 +36,20 @@ Normal progression is:
 New Member ⇄ Member ⇄ Moderator
 ```
 
-Founder and Admin are protected tiers, not ordinary promotion steps. Use `/admin promote` and `/admin demote`; ZugBot changes only the relevant configured progression role. Discord's native role hierarchy still applies.
+Founder and Admin are protected tiers, not ordinary promotion steps. Use `/admin promote` and `/admin demote`, or the eligible Leadership workflow. ZugBot rechecks the actor's and bot's Discord permissions, mapped tiers, target protections, and hierarchy. Rank changes use scoped role edits and preserve unrelated roles; an incomplete or uncertain transition is audited instead of silently reported as successful.
+
+## The graphical Leadership workspace
+
+Authorized staff can open **Leadership** in the [Discord Activity](discord-activity.md). Available sections depend on current permissions and may include Overview, Members, Moderation, Cases, Onboarding, Announcements, and Server Tools.
+
+The member directory, administrative audits, confidential staff notes, and casework are not public. Guild members can **Report an incident**; authorized reviewers can inspect eligible private records. Staff operations also check channel access, bot permissions, Discord role hierarchy, and guild scope.
+
+!!! warning "Production moderation write policy"
+    Formal moderation writes — warnings, warning rescissions, timeouts, timeout removals, kicks, bans, unbans, and formal case resolutions — are currently **disabled in Production**. Displaying Leadership or viewing a case does not enable those actions. Automatic Peon Champion Discord role assignment is also disabled.
+
+### Protected Guild Setup
+
+A valid configured Admin or the actual server owner must authorize protected posting-channel and lower-tier role mappings, in addition to Manage Server. Only the actual server owner can change the Admin or Founder mappings or repair incomplete role mappings. ZugBot refreshes authorization before saving so an already-open Activity or Discord /setup menu cannot bypass the checks. Region, timezone, and game preferences retain their existing Manage Server requirement.
 
 ## Rules & Vibes onboarding
 
@@ -76,4 +89,4 @@ Administrator is not required for normal Planner operation.
 
 ## Role-management safety
 
-Promotion, demotion, and onboarding assignment require **Manage Roles**, and ZugBot's Discord role must sit above each role it manages. Configured authority never bypasses Discord's hierarchy.
+Promotion, demotion, and onboarding assignment require **Manage Roles**, and ZugBot's Discord role must sit above each role it manages. Configured authority never bypasses Discord's hierarchy. Equal- or higher-tier targets, protected roles, and unsafe transitions are refused. Staff should review the proposed addition/removal before confirming.

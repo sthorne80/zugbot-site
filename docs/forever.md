@@ -2,6 +2,8 @@
 
 ## The short version
 
+The new [Discord Activity](discord-activity.md) also supports Forever character management, group coordination, and Guild Planner events. The slash commands described here remain available.
+
 ZugBot supports both **Modern WoW** and **WoW: Forever** characters. Use `/link` for either game.
 
 - Modern characters have a character name and realm.
@@ -50,13 +52,13 @@ You can choose a Main while linking or use `/main` later. Leaving **Make Main** 
 - `/main` lets you choose the game and set that game's Main.
 - `/unlink` lets you choose the game and remove the intended character safely.
 
-## Forever dungeon groups (0.11.0)
+## Forever dungeon groups
 
 Use `/dungeon` in Discord to organize a WoW: Forever five-player dungeon group. Choose Tank, Healer, or DPS, then select a dungeon (or type another dungeon name). ZugBot shows recommended levels for known dungeons; these are guidance rather than an enforced level restriction. Choose a linked Forever character when prompted.
 
 The group card appears in the configured LFG channel and shows one Tank, one Healer, and three DPS slots. Members can join or leave using the role buttons. The organizer can record outside players with **Add PUG Tank**, **Add PUG Healer**, or **Add PUG DPS**, remove those entries with **Remove PUG**, and use **Cancel Group** when finished. Cards remain interactive after bot restarts.
 
-## Forever events in Guild Planner (0.11.0)
+## Forever events in Guild Planner
 
 Use `/event create` and choose **WoW: Forever** to schedule a one-time, weekly, or monthly event. The event uses the configured Events/Raid channel and Discord Scheduled Events, with Tank, Healer, DPS, Bench, Maybe, and Can't Attend responses. Role signups use linked characters from the selected game mode. Organizers can edit or cancel an event date and stop future recurrence with `/event stoprecurrence`.
 

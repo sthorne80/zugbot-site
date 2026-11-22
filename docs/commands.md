@@ -2,6 +2,9 @@
 
 These commands are currently implemented in Production. Planned commands are not listed as released.
 
+!!! tip "The graphical Discord Activity is not a slash command"
+    Launch ZugBot in Discord's App Launcher in a supported server. The Activity adds Dashboard, Events, Groups, Characters, Fun, and permitted Guild Setup and Leadership tools. **Peon Fight Club**, **Brewfest Keg**, the Combat Journal, and Hall of Fame are Activity features — they do not add new slash commands. Read the [Discord Activity guide](discord-activity.md).
+
 ## Character / Warband
 
 | Command | Description |
@@ -58,7 +61,7 @@ The organizer can add or remove external PUG players, or cancel the group. Known
 | `/event stoprecurrence` | Stop future dates without cancelling the current event |
 | `/event timezone` | Set the time zone used for guild events |
 
-`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. In Production 0.11.0, Planner role character selection uses linked characters from the event's selected game mode, Modern WoW or WoW: Forever. Planner cards also support Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
+`/event create` first asks whether the event happens once, weekly, or monthly, then asks for the event type. Planner role character selection uses linked characters from the event's selected game mode, Retail WoW or WoW: Forever. Planner cards also support Maybe and Can't Attend. The organizer and signed-up role members can receive reminders 24 hours and 1 hour before the event.
 
 ## General / Utility
 
@@ -90,4 +93,4 @@ The organizer can add or remove external PUG players, or cancel the group. Known
 | `/debugdb` | Show saved-item and running-process counts for the current Discord server |
 | `/endkeys` | Close active Mythic+ groups in the current Discord server |
 
-Modern and WoW: Forever character linking, verification, profiles, Mains, and character management are released. `/key` remains the Modern Mythic+ flow, while `/dungeon` is the Forever dungeon-group flow. Forever event scheduling and character signups are available in Production 0.11.0.
+Modern and WoW: Forever character linking, verification, profiles, Mains, and character management are released. `/key` remains the Modern Mythic+ flow, while `/dungeon` is the Forever dungeon-group flow. Forever event scheduling and character signups are available in Production. The graphical Activity also adds Tavern games, public character lookup, and permission-controlled guild management without replacing these commands.
